@@ -102,11 +102,11 @@
 
 ### Implementation for User Story 3
 
-- [ ] T028 [US3] 實作換頁按鈕 UI（大且明顯的上一頁/下一頁）於 `StoryBook/Pages/Aquarium/Index.cshtml`
-- [ ] T029 [US3] 實作換頁 JavaScript 邏輯於 `StoryBook/wwwroot/js/aquarium.js`
-- [ ] T030 [US3] 實作首頁停用上一頁按鈕、末頁停用下一頁按鈕邏輯
-- [ ] T031 [US3] 實作換頁動畫效果（流暢切換，< 1 秒）
-- [ ] T032 [US3] 處理快速連續點擊換頁按鈕的 debounce 邏輯
+- [X] T028 [US3] 實作換頁按鈕 UI（大且明顯的上一頁/下一頁）於 `StoryBook/Pages/Aquarium/Index.cshtml`
+- [X] T029 [US3] 實作換頁 JavaScript 邏輯於 `StoryBook/wwwroot/js/aquarium.js`
+- [X] T030 [US3] 實作首頁停用上一頁按鈕、末頁停用下一頁按鈕邏輯
+- [X] T031 [US3] 實作換頁動畫效果（流暢切換，< 1 秒）
+- [X] T032 [US3] 處理快速連續點擊換頁按鈕的 debounce 邏輯
 
 **Checkpoint**: User Story 3 完成 - 換頁功能流暢運作，按鈕大且明顯
 
