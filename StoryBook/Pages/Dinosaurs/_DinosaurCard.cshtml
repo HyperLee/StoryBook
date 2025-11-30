@@ -65,5 +65,35 @@
         <div class="dinosaur-description" data-lang-zh="@Model.Description.Zh" data-lang-en="@Model.Description.En">
             @Model.Description.Zh
         </div>
+
+        <!-- 恐龍小故事區塊 (User Story 6) -->
+        @if (Model.Story is not null)
+        {
+            <div class="dinosaur-story-section">
+                <h3 class="story-title">
+                    <span class="story-icon">📖</span>
+                    <span data-lang-zh="恐龍小故事" data-lang-en="Dinosaur Story">恐龍小故事</span>
+                </h3>
+                
+                <div class="story-content">
+                    <!-- 故事插圖 -->
+                    @if (Model.Images.Story is not null && Model.Images.Story.Count > 0)
+                    {
+                        <div class="story-illustration">
+                            <img src="@Model.Images.Story[0]" 
+                                 alt="@Model.Name.Zh 的小故事插圖"
+                                 class="story-image"
+                                 onerror="this.onerror=null; this.src='/images/placeholder.svg';"
+                                 loading="lazy" />
+                        </div>
+                    }
+                    
+                    <!-- 故事文字 -->
+                    <div class="story-text" data-lang-zh="@Model.Story.Zh" data-lang-en="@Model.Story.En">
+                        @Model.Story.Zh
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>

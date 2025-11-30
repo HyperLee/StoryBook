@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="skyBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#64B5F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E3F2FD;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="treeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#66BB6A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#43A047;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- 天空背景 -->
+  <rect width="400" height="300" fill="url(#skyBlue)"/>
+  <!-- 遠山 -->
+  <path d="M0 200 Q100 150 150 180 Q200 160 250 190 Q300 150 350 175 Q400 160 400 200 L400 300 L0 300 Z" fill="#A5D6A7" opacity="0.5"/>
+  <!-- 草地 -->
+  <ellipse cx="200" cy="310" rx="250" ry="80" fill="#7CB342"/>
+  <!-- 大樹 (有果子) -->
+  <rect x="280" y="80" width="25" height="150" fill="#8D6E63"/>
+  <circle cx="292" cy="50" r="70" fill="url(#treeGrad)"/>
+  <circle cx="250" cy="70" r="45" fill="#81C784"/>
+  <circle cx="335" cy="75" r="50" fill="#4CAF50"/>
+  <circle cx="292" cy="30" r="35" fill="#66BB6A"/>
+  <!-- 樹上的果子 (高處) -->
+  <circle cx="265" cy="45" r="8" fill="#FF5722"/>
+  <circle cx="310" cy="35" r="8" fill="#FF5722"/>
+  <circle cx="340" cy="55" r="8" fill="#FF5722"/>
+  <circle cx="285" cy="25" r="7" fill="#FF5722"/>
+  <circle cx="250" cy="60" r="6" fill="#FFC107"/>
+  <circle cx="330" cy="40" r="7" fill="#FFC107"/>
+  <!-- 小恐龍們 (吃不到果子) -->
+  <!-- 小甲龍 -->
+  <g transform="translate(50, 190)">
+    <ellipse cx="30" cy="30" rx="30" ry="20" fill="#795548"/>
+    <ellipse cx="50" cy="25" rx="15" ry="12" fill="#795548"/>
+    <circle cx="55" cy="22" r="4" fill="white"/>
+    <circle cx="56" cy="22" r="2" fill="#333"/>
+    <!-- 失望的表情 -->
+    <path d="M52 32 Q55 35 60 32" stroke="#5D4037" stroke-width="2" fill="none"/>
+    <!-- 看著上面 -->
+    <text x="20" y="-5" font-size="14" fill="#5D4037">😢</text>
+  </g>
+  <!-- 小劍龍 -->
+  <g transform="translate(100, 180)">
+    <ellipse cx="30" cy="35" rx="28" ry="22" fill="#9CCC65"/>
+    <path d="M15 30 L10 15 L20 30" fill="#FF7043"/>
+    <path d="M25 25 L23 8 L30 25" fill="#FF7043"/>
+    <path d="M35 25 L35 8 L42 25" fill="#FF7043"/>
+    <path d="M45 30 L50 15 L50 30" fill="#FF7043"/>
+    <ellipse cx="52" cy="32" rx="12" ry="10" fill="#9CCC65"/>
+    <circle cx="56" cy="30" r="3" fill="white"/>
+    <circle cx="57" cy="30" r="1.5" fill="#333"/>
+    <path d="M52 38 Q56 40 60 38" stroke="#7CB342" stroke-width="1.5" fill="none"/>
+    <!-- 伸長脖子但還是夠不到 -->
+    <text x="45" y="0" font-size="12" fill="#689F38">?</text>
+  </g>
+  <!-- 小腕龍高高 (用長脖子幫忙) -->
+  <g transform="translate(170, 50)">
+    <!-- 身體 -->
+    <ellipse cx="70" cy="180" rx="45" ry="35" fill="#5C6BC0"/>
+    <!-- 超長脖子 -->
+    <path d="M85 165 Q100 100 90 50 Q85 30 95 10" stroke="#5C6BC0" stroke-width="30" fill="none" stroke-linecap="round"/>
+    <!-- 頭部 -->
+    <ellipse cx="95" cy="5" rx="20" ry="15" fill="#5C6BC0"/>
+    <!-- 眼睛 (開心) -->
+    <circle cx="102" cy="2" r="5" fill="white"/>
+    <circle cx="103" cy="1" r="2.5" fill="#333"/>
+    <circle cx="104" cy="0" r="1" fill="white"/>
+    <!-- 微笑 -->
+    <path d="M98 12 Q105 18 112 12" stroke="#3949AB" stroke-width="2" fill="none"/>
+    <!-- 嘴裡叼著果子給大家 -->
+    <circle cx="108" cy="8" r="6" fill="#FF5722"/>
+    <!-- 腿 -->
+    <ellipse cx="45" cy="215" rx="12" ry="20" fill="#3F51B5"/>
+    <ellipse cx="95" cy="215" rx="12" ry="20" fill="#3F51B5"/>
+    <!-- 尾巴 -->
+    <path d="M30 185 Q0 180 -15 200" stroke="#5C6BC0" stroke-width="18" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- 說話泡泡 -->
+  <g transform="translate(70, 130)">
+    <ellipse cx="40" cy="20" rx="50" ry="25" fill="white"/>
+    <polygon points="60,40 55,55 75,45" fill="white"/>
+    <text x="15" y="25" font-size="12" fill="#333">謝謝高高！</text>
+  </g>
+  <!-- 從高高嘴裡掉下的果子 -->
+  <circle cx="290" cy="80" r="5" fill="#FFC107"/>
+  <circle cx="295" cy="100" r="4" fill="#FF5722">
+    <animate attributeName="cy" values="100;150;100" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0;1" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <!-- 愛心裝飾 -->
+  <g fill="#E91E63" opacity="0.7">
+    <path d="M320 150 Q320 145 325 145 Q330 145 330 150 Q330 155 325 160 Q320 155 320 150"/>
+    <path d="M335 140 Q335 136 339 136 Q343 136 343 140 Q343 144 339 148 Q335 144 335 140"/>
+  </g>
+</svg>

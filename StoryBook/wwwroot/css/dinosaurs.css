@@ -601,3 +601,143 @@ body.modal-open {
     border-radius: 3px;
 }
 
+/* ==========================================================================
+   恐龍小故事區塊 (User Story 6)
+   兒童友善繪本風格
+   ========================================================================== */
+
+/* 故事區塊容器 */
+.dinosaur-story-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+    border-radius: var(--dino-border-radius);
+    border: 3px dashed var(--dino-secondary);
+    position: relative;
+}
+
+/* 故事標題 */
+.story-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dino-text);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(255, 138, 101, 0.3);
+}
+
+.story-icon {
+    font-size: 1.6rem;
+    animation: bookWiggle 2s ease-in-out infinite;
+}
+
+@keyframes bookWiggle {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+/* 故事內容區 */
+.story-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* 故事插圖容器 */
+.story-illustration {
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem;
+}
+
+/* 故事插圖圖片 */
+.story-image {
+    max-width: 280px;
+    max-height: 200px;
+    border-radius: 15px;
+    box-shadow: 0 6px 16px rgba(93, 64, 55, 0.2);
+    border: 4px solid white;
+    object-fit: contain;
+    background: white;
+    transition: transform 0.3s ease;
+}
+
+.story-image:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+/* 故事文字 */
+.story-text {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--dino-text);
+    text-align: justify;
+    padding: 1.25rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+/* 故事文字裝飾引號 */
+.story-text::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    font-size: 3rem;
+    color: var(--dino-secondary);
+    opacity: 0.5;
+    font-family: Georgia, serif;
+}
+
+.story-text::after {
+    content: '"';
+    position: absolute;
+    bottom: -25px;
+    right: 15px;
+    font-size: 3rem;
+    color: var(--dino-secondary);
+    opacity: 0.5;
+    font-family: Georgia, serif;
+}
+
+/* 響應式調整 */
+@media (min-width: 600px) {
+    .story-content {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .story-illustration {
+        flex-shrink: 0;
+    }
+    
+    .story-text {
+        flex: 1;
+    }
+}
+
+@media (max-width: 599px) {
+    .story-title {
+        font-size: 1.2rem;
+    }
+    
+    .story-image {
+        max-width: 200px;
+        max-height: 150px;
+    }
+    
+    .story-text {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}
+

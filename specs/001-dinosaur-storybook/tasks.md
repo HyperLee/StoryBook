@@ -153,9 +153,9 @@
 
 ### Implementation for User Story 6
 
-- [ ] T041 [US6] 更新恐龍卡片於 `StoryBook/Pages/Dinosaurs/_DinosaurCard.cshtml`，新增故事區塊
-- [ ] T042 [US6] 實作故事區塊樣式於 `StoryBook/wwwroot/css/dinosaurs.css`
-- [ ] T043 [US6] 新增故事插圖資源於 `StoryBook/wwwroot/images/dinosaurs/`
+- [x] T041 [US6] 更新恐龍卡片於 `StoryBook/Pages/Dinosaurs/_DinosaurCard.cshtml`，新增故事區塊
+- [x] T042 [US6] 實作故事區塊樣式於 `StoryBook/wwwroot/css/dinosaurs.css`
+- [x] T043 [US6] 新增故事插圖資源於 `StoryBook/wwwroot/images/dinosaurs/`
 
 **Checkpoint**: 此時 User Stories 1-6 應可獨立運作
 

@@ -31,8 +31,8 @@
         "en": "Little T-Rex Ray was happy today because mom took him to the river. Ray saw fish in the water and wanted to catch a snack, but his arms were too short to reach. Mom laughed and said, 'Use your big mouth!' Ray opened wide and caught the fish in one bite, smiling happily."
       },
       "images": {
-        "main": "/images/dinosaurs/tyrannosaurus/main.png",
-        "story": ["/images/dinosaurs/tyrannosaurus/story-1.png"]
+        "main": "/images/dinosaurs/tyrannosaurus/main.svg",
+        "story": ["/images/dinosaurs/tyrannosaurus/story-1.svg"]
       }
     },
     {
@@ -66,8 +66,8 @@
         "en": "Little Triceratops Trixie loved playing hide and seek with friends. One day, Trixie hid behind a big tree, but her three horns were too obvious and she was found right away! After thinking, she decided to hide in the fern bushes—this time she wasn't found!"
       },
       "images": {
-        "main": "/images/dinosaurs/triceratops/main.png",
-        "story": ["/images/dinosaurs/triceratops/story-1.png"]
+        "main": "/images/dinosaurs/triceratops/main.svg",
+        "story": ["/images/dinosaurs/triceratops/story-1.svg"]
       }
     },
     {
@@ -101,8 +101,8 @@
         "en": "Little Stegosaurus Spike loved looking pretty and polished his back plates every day until they sparkled. One sunny day, Spike discovered that sunbathing made his plates feel warm and cozy! From then on, Spike found a good spot every day to enjoy sunbathing."
       },
       "images": {
-        "main": "/images/dinosaurs/stegosaurus/main.png",
-        "story": ["/images/dinosaurs/stegosaurus/story-1.png"]
+        "main": "/images/dinosaurs/stegosaurus/main.svg",
+        "story": ["/images/dinosaurs/stegosaurus/story-1.svg"]
       }
     },
     {
@@ -136,8 +136,8 @@
         "en": "Little Brachiosaurus Stretch thought his neck was too long and always bumped into branches. One day, the little dinosaurs in the forest couldn't reach the high fruits, so Stretch used his long neck to pick them for everyone. They all said, 'Thank you, Stretch!' Stretch finally realized his long neck was the best gift."
       },
       "images": {
-        "main": "/images/dinosaurs/brachiosaurus/main.png",
-        "story": ["/images/dinosaurs/brachiosaurus/story-1.png"]
+        "main": "/images/dinosaurs/brachiosaurus/main.svg",
+        "story": ["/images/dinosaurs/brachiosaurus/story-1.svg"]
       }
     },
     {
@@ -171,8 +171,8 @@
         "en": "Little Velociraptor Swift was the fastest in class. On sports day, Swift joined the race and led all the way. But when Swift saw a classmate fall, he stopped to help. He got second place, but the teacher said, 'Swift is the most caring champion!'"
       },
       "images": {
-        "main": "/images/dinosaurs/velociraptor/main.png",
-        "story": ["/images/dinosaurs/velociraptor/story-1.png"]
+        "main": "/images/dinosaurs/velociraptor/main.svg",
+        "story": ["/images/dinosaurs/velociraptor/story-1.svg"]
       }
     }
   ]

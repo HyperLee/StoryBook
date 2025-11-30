@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="forestGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#81D4FA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B3E5FC;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9CCC65;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7CB342;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- 背景天空 -->
+  <rect width="400" height="300" fill="url(#forestGrad)"/>
+  <!-- 草地 -->
+  <ellipse cx="200" cy="290" rx="250" ry="70" fill="url(#grassGrad)"/>
+  <!-- 大樹 -->
+  <rect x="50" y="120" width="30" height="120" fill="#8D6E63"/>
+  <circle cx="65" cy="90" r="60" fill="#4CAF50"/>
+  <circle cx="35" cy="100" r="40" fill="#66BB6A"/>
+  <circle cx="95" cy="105" r="45" fill="#43A047"/>
+  <!-- 蕨類植物叢 -->
+  <g fill="#2E7D32">
+    <path d="M280 240 Q275 200 290 180 Q295 200 280 240" />
+    <path d="M290 240 Q300 195 320 175 Q315 200 290 240" />
+    <path d="M300 240 Q280 205 260 185 Q275 205 300 240" />
+    <path d="M295 240 Q285 210 275 195 Q285 215 295 240" />
+    <path d="M305 240 Q315 205 330 190 Q320 210 305 240" />
+  </g>
+  <g fill="#388E3C">
+    <path d="M270 250 Q260 220 245 200 Q265 220 270 250" />
+    <path d="M320 250 Q335 215 350 195 Q340 220 320 250" />
+  </g>
+  <!-- 小三角龍 (躲在蕨類中，露出角) -->
+  <g transform="translate(260, 180)">
+    <!-- 身體 (部分被蕨類遮住) -->
+    <ellipse cx="30" cy="50" rx="35" ry="25" fill="#FF9800"/>
+    <!-- 頭盾 -->
+    <path d="M50 20 Q75 -10 80 25 Q85 40 65 45 Q55 35 50 20" fill="#FFB74D"/>
+    <circle cx="70" cy="15" r="4" fill="#FF7043"/>
+    <circle cx="78" cy="25" r="3" fill="#FF7043"/>
+    <!-- 頭部 -->
+    <ellipse cx="55" cy="35" rx="20" ry="18" fill="#FF9800"/>
+    <!-- 三隻角 (明顯露出) -->
+    <path d="M65 25 L75 5 L70 25" fill="#FFF9C4"/>
+    <path d="M70 30 L85 15 L75 32" fill="#FFF9C4"/>
+    <path d="M55 38 L55 48" stroke="#FFF9C4" stroke-width="4" stroke-linecap="round"/>
+    <!-- 眼睛 (閃爍開心) -->
+    <ellipse cx="50" cy="32" rx="6" ry="4" fill="#333"/>
+    <circle cx="48" cy="31" r="2" fill="white"/>
+    <!-- 微笑 -->
+    <path d="M48 42 Q55 48 62 42" stroke="#E65100" stroke-width="2" fill="none"/>
+  </g>
+  <!-- 其他小恐龍在找 -->
+  <g transform="translate(100, 170)">
+    <!-- 小翼龍 -->
+    <ellipse cx="0" cy="0" rx="15" ry="10" fill="#9C27B0"/>
+    <path d="M-15 0 Q-30 -20 -10 -15" fill="#BA68C8"/>
+    <path d="M15 0 Q30 -20 10 -15" fill="#BA68C8"/>
+    <circle cx="5" cy="-3" r="3" fill="white"/>
+    <circle cx="6" cy="-3" r="1.5" fill="#333"/>
+    <!-- 問號 -->
+    <text x="15" y="-20" font-size="20" fill="#7B1FA2">?</text>
+  </g>
+  <!-- 小迅猛龍在找 -->
+  <g transform="translate(150, 200)">
+    <ellipse cx="0" cy="10" rx="18" ry="12" fill="#FF5722"/>
+    <ellipse cx="15" cy="0" rx="12" ry="10" fill="#FF5722"/>
+    <circle cx="18" cy="-3" r="4" fill="white"/>
+    <circle cx="19" cy="-3" r="2" fill="#333"/>
+    <ellipse cx="-12" cy="18" rx="5" ry="8" fill="#E64A19"/>
+    <ellipse cx="5" cy="18" rx="5" ry="8" fill="#E64A19"/>
+    <!-- 問號 -->
+    <text x="25" y="-10" font-size="16" fill="#BF360C">?</text>
+  </g>
+  <!-- 裝飾蝴蝶 -->
+  <g transform="translate(180, 80)">
+    <ellipse cx="0" cy="0" rx="3" ry="6" fill="#333"/>
+    <ellipse cx="-8" cy="-3" rx="10" ry="7" fill="#E91E63"/>
+    <ellipse cx="8" cy="-3" rx="10" ry="7" fill="#E91E63"/>
+    <ellipse cx="-6" cy="3" rx="7" ry="5" fill="#F48FB1"/>
+    <ellipse cx="6" cy="3" rx="7" ry="5" fill="#F48FB1"/>
+  </g>
+  <!-- 小花裝飾 -->
+  <g fill="#FFEB3B">
+    <circle cx="130" cy="260" r="6"/>
+    <circle cx="130" cy="252" r="4"/>
+    <circle cx="124" cy="256" r="4"/>
+    <circle cx="136" cy="256" r="4"/>
+    <circle cx="127" cy="263" r="4"/>
+    <circle cx="133" cy="263" r="4"/>
+    <circle cx="130" cy="258" r="3" fill="#FF9800"/>
+  </g>
+</svg>

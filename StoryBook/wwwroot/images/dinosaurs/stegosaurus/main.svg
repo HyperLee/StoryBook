@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8F5E9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DCEDC8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="plateGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFAB91;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF7043;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- 背景 -->
+  <rect width="400" height="400" fill="url(#bgGrad)"/>
+  <circle cx="320" cy="60" r="35" fill="#FFD54F" opacity="0.8"/>
+  
+  <!-- 劍龍 (可愛版) -->
+  <g transform="translate(30, 100)">
+    <!-- 尾巴和刺 -->
+    <path d="M20 130 Q-30 115 -45 145 Q-20 145 15 135" fill="#8BC34A"/>
+    <polygon points="-10,120 -35,95 0,125" fill="url(#plateGrad)"/>
+    <polygon points="-25,130 -55,115 -15,135" fill="url(#plateGrad)"/>
+    <polygon points="-35,145 -60,140 -25,150" fill="url(#plateGrad)"/>
+    <polygon points="-30,155 -55,165 -20,155" fill="url(#plateGrad)"/>
+    
+    <!-- 身體 -->
+    <ellipse cx="120" cy="140" rx="90" ry="50" fill="#8BC34A"/>
+    
+    <!-- 背上的骨板 -->
+    <polygon points="60,125 45,70 75,125" fill="url(#plateGrad)"/>
+    <polygon points="90,115 75,50 105,115" fill="url(#plateGrad)"/>
+    <polygon points="120,110 110,45 135,110" fill="url(#plateGrad)"/>
+    <polygon points="150,115 140,50 165,115" fill="url(#plateGrad)"/>
+    <polygon points="180,125 170,70 195,125" fill="url(#plateGrad)"/>
+    
+    <!-- 腿 -->
+    <ellipse cx="70" cy="200" rx="18" ry="30" fill="#7CB342"/>
+    <ellipse cx="100" cy="205" rx="15" ry="25" fill="#7CB342"/>
+    <ellipse cx="150" cy="205" rx="15" ry="25" fill="#7CB342"/>
+    <ellipse cx="180" cy="200" rx="18" ry="30" fill="#7CB342"/>
+    
+    <!-- 頭部 (小小的) -->
+    <ellipse cx="230" cy="150" rx="30" ry="25" fill="#8BC34A"/>
+    
+    <!-- 眼睛 -->
+    <circle cx="240" cy="145" r="10" fill="white"/>
+    <circle cx="242" cy="143" r="5" fill="#333"/>
+    <circle cx="244" cy="141" r="2" fill="white"/>
+    
+    <!-- 嘴巴 -->
+    <path d="M255 155 Q265 160 268 155" stroke="#689F38" stroke-width="2" fill="none"/>
+    
+    <!-- 鼻孔 -->
+    <circle cx="258" cy="148" r="3" fill="#689F38"/>
+  </g>
+  
+  <!-- 名稱 -->
+  <text x="200" y="370" text-anchor="middle" font-size="26" font-weight="bold" fill="#558B2F">劍龍 Stegosaurus</text>
+</svg>
