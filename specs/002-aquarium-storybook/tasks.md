@@ -155,11 +155,11 @@
 
 ### Implementation for User Story 6
 
-- [ ] T042 [US6] 在水族館頁面整合現有語言切換元件 `_LanguageSwitcher.cshtml`
-- [ ] T043 [US6] 實作水族館頁面多語言內容切換 JavaScript 邏輯於 `StoryBook/wwwroot/js/aquarium.js`
-- [ ] T044 [US6] 實作 Cookie 保存語言偏好設定（有效期 365 天）
-- [ ] T045 [US6] 確保換頁後語言設定維持不變
-- [ ] T046 [US6] 實作生活區域分類標籤的多語言顯示
+- [X] T042 [US6] 在水族館頁面整合現有語言切換元件 `_LanguageSwitcher.cshtml`
+- [X] T043 [US6] 實作水族館頁面多語言內容切換 JavaScript 邏輯於 `StoryBook/wwwroot/js/aquarium.js`
+- [X] T044 [US6] 實作 Cookie 保存語言偏好設定（有效期 365 天）
+- [X] T045 [US6] 確保換頁後語言設定維持不變
+- [X] T046 [US6] 實作生活區域分類標籤的多語言顯示
 
 **Checkpoint**: User Story 6 完成 - 中英文切換正常，偏好設定持久保存
 

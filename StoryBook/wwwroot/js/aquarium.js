@@ -53,6 +53,7 @@
         initPageTransition();
         initSearch();
         initImageLightbox();
+        initLanguageChangeListener();  // T043: 監聽語言變更
     });
 
     /**
@@ -396,6 +397,58 @@
         if (nextButton && !isNavigating) {
             triggerNavigation(nextButton, 'next');
         }
+    }
+
+    // ==========================================================================
+    // 多語言切換功能（User Story 6）
+    // T042, T043, T044, T045, T046
+    // ==========================================================================
+
+    /**
+     * 初始化語言變更監聽器
+     * T043: 監聽語言變更事件並更新動態內容
+     */
+    function initLanguageChangeListener() {
+        document.addEventListener('languageChanged', function (event) {
+            const lang = event.detail.language;
+            currentLanguage = lang;
+            
+            // 更新水族館頁面的動態內容
+            updateAquariumPageLanguage(lang);
+        });
+    }
+
+    /**
+     * 更新水族館頁面的語言相關內容
+     * T043: 實作水族館頁面多語言內容切換 JavaScript 邏輯
+     * @param {string} lang - 語言代碼
+     */
+    function updateAquariumPageLanguage(lang) {
+        // 更新搜尋框 placeholder
+        updateSearchPlaceholder();
+        
+        // 更新圖片的 aria-label
+        updateImageAriaLabels(lang);
+        
+        // 如果有搜尋結果顯示中，更新搜尋結果
+        const searchInput = document.getElementById('animal-search-input');
+        if (searchInput && searchInput.value.trim()) {
+            performSearch(searchInput.value);
+        }
+    }
+
+    /**
+     * 更新圖片的 aria-label 屬性
+     * T043: 確保圖片的無障礙屬性隨語言更新
+     * @param {string} lang - 語言代碼
+     */
+    function updateImageAriaLabels(lang) {
+        const images = document.querySelectorAll('.animal-image[data-aria-label-zh][data-aria-label-en]');
+        images.forEach(function (img) {
+            const zhLabel = img.getAttribute('data-aria-label-zh');
+            const enLabel = img.getAttribute('data-aria-label-en');
+            img.setAttribute('aria-label', lang === 'en' ? enLabel : zhLabel);
+        });
     }
 
     // ==========================================================================

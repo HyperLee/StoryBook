@@ -11,6 +11,8 @@
     // ==========================================================================
     
     const STORAGE_KEY_LANGUAGE = 'storybook-language';
+    const COOKIE_KEY_LANGUAGE = 'storybook-language';
+    const COOKIE_EXPIRY_DAYS = 365;
     const DEFAULT_LANGUAGE = 'zh';
     const SUPPORTED_LANGUAGES = ['zh', 'en'];
 
@@ -34,13 +36,20 @@
 
     /**
      * 初始化語言設定
-     * 從 localStorage 讀取並套用使用者偏好的語言
+     * 從 Cookie 或 localStorage 讀取並套用使用者偏好的語言（T044, T045）
      */
     function initLanguage() {
-        const savedLang = localStorage.getItem(STORAGE_KEY_LANGUAGE);
+        // T044: 優先從 Cookie 讀取，其次從 localStorage
+        const cookieLang = getLanguageCookie();
+        const savedLang = cookieLang || localStorage.getItem(STORAGE_KEY_LANGUAGE);
         
         if (savedLang && SUPPORTED_LANGUAGES.includes(savedLang)) {
             currentLanguage = savedLang;
+            // 同步 localStorage 和 Cookie
+            localStorage.setItem(STORAGE_KEY_LANGUAGE, savedLang);
+            if (!cookieLang) {
+                setLanguageCookie(savedLang);
+            }
         } else {
             // 嘗試從瀏覽器語言設定偵測
             const browserLang = navigator.language || navigator.userLanguage;
@@ -49,6 +58,9 @@
             } else {
                 currentLanguage = DEFAULT_LANGUAGE;
             }
+            // 儲存偵測到的語言
+            localStorage.setItem(STORAGE_KEY_LANGUAGE, currentLanguage);
+            setLanguageCookie(currentLanguage);
         }
 
         // 套用語言設定
@@ -90,6 +102,10 @@
 
         currentLanguage = lang;
         localStorage.setItem(STORAGE_KEY_LANGUAGE, lang);
+        
+        // T044: 使用 Cookie 保存語言偏好設定（有效期 365 天）
+        setLanguageCookie(lang);
+        
         applyLanguage(lang);
         updateLanguageButtonState();
 
@@ -97,6 +113,34 @@
         document.dispatchEvent(new CustomEvent('languageChanged', {
             detail: { language: lang }
         }));
+    }
+
+    /**
+     * 設定語言 Cookie（T044）
+     * @param {string} lang - 語言代碼
+     */
+    function setLanguageCookie(lang) {
+        const date = new Date();
+        date.setTime(date.getTime() + (COOKIE_EXPIRY_DAYS * 24 * 60 * 60 * 1000));
+        const expires = 'expires=' + date.toUTCString();
+        document.cookie = COOKIE_KEY_LANGUAGE + '=' + lang + ';' + expires + ';path=/;SameSite=Lax';
+    }
+
+    /**
+     * 取得語言 Cookie（T044）
+     * @returns {string|null} 語言代碼或 null
+     */
+    function getLanguageCookie() {
+        const name = COOKIE_KEY_LANGUAGE + '=';
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookies = decodedCookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i].trim();
+            if (cookie.indexOf(name) === 0) {
+                return cookie.substring(name.length, cookie.length);
+            }
+        }
+        return null;
     }
 
     /**
@@ -146,11 +190,12 @@
      * @param {string} lang - 語言代碼
      */
     function updatePlaceholders(lang) {
-        const inputs = document.querySelectorAll('[data-lang-placeholder-zh][data-lang-placeholder-en]');
+        // 支援兩種屬性命名方式：data-lang-placeholder-* 和 data-placeholder-*
+        const inputs = document.querySelectorAll('[data-lang-placeholder-zh][data-lang-placeholder-en], [data-placeholder-zh][data-placeholder-en]');
         
         inputs.forEach(function (input) {
-            const zhPlaceholder = input.getAttribute('data-lang-placeholder-zh');
-            const enPlaceholder = input.getAttribute('data-lang-placeholder-en');
+            const zhPlaceholder = input.getAttribute('data-lang-placeholder-zh') || input.getAttribute('data-placeholder-zh');
+            const enPlaceholder = input.getAttribute('data-lang-placeholder-en') || input.getAttribute('data-placeholder-en');
             
             if (lang === 'en' && enPlaceholder) {
                 input.setAttribute('placeholder', enPlaceholder);
