@@ -84,11 +84,11 @@
 
 ### Implementation for User Story 2
 
-- [ ] T023 [US2] 建立動物卡片 Partial View 於 `StoryBook/Pages/Aquarium/_AnimalCard.cshtml`
-- [ ] T024 [US2] 在 `_AnimalCard.cshtml` 實作動物詳細資訊顯示（名稱、生活環境、食性、發現地點）
-- [ ] T025 [US2] 實作動物小故事區塊顯示
-- [ ] T026 [US2] 實作生活區域分類標籤樣式（淡水/海水/深海/珊瑚礁/極地）於 `StoryBook/wwwroot/css/aquarium.css`
-- [ ] T027 [US2] 確保每頁文字內容控制在 200 字以內的版面設計
+- [X] T023 [US2] 建立動物卡片 Partial View 於 `StoryBook/Pages/Aquarium/_AnimalCard.cshtml`
+- [X] T024 [US2] 在 `_AnimalCard.cshtml` 實作動物詳細資訊顯示（名稱、生活環境、食性、發現地點）
+- [X] T025 [US2] 實作動物小故事區塊顯示
+- [X] T026 [US2] 實作生活區域分類標籤樣式（淡水/海水/深海/珊瑚礁/極地）於 `StoryBook/wwwroot/css/aquarium.css`
+- [X] T027 [US2] 確保每頁文字內容控制在 200 字以內的版面設計
 
 **Checkpoint**: User Story 2 完成 - 動物詳細頁面版面簡潔、內容完整
 

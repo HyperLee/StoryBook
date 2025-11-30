@@ -1,0 +1,127 @@
+@model StoryBook.Models.AquariumAnimal
+
+@* 
+    水族館動物卡片 Partial View
+    用途：顯示單一水族館動物的詳細介紹
+    版面設計：每頁文字內容控制在 200 字以內，適合孩童閱讀
+*@
+
+<div class="aquarium-animal-card" data-animal-id="@Model.Id">
+    <!-- 動物圖片區 -->
+    <div class="animal-image-container">
+        <img src="@Model.Images.Main" 
+             alt="@Model.Name.Zh" 
+             class="animal-image"
+             onerror="this.onerror=null; this.src='/images/placeholder.svg';"
+             loading="lazy" />
+    </div>
+
+    <!-- 動物資訊區 -->
+    <div class="animal-info">
+        <!-- 動物名稱 -->
+        <h2 class="animal-name" data-lang-zh="@Model.Name.Zh" data-lang-en="@Model.Name.En">
+            @Model.Name.Zh
+        </h2>
+        <p class="animal-name-en">@Model.Name.En</p>
+
+        <!-- 屬性標籤區 -->
+        <div class="animal-attributes">
+            <!-- 生活區域分類標籤 -->
+            @{
+                var zoneName = Model.HabitatZone.GetDisplayName();
+                var zoneCss = Model.HabitatZone.GetCssClass();
+            }
+            <span class="animal-attribute @zoneCss" title="生活區域">
+                <span class="attribute-icon">🌊</span>
+                <span data-lang-zh="@zoneName.Zh" data-lang-en="@zoneName.En">
+                    @zoneName.Zh
+                </span>
+            </span>
+
+            <!-- 食性標籤 -->
+            @{
+                var dietLower = Model.Diet.En.ToLowerInvariant();
+                var isCarnivore = dietLower.Contains("carnivore");
+                var isOmnivore = dietLower.Contains("omnivore");
+                var dietClass = isCarnivore ? "attribute-diet carnivore" : "attribute-diet";
+                var dietIcon = isCarnivore ? "🍖" : (isOmnivore ? "🍽️" : "🌿");
+            }
+            <span class="animal-attribute @dietClass" title="食性">
+                <span class="attribute-icon">@dietIcon</span>
+                <span data-lang-zh="@Model.Diet.Zh" data-lang-en="@Model.Diet.En">
+                    @Model.Diet.Zh
+                </span>
+            </span>
+
+            <!-- 分佈地點標籤 -->
+            <span class="animal-attribute attribute-location" title="發現地點">
+                <span class="attribute-icon">📍</span>
+                <span data-lang-zh="@Model.Location.Zh" data-lang-en="@Model.Location.En">
+                    @Model.Location.Zh
+                </span>
+            </span>
+        </div>
+
+        <!-- 生活環境描述 -->
+        <div class="animal-detail-section">
+            <p class="animal-habitat">
+                <strong>
+                    <span class="detail-icon">🏠</span>
+                    <span data-lang-zh="生活環境" data-lang-en="Habitat">生活環境</span>：
+                </strong>
+                <span data-lang-zh="@Model.Habitat.Zh" data-lang-en="@Model.Habitat.En">
+                    @Model.Habitat.Zh
+                </span>
+            </p>
+
+            <!-- 體型描述（選填） -->
+            @if (Model.Size is not null)
+            {
+                <p class="animal-size">
+                    <strong>
+                        <span class="detail-icon">📏</span>
+                        <span data-lang-zh="體型" data-lang-en="Size">體型</span>：
+                    </strong>
+                    <span data-lang-zh="@Model.Size.Zh" data-lang-en="@Model.Size.En">
+                        @Model.Size.Zh
+                    </span>
+                </p>
+            }
+        </div>
+
+        <!-- 動物介紹文字（控制在 200 字以內） -->
+        <div class="animal-description" data-lang-zh="@Model.Description.Zh" data-lang-en="@Model.Description.En">
+            @Model.Description.Zh
+        </div>
+
+        <!-- 動物小故事區塊（選填） -->
+        @if (Model.Story is not null)
+        {
+            <div class="animal-story-section">
+                <h3 class="story-title">
+                    <span class="story-icon">📖</span>
+                    <span data-lang-zh="小故事" data-lang-en="Story Time">小故事</span>
+                </h3>
+                
+                <div class="story-content-wrapper">
+                    <!-- 故事插圖（如果有） -->
+                    @if (Model.Images.Story is not null && Model.Images.Story.Count > 0)
+                    {
+                        <div class="story-illustration">
+                            <img src="@Model.Images.Story[0]" 
+                                 alt="@Model.Name.Zh 的小故事插圖"
+                                 class="story-image"
+                                 onerror="this.onerror=null; this.src='/images/placeholder.svg';"
+                                 loading="lazy" />
+                        </div>
+                    }
+                    
+                    <!-- 故事文字 -->
+                    <div class="story-content" data-lang-zh="@Model.Story.Zh" data-lang-en="@Model.Story.En">
+                        @Model.Story.Zh
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

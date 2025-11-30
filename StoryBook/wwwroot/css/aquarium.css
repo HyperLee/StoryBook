@@ -518,3 +518,199 @@
     }
 }
 
+/* ==========================================================================
+   增強區域分類標籤樣式
+   ========================================================================== */
+
+/* 區域標籤增強效果 - 淡水區 */
+.zone-freshwater {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    color: #1565C0;
+    border: 1px solid #90CAF9;
+    position: relative;
+    overflow: hidden;
+}
+
+.zone-freshwater::before {
+    content: "💧";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+/* 區域標籤增強效果 - 海水區 */
+.zone-saltwater {
+    background: linear-gradient(135deg, #E0F7FA 0%, #B2EBF2 100%);
+    color: #00838F;
+    border: 1px solid #80DEEA;
+}
+
+.zone-saltwater::before {
+    content: "🌊";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+/* 區域標籤增強效果 - 深海區 */
+.zone-deepsea {
+    background: linear-gradient(135deg, #E8EAF6 0%, #C5CAE9 100%);
+    color: #3949AB;
+    border: 1px solid #9FA8DA;
+}
+
+.zone-deepsea::before {
+    content: "🦑";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+/* 區域標籤增強效果 - 珊瑚礁區 */
+.zone-coralreef {
+    background: linear-gradient(135deg, #FCE4EC 0%, #F8BBD0 100%);
+    color: #C2185B;
+    border: 1px solid #F48FB1;
+}
+
+.zone-coralreef::before {
+    content: "🐠";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+/* 區域標籤增強效果 - 極地區 */
+.zone-polar {
+    background: linear-gradient(135deg, #ECEFF1 0%, #CFD8DC 100%);
+    color: #546E7A;
+    border: 1px solid #B0BEC5;
+}
+
+.zone-polar::before {
+    content: "❄️";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+/* 屬性標籤通用增強 */
+.animal-attribute {
+    position: relative;
+    padding-right: 2rem;
+}
+
+.attribute-icon {
+    font-size: 1rem;
+}
+
+/* 詳細資訊區塊 */
+.animal-detail-section {
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   小故事區塊增強樣式
+   ========================================================================== */
+
+.story-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.story-illustration {
+    text-align: center;
+}
+
+.story-image {
+    max-width: 200px;
+    max-height: 150px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--aqua-shadow);
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   版面控制：確保文字內容 ≤ 200 字的良好閱讀體驗
+   ========================================================================== */
+
+/* 描述文字最大高度限制，確保版面簡潔 */
+.animal-description {
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 1.1rem;
+    line-height: 2;
+}
+
+/* 小故事內容控制 */
+.story-content {
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 1rem;
+    line-height: 1.9;
+}
+
+/* 捲軸樣式美化 */
+.animal-description::-webkit-scrollbar,
+.story-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.animal-description::-webkit-scrollbar-track,
+.story-content::-webkit-scrollbar-track {
+    background: #E1F5FE;
+    border-radius: 3px;
+}
+
+.animal-description::-webkit-scrollbar-thumb,
+.story-content::-webkit-scrollbar-thumb {
+    background: var(--aqua-primary);
+    border-radius: 3px;
+}
+
+.animal-description::-webkit-scrollbar-thumb:hover,
+.story-content::-webkit-scrollbar-thumb:hover {
+    background: var(--aqua-secondary);
+}
+
+/* 卡片整體高度控制，確保頁面不過長 */
+.aquarium-animal-card {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .animal-attribute {
+        padding-right: 1.5rem;
+    }
+    
+    .zone-freshwater::before,
+    .zone-saltwater::before,
+    .zone-deepsea::before,
+    .zone-coralreef::before,
+    .zone-polar::before {
+        display: none;
+    }
+    
+    .story-image {
+        max-width: 150px;
+        max-height: 100px;
+    }
+}
