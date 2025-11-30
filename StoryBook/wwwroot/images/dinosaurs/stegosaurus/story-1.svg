@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="sunnyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE082;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFF8E1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="hillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#AED581;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7CB342;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="plateGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFAB91;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF7043;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- 溫暖的天空背景 -->
+  <rect width="400" height="300" fill="url(#sunnyGrad)"/>
+  <!-- 大太陽 (溫暖) -->
+  <circle cx="320" cy="60" r="50" fill="#FFD54F" opacity="0.8"/>
+  <circle cx="320" cy="60" r="40" fill="#FFEB3B"/>
+  <!-- 太陽光芒 -->
+  <g stroke="#FFD54F" stroke-width="3" opacity="0.6">
+    <line x1="320" y1="5" x2="320" y2="-15"/>
+    <line x1="360" y1="20" x2="380" y2="5"/>
+    <line x1="375" y1="60" x2="395" y2="60"/>
+    <line x1="360" y1="100" x2="380" y2="115"/>
+    <line x1="280" y1="100" x2="260" y2="115"/>
+    <line x1="265" y1="60" x2="245" y2="60"/>
+    <line x1="280" y1="20" x2="260" y2="5"/>
+  </g>
+  <!-- 小雲朵 -->
+  <g fill="white" opacity="0.7">
+    <ellipse cx="80" cy="50" rx="30" ry="18"/>
+    <ellipse cx="55" cy="55" rx="22" ry="14"/>
+    <ellipse cx="105" cy="55" rx="22" ry="14"/>
+  </g>
+  <!-- 山丘 -->
+  <ellipse cx="200" cy="290" rx="250" ry="80" fill="url(#hillGrad)"/>
+  <!-- 小劍龍尖尖 (享受日光浴) -->
+  <g transform="translate(100, 140)">
+    <!-- 身體 -->
+    <ellipse cx="80" cy="60" rx="60" ry="40" fill="#8BC34A"/>
+    <!-- 腿 -->
+    <ellipse cx="45" cy="95" rx="12" ry="18" fill="#7CB342"/>
+    <ellipse cx="75" cy="100" rx="10" ry="15" fill="#7CB342"/>
+    <ellipse cx="105" cy="100" rx="10" ry="15" fill="#7CB342"/>
+    <ellipse cx="130" cy="95" rx="12" ry="18" fill="#7CB342"/>
+    <!-- 背上的骨板 (閃閃發亮) -->
+    <g fill="url(#plateGrad)">
+      <path d="M45 55 L35 20 L55 55" opacity="0.9"/>
+      <path d="M65 45 L55 5 L75 45">
+        <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M85 40 L80 0 L95 40">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M105 45 L100 5 L115 45">
+        <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M125 55 L120 20 L135 55" opacity="0.9"/>
+    </g>
+    <!-- 閃光效果 -->
+    <g fill="#FFEB3B" opacity="0.8">
+      <polygon points="60,15 63,22 70,22 65,27 67,35 60,30 53,35 55,27 50,22 57,22">
+        <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.5s" repeatCount="indefinite"/>
+      </polygon>
+      <polygon points="95,8 97,13 102,13 98,17 100,23 95,19 90,23 92,17 88,13 93,13">
+        <animate attributeName="opacity" values="0.5;0.9;0.5" dur="1.5s" repeatCount="indefinite"/>
+      </polygon>
+    </g>
+    <!-- 頭部 -->
+    <ellipse cx="150" cy="55" rx="25" ry="22" fill="#8BC34A"/>
+    <!-- 眼睛 (閉起來享受) -->
+    <path d="M155 50 Q160 45 165 50" stroke="#333" stroke-width="2" fill="none"/>
+    <!-- 微笑 -->
+    <path d="M155 62 Q165 70 175 62" stroke="#558B2F" stroke-width="2" fill="none"/>
+    <!-- 臉頰紅暈 -->
+    <ellipse cx="170" cy="58" rx="6" ry="4" fill="#FFAB91" opacity="0.6"/>
+    <!-- 尾巴和刺 -->
+    <path d="M25 50 Q-10 40 -20 60 Q-10 60 20 55" fill="#8BC34A"/>
+    <polygon points="0,45 -15,30 5,50" fill="#FF7043"/>
+    <polygon points="-5,55 -25,50 0,60" fill="#FF7043"/>
+    <polygon points="-10,65 -30,70 -5,70" fill="#FF7043"/>
+    <polygon points="-5,72 -20,85 5,75" fill="#FF7043"/>
+  </g>
+  <!-- 溫度線條 (暖呼呼) -->
+  <g stroke="#FF8A65" stroke-width="2" opacity="0.5" fill="none">
+    <path d="M200 100 Q205 90 200 80 Q195 70 200 60">
+      <animate attributeName="d" values="M200 100 Q205 90 200 80 Q195 70 200 60;M200 100 Q195 90 200 80 Q205 70 200 60;M200 100 Q205 90 200 80 Q195 70 200 60" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M180 105 Q185 95 180 85 Q175 75 180 65">
+      <animate attributeName="d" values="M180 105 Q185 95 180 85 Q175 75 180 65;M180 105 Q175 95 180 85 Q185 75 180 65;M180 105 Q185 95 180 85 Q175 75 180 65" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  <!-- 小花裝飾 -->
+  <g>
+    <circle cx="300" cy="250" r="8" fill="#E91E63"/>
+    <circle cx="300" cy="250" r="4" fill="#FFC107"/>
+    <circle cx="350" cy="260" r="6" fill="#9C27B0"/>
+    <circle cx="350" cy="260" r="3" fill="#FFEB3B"/>
+    <circle cx="60" cy="255" r="7" fill="#2196F3"/>
+    <circle cx="60" cy="255" r="3" fill="#FFF"/>
+  </g>
+</svg>

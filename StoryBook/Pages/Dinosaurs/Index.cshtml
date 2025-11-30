@@ -1,0 +1,131 @@
+@page "{index:int?}"
+@model StoryBook.Pages.Dinosaurs.IndexModel
+@{
+    ViewData["Title"] = "恐龍介紹";
+    var prevButtonClass = Model.HasPrevious ? "nav-button nav-button-prev" : "nav-button nav-button-prev disabled";
+    var nextButtonClass = Model.HasNext ? "nav-button nav-button-next" : "nav-button nav-button-next disabled";
+}
+
+<link rel="stylesheet" href="~/css/dinosaurs.css" asp-append-version="true" />
+
+<div class="dinosaur-page">
+    <h1 class="dinosaur-page-title">
+        <span>🦕</span>
+        <span data-lang-zh="恐龍介紹" data-lang-en="Meet the Dinosaurs">恐龍介紹</span>
+        <span>🦖</span>
+    </h1>
+
+    <!-- 搜尋框 -->
+    <div class="dinosaur-search-container">
+        <div class="dinosaur-search-box">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input type="text" 
+                   id="dinosaurSearch" 
+                   class="dinosaur-search-input" 
+                   placeholder="搜尋恐龍..." 
+                   data-lang-placeholder-zh="搜尋恐龍..."
+                   data-lang-placeholder-en="Search dinosaurs..."
+                   autocomplete="off"
+                   aria-label="搜尋恐龍" />
+            <button type="button" 
+                    id="clearSearch" 
+                    class="search-clear-btn" 
+                    aria-label="清除搜尋"
+                    style="display: none;">
+                ✕
+            </button>
+        </div>
+        <!-- 搜尋結果下拉選單 -->
+        <div id="searchResults" class="search-results" role="listbox" aria-label="搜尋結果"></div>
+    </div>
+
+    @if (Model.CurrentDinosaur is not null)
+    {
+        <partial name="_DinosaurCard" model="Model.CurrentDinosaur" />
+    }
+    else
+    {
+        <div class="alert alert-warning text-center" role="alert">
+            <h4>🦕 目前沒有恐龍資料</h4>
+            <p>請稍後再試，或檢查資料檔案是否正確設定。</p>
+        </div>
+    }
+
+    <!-- 換頁和導航按鈕 -->
+    <div class="dinosaur-navigation">
+        <!-- 上一頁按鈕 -->
+        @if (Model.HasPrevious)
+        {
+            <a asp-page="/Dinosaurs/Index" asp-route-index="@(Model.CurrentIndex - 1)" class="@prevButtonClass">
+                <span class="nav-button-icon">⬅️</span>
+                <span data-lang-zh="上一頁" data-lang-en="Previous">上一頁</span>
+            </a>
+        }
+        else
+        {
+            <span class="@prevButtonClass" aria-disabled="true">
+                <span class="nav-button-icon">⬅️</span>
+                <span data-lang-zh="上一頁" data-lang-en="Previous">上一頁</span>
+            </span>
+        }
+
+        <!-- 回首頁按鈕 -->
+        <a asp-page="/Index" class="nav-button nav-button-home">
+            <span class="nav-button-icon">🏠</span>
+            <span data-lang-zh="回首頁" data-lang-en="Home">回首頁</span>
+        </a>
+
+        <!-- 下一頁按鈕 -->
+        @if (Model.HasNext)
+        {
+            <a asp-page="/Dinosaurs/Index" asp-route-index="@(Model.CurrentIndex + 1)" class="@nextButtonClass">
+                <span data-lang-zh="下一頁" data-lang-en="Next">下一頁</span>
+                <span class="nav-button-icon">➡️</span>
+            </a>
+        }
+        else
+        {
+            <span class="@nextButtonClass" aria-disabled="true">
+                <span data-lang-zh="下一頁" data-lang-en="Next">下一頁</span>
+                <span class="nav-button-icon">➡️</span>
+            </span>
+        }
+    </div>
+
+    <!-- 頁面資訊 -->
+    @if (Model.TotalCount > 0)
+    {
+        <div class="text-center mt-3">
+            <small class="text-muted dinosaur-page-info">
+                <span data-lang-zh="第" data-lang-en="">第</span>
+                <span class="page-number">@(Model.CurrentIndex + 1)</span>
+                <span>/</span>
+                <span class="page-total">@Model.TotalCount</span>
+                <span data-lang-zh="隻恐龍" data-lang-en=" dinosaurs">隻恐龍</span>
+            </small>
+        </div>
+    }
+</div>
+
+<!-- 圖片大圖 Modal -->
+<div id="imageModal" class="image-modal" role="dialog" aria-modal="true" aria-labelledby="modalImageAlt">
+    <div class="image-modal-overlay" data-action="close-modal"></div>
+    <div class="image-modal-content">
+        <button class="image-modal-close" data-action="close-modal" aria-label="關閉大圖">
+            <span aria-hidden="true">✕</span>
+        </button>
+        <img id="modalImage" class="image-modal-img" src="" alt="" />
+        <p id="modalImageCaption" class="image-modal-caption"></p>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // 提供恐龍資料給 JavaScript 搜尋功能
+        window.dinosaurData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AllDinosaurs, new System.Text.Json.JsonSerializerOptions 
+        { 
+            PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase 
+        }));
+    </script>
+    <script src="~/js/dinosaurs.js" asp-append-version="true"></script>
+}

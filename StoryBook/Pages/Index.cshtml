@@ -1,10 +1,90 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "恐龍故事書";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .home-container {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #FFF8E1 0%, #E8F5E9 100%);
+        border-radius: 30px;
+        padding: 3rem;
+        margin: 1rem 0;
+    }
+
+    .home-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #7CB342;
+        text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+        margin-bottom: 1rem;
+    }
+
+    .home-subtitle {
+        font-size: 1.3rem;
+        color: #5D4037;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .home-dino-emoji {
+        font-size: 5rem;
+        margin-bottom: 2rem;
+        animation: bounce 2s infinite;
+    }
+
+    @@keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+    .btn-dinosaur {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1.25rem 2.5rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: white;
+        background: linear-gradient(135deg, #7CB342 0%, #558B2F 100%);
+        border: none;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 8px 25px rgba(124, 179, 66, 0.4);
+        transition: all 0.3s ease;
+    }
+
+    .btn-dinosaur:hover {
+        color: white;
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(124, 179, 66, 0.5);
+    }
+
+    .btn-dinosaur:active {
+        transform: translateY(-2px);
+    }
+
+    .btn-icon {
+        font-size: 2rem;
+    }
+</style>
+
+<div class="home-container">
+    <div class="home-dino-emoji">🦖</div>
+    <h1 class="home-title" data-lang-zh="恐龍故事書" data-lang-en="Dinosaur StoryBook">恐龍故事書</h1>
+    <p class="home-subtitle">
+        <span data-lang-zh="歡迎來到恐龍的世界！" data-lang-en="Welcome to the world of dinosaurs!">歡迎來到恐龍的世界！</span>
+        <br>
+        <span data-lang-zh="一起來認識這些遠古時代的神奇生物吧！" data-lang-en="Let's learn about these amazing prehistoric creatures!">一起來認識這些遠古時代的神奇生物吧！</span>
+    </p>
+    
+    <a asp-page="/Dinosaurs/Index" class="btn-dinosaur">
+        <span class="btn-icon">🦕</span>
+        <span data-lang-zh="恐龍介紹" data-lang-en="Meet the Dinosaurs">恐龍介紹</span>
+    </a>
 </div>

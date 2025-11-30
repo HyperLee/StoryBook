@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF8E1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFECB3;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bgGrad)"/>
+  <circle cx="320" cy="80" r="40" fill="#FFD54F" opacity="0.8"/>
+  
+  <!-- 禽龍 -->
+  <g transform="translate(60, 90)">
+    <!-- 尾巴 -->
+    <path d="M50 160 Q10 155 -10 170 Q20 165 55 160" fill="#FFA726"/>
+    
+    <!-- 身體 -->
+    <ellipse cx="110" cy="160" rx="70" ry="50" fill="#FFA726"/>
+    
+    <!-- 後腿 -->
+    <ellipse cx="70" cy="220" rx="18" ry="32" fill="#F57C00"/>
+    <ellipse cx="140" cy="225" rx="16" ry="28" fill="#F57C00"/>
+    
+    <!-- 前肢 -->
+    <ellipse cx="175" cy="145" rx="20" ry="12" fill="#FFB74D"/>
+    <!-- 拇指刺 -->
+    <path d="M195 140 L215 125" stroke="#E65100" stroke-width="6" stroke-linecap="round"/>
+    
+    <!-- 脖子 -->
+    <path d="M170 130 Q190 100 210 70" stroke="#FFA726" stroke-width="25" fill="none"/>
+    
+    <!-- 頭部 -->
+    <ellipse cx="220" cy="55" rx="35" ry="28" fill="#FFA726"/>
+    
+    <!-- 喙狀嘴 -->
+    <path d="M245 50 Q270 48 265 60 Q255 58 245 55" fill="#FF8F00"/>
+    
+    <!-- 眼睛 -->
+    <circle cx="225" cy="45" r="12" fill="white"/>
+    <circle cx="227" cy="43" r="6" fill="#333"/>
+    <circle cx="229" cy="41" r="2" fill="white"/>
+  </g>
+  
+  <text x="200" y="370" text-anchor="middle" font-size="28" font-weight="bold" fill="#E65100">禽龍 Iguanodon</text>
+</svg>

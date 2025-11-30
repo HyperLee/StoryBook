@@ -1,0 +1,529 @@
+{
+  "dinosaurs": [
+    {
+      "id": "tyrannosaurus",
+      "name": {
+        "zh": "暴龍",
+        "en": "Tyrannosaurus Rex"
+      },
+      "period": {
+        "zh": "白堊紀晚期（約6800萬年前）",
+        "en": "Late Cretaceous (about 68 million years ago)"
+      },
+      "diet": {
+        "zh": "肉食性",
+        "en": "Carnivore"
+      },
+      "location": {
+        "zh": "北美洲",
+        "en": "North America"
+      },
+      "size": {
+        "zh": "身長約12公尺，高約4公尺，體重約9噸",
+        "en": "About 12m long, 4m tall, weighing 9 tons"
+      },
+      "description": {
+        "zh": "暴龍是最有名的恐龍，牠是白堊紀晚期最強大的掠食者！暴龍有著巨大的頭部和鋒利的牙齒，咬合力超強，可以輕鬆咬碎骨頭。雖然牠的前肢很小，但強壯的後腿讓牠跑得很快喔！暴龍是陸地上最大的肉食動物之一，每顆牙齒都像香蕉一樣大呢！",
+        "en": "T-Rex is the most famous dinosaur and the mightiest predator of the Late Cretaceous! With its massive head and sharp teeth, T-Rex had an incredibly powerful bite that could crush bones easily. Though its arms were tiny, its strong legs made it a fast runner! It was one of the largest land predators ever!"
+      },
+      "story": {
+        "zh": "小暴龍雷雷今天很開心，因為媽媽帶牠去河邊玩。雷雷看到水裡有魚，想要抓來當點心，但前肢太短搆不到。媽媽笑著說：「用你的大嘴巴呀！」雷雷張開大嘴，一口就叼起了魚，開心地笑了。",
+        "en": "Little T-Rex Ray was happy today because mom took him to the river. Ray saw fish in the water and wanted to catch a snack, but his arms were too short to reach. Mom laughed and said, 'Use your big mouth!' Ray opened wide and caught the fish in one bite, smiling happily."
+      },
+      "images": {
+        "main": "/images/dinosaurs/tyrannosaurus/main.svg",
+        "story": ["/images/dinosaurs/tyrannosaurus/story-1.svg"]
+      }
+    },
+    {
+      "id": "triceratops",
+      "name": {
+        "zh": "三角龍",
+        "en": "Triceratops"
+      },
+      "period": {
+        "zh": "白堊紀晚期（約6800萬年前）",
+        "en": "Late Cretaceous (about 68 million years ago)"
+      },
+      "diet": {
+        "zh": "草食性",
+        "en": "Herbivore"
+      },
+      "location": {
+        "zh": "北美洲",
+        "en": "North America"
+      },
+      "size": {
+        "zh": "身長約9公尺，高約3公尺，體重約12噸",
+        "en": "About 9m long, 3m tall, weighing 12 tons"
+      },
+      "description": {
+        "zh": "三角龍是草食性恐龍中最酷的一種！牠的頭上有三隻角——兩隻長長的眉角和一隻短短的鼻角，還有一個超大的頭盾保護脖子。三角龍用這些角來保護自己，就像現代的犀牛一樣勇敢！牠們喜歡吃低矮的植物，是溫和的大塊頭。",
+        "en": "Triceratops is one of the coolest herbivore dinosaurs! It had three horns on its head—two long brow horns and a short nose horn—plus a huge frill to protect its neck. Triceratops used these horns for defense, just like brave rhinos today! They loved eating low plants and were gentle giants."
+      },
+      "story": {
+        "zh": "小三角龍角角最喜歡和朋友們一起玩躲貓貓。有一天，角角躲在大樹後面，但牠的三隻角太明顯了，一下就被找到了！角角想了想，決定躲在蕨類植物叢裡，這次真的沒被發現呢！",
+        "en": "Little Triceratops Trixie loved playing hide and seek with friends. One day, Trixie hid behind a big tree, but her three horns were too obvious and she was found right away! After thinking, she decided to hide in the fern bushes—this time she wasn't found!"
+      },
+      "images": {
+        "main": "/images/dinosaurs/triceratops/main.svg",
+        "story": ["/images/dinosaurs/triceratops/story-1.svg"]
+      }
+    },
+    {
+      "id": "stegosaurus",
+      "name": {
+        "zh": "劍龍",
+        "en": "Stegosaurus"
+      },
+      "period": {
+        "zh": "侏羅紀晚期（約1億5500萬年前）",
+        "en": "Late Jurassic (about 155 million years ago)"
+      },
+      "diet": {
+        "zh": "草食性",
+        "en": "Herbivore"
+      },
+      "location": {
+        "zh": "北美洲",
+        "en": "North America"
+      },
+      "size": {
+        "zh": "身長約9公尺，高約4公尺，體重約5噸",
+        "en": "About 9m long, 4m tall, weighing 5 tons"
+      },
+      "description": {
+        "zh": "劍龍最特別的地方就是背上那排像盤子一樣的骨板，還有尾巴上四根尖尖的刺！科學家認為這些骨板可能用來調節體溫或是吸引異性。雖然劍龍的腦袋只有核桃那麼大，但牠的尾刺可是很厲害的武器喔！",
+        "en": "Stegosaurus is most famous for the plate-like bones on its back and four sharp spikes on its tail! Scientists think these plates might have helped control body temperature or attract mates. Though Stegosaurus had a brain as small as a walnut, its tail spikes were powerful weapons!"
+      },
+      "story": {
+        "zh": "小劍龍尖尖很愛漂亮，每天都把背上的骨板擦得亮晶晶。有一天太陽很大，尖尖發現曬太陽時骨板會變得暖暖的，好舒服！從此以後，尖尖每天都會找個好位置享受日光浴。",
+        "en": "Little Stegosaurus Spike loved looking pretty and polished his back plates every day until they sparkled. One sunny day, Spike discovered that sunbathing made his plates feel warm and cozy! From then on, Spike found a good spot every day to enjoy sunbathing."
+      },
+      "images": {
+        "main": "/images/dinosaurs/stegosaurus/main.svg",
+        "story": ["/images/dinosaurs/stegosaurus/story-1.svg"]
+      }
+    },
+    {
+      "id": "brachiosaurus",
+      "name": {
+        "zh": "腕龍",
+        "en": "Brachiosaurus"
+      },
+      "period": {
+        "zh": "侏羅紀晚期（約1億5400萬年前）",
+        "en": "Late Jurassic (about 154 million years ago)"
+      },
+      "diet": {
+        "zh": "草食性",
+        "en": "Herbivore"
+      },
+      "location": {
+        "zh": "北美洲、非洲",
+        "en": "North America, Africa"
+      },
+      "size": {
+        "zh": "身長約26公尺，高約13公尺，體重約50噸",
+        "en": "About 26m long, 13m tall, weighing 50 tons"
+      },
+      "description": {
+        "zh": "腕龍是最高的恐龍之一！牠有超級長的脖子，可以吃到樹頂上的葉子，就像一座會走路的塔。腕龍的前腳比後腳長，所以身體是往前傾斜的，這讓牠可以把頭抬得更高。想像一下，腕龍站起來比四層樓的房子還要高呢！",
+        "en": "Brachiosaurus was one of the tallest dinosaurs! It had a super long neck to reach leaves at the treetops, like a walking tower. Its front legs were longer than its back legs, making its body tilt forward so it could raise its head even higher. Imagine—Brachiosaurus was taller than a four-story building!"
+      },
+      "story": {
+        "zh": "小腕龍高高覺得自己的脖子太長了，總是撞到樹枝。有一天，森林裡的小恐龍們都吃不到高處的果子，高高用長脖子幫大家摘下來，大家都說：「謝謝高高！」高高終於發現長脖子是最棒的禮物。",
+        "en": "Little Brachiosaurus Stretch thought his neck was too long and always bumped into branches. One day, the little dinosaurs in the forest couldn't reach the high fruits, so Stretch used his long neck to pick them for everyone. They all said, 'Thank you, Stretch!' Stretch finally realized his long neck was the best gift."
+      },
+      "images": {
+        "main": "/images/dinosaurs/brachiosaurus/main.svg",
+        "story": ["/images/dinosaurs/brachiosaurus/story-1.svg"]
+      }
+    },
+    {
+      "id": "velociraptor",
+      "name": {
+        "zh": "迅猛龍",
+        "en": "Velociraptor"
+      },
+      "period": {
+        "zh": "白堊紀晚期（約7500萬年前）",
+        "en": "Late Cretaceous (about 75 million years ago)"
+      },
+      "diet": {
+        "zh": "肉食性",
+        "en": "Carnivore"
+      },
+      "location": {
+        "zh": "蒙古",
+        "en": "Mongolia"
+      },
+      "size": {
+        "zh": "身長約2公尺，高約0.5公尺，體重約15公斤",
+        "en": "About 2m long, 0.5m tall, weighing 15 kg"
+      },
+      "description": {
+        "zh": "迅猛龍雖然體型不大，卻是最聰明的恐龍之一！牠跑得超快，而且腳上有一個像彎刀一樣的大爪子，是厲害的狩獵高手。迅猛龍喜歡成群結隊地行動，用團隊合作抓獵物。牠們身上可能還有羽毛呢！",
+        "en": "Velociraptor may have been small, but it was one of the smartest dinosaurs! It was super fast and had a sickle-like claw on each foot, making it an excellent hunter. Velociraptors liked to hunt in packs, using teamwork to catch prey. They probably even had feathers!"
+      },
+      "story": {
+        "zh": "小迅猛龍快快是班上跑最快的同學。運動會那天，快快參加賽跑，一路領先。但是快快看到同學跌倒了，停下來幫忙扶起同學，結果得了第二名。老師說：「快快是最有愛心的冠軍！」",
+        "en": "Little Velociraptor Swift was the fastest in class. On sports day, Swift joined the race and led all the way. But when Swift saw a classmate fall, he stopped to help. He got second place, but the teacher said, 'Swift is the most caring champion!'"
+      },
+      "images": {
+        "main": "/images/dinosaurs/velociraptor/main.svg",
+        "story": ["/images/dinosaurs/velociraptor/story-1.svg"]
+      }
+    },
+    {
+      "id": "pteranodon",
+      "name": {
+        "zh": "無齒翼龍",
+        "en": "Pteranodon"
+      },
+      "period": {
+        "zh": "白堊紀晚期（約8600萬年前）",
+        "en": "Late Cretaceous (about 86 million years ago)"
+      },
+      "diet": {
+        "zh": "肉食性（魚類）",
+        "en": "Carnivore (Fish)"
+      },
+      "location": {
+        "zh": "北美洲",
+        "en": "North America"
+      },
+      "size": {
+        "zh": "翼展約6公尺，體重約25公斤",
+        "en": "Wingspan about 6m, weighing 25 kg"
+      },
+      "description": {
+        "zh": "無齒翼龍是天空中的霸主！雖然牠不是恐龍，而是翼龍類，但牠生活在恐龍時代。無齒翼龍有著巨大的翅膀和長長的頭冠，嘴巴裡沒有牙齒，主要吃魚類。牠們像現代的鵜鶘一樣，會俯衝入水中抓魚！",
+        "en": "Pteranodon was the ruler of the skies! Though not a dinosaur but a pterosaur, it lived during the dinosaur age. Pteranodon had huge wings and a long head crest, with a toothless beak mainly for eating fish. Like modern pelicans, they would dive into water to catch fish!"
+      },
+      "story": {
+        "zh": "小翼龍飛飛第一次學飛，緊張得不敢張開翅膀。媽媽鼓勵說：「看著天空，相信自己！」飛飛深呼吸，張開翅膀，風托著牠飛上了藍天。從此，飛飛最愛在雲朵間玩耍！",
+        "en": "Little Pteranodon Flap was nervous learning to fly for the first time. Mom encouraged, 'Look at the sky and believe in yourself!' Flap took a deep breath, spread his wings, and the wind carried him into the blue sky. From then on, Flap loved playing among the clouds!"
+      },
+      "images": {
+        "main": "/images/dinosaurs/pteranodon/main.svg",
+        "story": ["/images/dinosaurs/pteranodon/story-1.svg"]
+      }
+    },
+    {
+      "id": "ankylosaurus",
+      "name": {
+        "zh": "甲龍",
+        "en": "Ankylosaurus"
+      },
+      "period": {
+        "zh": "白堊紀晚期（約6800萬年前）",
+        "en": "Late Cretaceous (about 68 million years ago)"
+      },
+      "diet": {
+        "zh": "草食性",
+        "en": "Herbivore"
+      },
+      "location": {
+        "zh": "北美洲",
+        "en": "North America"
+      },
+      "size": {
+        "zh": "身長約8公尺，高約1.7公尺，體重約6噸",
+        "en": "About 8m long, 1.7m tall, weighing 6 tons"
+      },
+      "description": {
+        "zh": "甲龍是恐龍界的坦克車！牠全身覆蓋著厚重的骨甲，就像穿著盔甲一樣。最特別的是尾巴末端有一個大骨槌，可以用來防禦敵人。即使是暴龍也很難傷害到甲龍，因為牠的裝甲實在太堅固了！",
+        "en": "Ankylosaurus was the tank of the dinosaur world! Its entire body was covered in thick bony armor, like wearing a suit of armor. Most special was the large bone club at the end of its tail for defense. Even T-Rex had trouble hurting Ankylosaurus because its armor was so tough!"
+      },
+      "story": {
+        "zh": "小甲龍鐵鐵覺得自己太重了，走路好慢。有一天下大雨，朋友們都被淋濕了，但鐵鐵的骨甲像雨傘一樣保護了牠。小恐龍們都躲到鐵鐵身邊避雨，鐵鐵開心地說：「原來我可以保護大家！」",
+        "en": "Little Ankylosaurus Tank felt too heavy and walked slowly. One rainy day, all his friends got wet, but Tank's armor protected him like an umbrella. The little dinosaurs hid beside Tank to stay dry. Tank happily said, 'I can protect everyone!'"
+      },
+      "images": {
+        "main": "/images/dinosaurs/ankylosaurus/main.svg",
+        "story": ["/images/dinosaurs/ankylosaurus/story-1.svg"]
+      }
+    },
+    {
+      "id": "parasaurolophus",
+      "name": {
+        "zh": "副櫛龍",
+        "en": "Parasaurolophus"
+      },
+      "period": {
+        "zh": "白堊紀晚期（約7600萬年前）",
+        "en": "Late Cretaceous (about 76 million years ago)"
+      },
+      "diet": {
+        "zh": "草食性",
+        "en": "Herbivore"
+      },
+      "location": {
+        "zh": "北美洲",
+        "en": "North America"
+      },
+      "size": {
+        "zh": "身長約10公尺，高約5公尺，體重約2.5噸",
+        "en": "About 10m long, 5m tall, weighing 2.5 tons"
+      },
+      "description": {
+        "zh": "副櫛龍最特別的就是頭上那根長長的管狀頭冠！科學家認為這個頭冠可以發出像喇叭一樣的聲音，用來和同伴溝通。副櫛龍可以用兩條腿或四條腿走路，是群居生活的恐龍，喜歡和朋友們在一起。",
+        "en": "Parasaurolophus is most famous for its long tube-shaped crest! Scientists believe this crest could make trumpet-like sounds to communicate with others. Parasaurolophus could walk on two or four legs and was a social dinosaur that loved being with friends."
+      },
+      "story": {
+        "zh": "小副櫛龍號號發現自己的頭冠可以發出聲音，每天都在練習。一天，森林裡起了大霧，小恐龍們迷路了。號號用頭冠吹出響亮的聲音，大家循著聲音找到了回家的路！",
+        "en": "Little Parasaurolophus Toot discovered his crest could make sounds and practiced every day. One day, thick fog covered the forest and the little dinosaurs got lost. Toot used his crest to blow a loud sound, and everyone followed it home!"
+      },
+      "images": {
+        "main": "/images/dinosaurs/parasaurolophus/main.svg",
+        "story": ["/images/dinosaurs/parasaurolophus/story-1.svg"]
+      }
+    },
+    {
+      "id": "spinosaurus",
+      "name": {
+        "zh": "棘龍",
+        "en": "Spinosaurus"
+      },
+      "period": {
+        "zh": "白堊紀中期（約9500萬年前）",
+        "en": "Mid Cretaceous (about 95 million years ago)"
+      },
+      "diet": {
+        "zh": "肉食性（魚類為主）",
+        "en": "Carnivore (mainly fish)"
+      },
+      "location": {
+        "zh": "北非",
+        "en": "North Africa"
+      },
+      "size": {
+        "zh": "身長約15公尺，高約5公尺，體重約7噸",
+        "en": "About 15m long, 5m tall, weighing 7 tons"
+      },
+      "description": {
+        "zh": "棘龍是目前已知最大的肉食恐龍，比暴龍還要長！牠背上有一個巨大的帆狀結構，由長長的脊椎骨支撐。棘龍喜歡在水邊生活，主要吃魚，是恐龍中少見的游泳高手！牠的嘴巴長得像鱷魚。",
+        "en": "Spinosaurus is the largest known carnivorous dinosaur, even longer than T-Rex! It had a huge sail-like structure on its back supported by long spine bones. Spinosaurus loved living near water, mainly eating fish, and was a rare swimming expert among dinosaurs! Its snout looked like a crocodile's."
+      },
+      "story": {
+        "zh": "小棘龍帆帆的背帆很大，其他小恐龍都覺得很奇怪。夏天好熱，大家都躲在樹蔭下。帆帆跳進河裡游泳，還用背帆幫朋友們搧風。大家說：「帆帆好厲害，又會游泳又會搧風！」",
+        "en": "Little Spinosaurus Sail had a big back sail that other dinosaurs found strange. On a hot summer day, everyone hid in the shade. Sail jumped into the river to swim and used his back sail to fan his friends. Everyone said, 'Sail is amazing—he can swim and fan us!'"
+      },
+      "images": {
+        "main": "/images/dinosaurs/spinosaurus/main.svg",
+        "story": ["/images/dinosaurs/spinosaurus/story-1.svg"]
+      }
+    },
+    {
+      "id": "diplodocus",
+      "name": {
+        "zh": "梁龍",
+        "en": "Diplodocus"
+      },
+      "period": {
+        "zh": "侏羅紀晚期（約1億5400萬年前）",
+        "en": "Late Jurassic (about 154 million years ago)"
+      },
+      "diet": {
+        "zh": "草食性",
+        "en": "Herbivore"
+      },
+      "location": {
+        "zh": "北美洲",
+        "en": "North America"
+      },
+      "size": {
+        "zh": "身長約27公尺，高約4公尺，體重約15噸",
+        "en": "About 27m long, 4m tall, weighing 15 tons"
+      },
+      "description": {
+        "zh": "梁龍是最長的恐龍之一！牠有超級長的脖子和尾巴，尾巴末端細細的，可以像鞭子一樣甩動，發出超大的聲響來嚇跑敵人。梁龍一天要吃很多植物才能維持牠巨大的身體，就像一台不停吃草的機器！",
+        "en": "Diplodocus was one of the longest dinosaurs! It had a super long neck and tail. The thin tip of its tail could whip around and make loud cracking sounds to scare away enemies. Diplodocus had to eat lots of plants every day to maintain its huge body—like a non-stop plant-eating machine!"
+      },
+      "story": {
+        "zh": "小梁龍長長總是不小心用尾巴打翻東西。有一天，壞蛋異特龍來了，長長害怕地甩動尾巴，發出「啪！」的巨響。異特龍被嚇跑了！長長開心地說：「原來我的長尾巴這麼厲害！」",
+        "en": "Little Diplodocus Longy always accidentally knocked things over with his tail. One day, a mean Allosaurus came. Longy was scared and whipped his tail, making a loud 'CRACK!' The Allosaurus ran away! Longy happily said, 'My long tail is so amazing!'"
+      },
+      "images": {
+        "main": "/images/dinosaurs/diplodocus/main.svg",
+        "story": ["/images/dinosaurs/diplodocus/story-1.svg"]
+      }
+    },
+    {
+      "id": "allosaurus",
+      "name": {
+        "zh": "異特龍",
+        "en": "Allosaurus"
+      },
+      "period": {
+        "zh": "侏羅紀晚期（約1億5500萬年前）",
+        "en": "Late Jurassic (about 155 million years ago)"
+      },
+      "diet": {
+        "zh": "肉食性",
+        "en": "Carnivore"
+      },
+      "location": {
+        "zh": "北美洲、歐洲",
+        "en": "North America, Europe"
+      },
+      "size": {
+        "zh": "身長約9公尺，高約3.5公尺，體重約2噸",
+        "en": "About 9m long, 3.5m tall, weighing 2 tons"
+      },
+      "description": {
+        "zh": "異特龍是侏羅紀時期最兇猛的掠食者！牠比暴龍出現得更早，有著強壯的後腿和鋒利的爪子。異特龍眼睛上方有兩個骨質突起，看起來很威風。科學家發現牠們可能會成群狩獵，是團隊合作的高手！",
+        "en": "Allosaurus was the fiercest predator of the Jurassic period! It appeared earlier than T-Rex, with strong back legs and sharp claws. Allosaurus had two bony ridges above its eyes that looked impressive. Scientists found they might have hunted in groups—they were teamwork experts!"
+      },
+      "story": {
+        "zh": "小異特龍阿洛想證明自己很勇敢，獨自去追一隻大恐龍。結果跑太快跌倒了！朋友們趕來幫忙，一起把大恐龍趕走。阿洛學到了：「和朋友一起，才是最棒的！」",
+        "en": "Little Allosaurus Allo wanted to prove he was brave and chased a big dinosaur alone. But he ran too fast and fell! His friends came to help and together they chased the big dinosaur away. Allo learned, 'Being with friends is the best!'"
+      },
+      "images": {
+        "main": "/images/dinosaurs/allosaurus/main.svg",
+        "story": ["/images/dinosaurs/allosaurus/story-1.svg"]
+      }
+    },
+    {
+      "id": "iguanodon",
+      "name": {
+        "zh": "禽龍",
+        "en": "Iguanodon"
+      },
+      "period": {
+        "zh": "白堊紀早期（約1億2600萬年前）",
+        "en": "Early Cretaceous (about 126 million years ago)"
+      },
+      "diet": {
+        "zh": "草食性",
+        "en": "Herbivore"
+      },
+      "location": {
+        "zh": "歐洲、北美洲",
+        "en": "Europe, North America"
+      },
+      "size": {
+        "zh": "身長約10公尺，高約3公尺，體重約3噸",
+        "en": "About 10m long, 3m tall, weighing 3 tons"
+      },
+      "description": {
+        "zh": "禽龍是最早被發現的恐龍之一！牠最特別的地方是大拇指上有一根尖尖的骨刺，可以用來防禦或挖掘植物。禽龍可以用兩腳或四腳行走，嘴巴前端像鳥嘴一樣，適合咬斷植物。",
+        "en": "Iguanodon was one of the first dinosaurs discovered! Its most special feature is a sharp spike on its thumb, used for defense or digging plants. Iguanodon could walk on two or four legs, and its beak-like mouth was perfect for biting plants."
+      },
+      "story": {
+        "zh": "小禽龍刺刺的大拇指刺很尖，總是不小心刺到東西。有一天，刺刺發現地下有好吃的根莖，用拇指刺挖了出來，和朋友們分享。大家說：「刺刺的拇指刺真有用！」",
+        "en": "Little Iguanodon Spike had a very sharp thumb spike and always accidentally poked things. One day, Spike found tasty roots underground and dug them up with his thumb spike to share with friends. Everyone said, 'Spike's thumb spike is so useful!'"
+      },
+      "images": {
+        "main": "/images/dinosaurs/iguanodon/main.svg",
+        "story": ["/images/dinosaurs/iguanodon/story-1.svg"]
+      }
+    },
+    {
+      "id": "pachycephalosaurus",
+      "name": {
+        "zh": "厚頭龍",
+        "en": "Pachycephalosaurus"
+      },
+      "period": {
+        "zh": "白堊紀晚期（約7000萬年前）",
+        "en": "Late Cretaceous (about 70 million years ago)"
+      },
+      "diet": {
+        "zh": "草食性或雜食性",
+        "en": "Herbivore or Omnivore"
+      },
+      "location": {
+        "zh": "北美洲",
+        "en": "North America"
+      },
+      "size": {
+        "zh": "身長約5公尺，高約2公尺，體重約450公斤",
+        "en": "About 5m long, 2m tall, weighing 450 kg"
+      },
+      "description": {
+        "zh": "厚頭龍的名字就是「厚腦袋蜥蜴」的意思！牠的頭頂有一層超厚的骨頭，最厚可達25公分。科學家認為厚頭龍可能會用頭互相撞擊來決定誰是老大，就像現代的山羊一樣！",
+        "en": "Pachycephalosaurus means 'thick-headed lizard'! It had super thick bone on top of its head, up to 25cm thick. Scientists think they might have head-butted each other to decide who's the boss, just like modern goats!"
+      },
+      "story": {
+        "zh": "小厚頭龍頭頭很喜歡用頭頂東西。有一天，一顆大石頭擋住了路，大家都過不去。頭頭用力一撞，石頭滾開了！大家歡呼：「頭頭是我們的英雄！」",
+        "en": "Little Pachycephalosaurus Bonk loved bumping things with his head. One day, a big rock blocked the path and no one could pass. Bonk charged and hit it hard—the rock rolled away! Everyone cheered, 'Bonk is our hero!'"
+      },
+      "images": {
+        "main": "/images/dinosaurs/pachycephalosaurus/main.svg",
+        "story": ["/images/dinosaurs/pachycephalosaurus/story-1.svg"]
+      }
+    },
+    {
+      "id": "carnotaurus",
+      "name": {
+        "zh": "牛龍",
+        "en": "Carnotaurus"
+      },
+      "period": {
+        "zh": "白堊紀晚期（約7200萬年前）",
+        "en": "Late Cretaceous (about 72 million years ago)"
+      },
+      "diet": {
+        "zh": "肉食性",
+        "en": "Carnivore"
+      },
+      "location": {
+        "zh": "南美洲",
+        "en": "South America"
+      },
+      "size": {
+        "zh": "身長約8公尺，高約3公尺，體重約1.5噸",
+        "en": "About 8m long, 3m tall, weighing 1.5 tons"
+      },
+      "description": {
+        "zh": "牛龍是南美洲最酷的肉食恐龍！牠頭上有兩隻像牛角一樣的角，名字意思是「吃肉的牛」。牛龍的前肢比暴龍還要短小，但牠跑得非常快，是白堊紀最速的獵人之一！",
+        "en": "Carnotaurus was the coolest carnivore in South America! It had two horns on its head like a bull—its name means 'meat-eating bull.' Its arms were even smaller than T-Rex's, but it ran super fast and was one of the speediest hunters of the Cretaceous!"
+      },
+      "story": {
+        "zh": "小牛龍角角覺得自己的角很奇怪，不像其他肉食恐龍。有一天，朋友被藤蔓纏住了，角角用角輕輕一挑，藤蔓就斷了！角角開心地說：「原來我的角可以幫助朋友！」",
+        "en": "Little Carnotaurus Horn thought his horns were strange—not like other carnivores. One day, a friend got tangled in vines. Horn gently lifted them with his horns and the vines broke! Horn happily said, 'My horns can help my friends!'"
+      },
+      "images": {
+        "main": "/images/dinosaurs/carnotaurus/main.svg",
+        "story": ["/images/dinosaurs/carnotaurus/story-1.svg"]
+      }
+    },
+    {
+      "id": "mosasaurus",
+      "name": {
+        "zh": "滄龍",
+        "en": "Mosasaurus"
+      },
+      "period": {
+        "zh": "白堊紀晚期（約7000萬年前）",
+        "en": "Late Cretaceous (about 70 million years ago)"
+      },
+      "diet": {
+        "zh": "肉食性",
+        "en": "Carnivore"
+      },
+      "location": {
+        "zh": "全球海洋",
+        "en": "Global Oceans"
+      },
+      "size": {
+        "zh": "身長約17公尺，體重約15噸",
+        "en": "About 17m long, weighing 15 tons"
+      },
+      "description": {
+        "zh": "滄龍是白堊紀海洋中最可怕的掠食者！雖然牠不是恐龍，而是海生爬蟲類，但牠生活在恐龍時代。滄龍有著流線型的身體和強壯的尾巴，游泳速度超快。牠的嘴巴裡有兩排牙齒，連鯊魚都是牠的食物！",
+        "en": "Mosasaurus was the most terrifying predator in the Cretaceous seas! Though not a dinosaur but a marine reptile, it lived during the dinosaur age. With its streamlined body and powerful tail, it swam super fast. Its mouth had two rows of teeth—even sharks were its prey!"
+      },
+      "story": {
+        "zh": "小滄龍浪浪在海裡游泳，看到一隻小魚迷路了。浪浪沒有吃掉小魚，反而帶牠找到了魚群。小魚感謝地說：「謝謝你！你是最善良的大魚！」浪浪笑著說：「我們是朋友！」",
+        "en": "Little Mosasaurus Wave was swimming in the sea and saw a small fish that was lost. Instead of eating it, Wave helped the fish find its school. The little fish said gratefully, 'Thank you! You're the kindest big fish!' Wave smiled, 'We're friends!'"
+      },
+      "images": {
+        "main": "/images/dinosaurs/mosasaurus/main.svg",
+        "story": ["/images/dinosaurs/mosasaurus/story-1.svg"]
+      }
+    }
+  ]
+}

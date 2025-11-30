@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4FC3F7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0288D1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#oceanGrad)"/>
+  <!-- 水中光線 -->
+  <line x1="50" y1="0" x2="100" y2="150" stroke="white" stroke-width="2" opacity="0.3"/>
+  <line x1="150" y1="0" x2="180" y2="120" stroke="white" stroke-width="2" opacity="0.3"/>
+  <line x1="300" y1="0" x2="280" y2="100" stroke="white" stroke-width="2" opacity="0.3"/>
+  
+  <!-- 滄龍 -->
+  <g transform="translate(30, 120)">
+    <!-- 尾巴（魚鰭狀） -->
+    <path d="M30 120 Q-10 110 -30 130 Q-20 100 30 115" fill="#0097A7"/>
+    <path d="M30 115 Q0 130 -20 160" fill="#00838F"/>
+    
+    <!-- 身體 -->
+    <ellipse cx="120" cy="120" rx="100" ry="50" fill="#00ACC1"/>
+    
+    <!-- 鰭 -->
+    <ellipse cx="80" cy="170" rx="30" ry="12" fill="#0097A7" transform="rotate(-20 80 170)"/>
+    <ellipse cx="160" cy="170" rx="30" ry="12" fill="#0097A7" transform="rotate(20 160 170)"/>
+    <ellipse cx="100" cy="80" rx="25" ry="10" fill="#0097A7"/>
+    
+    <!-- 頭部 -->
+    <ellipse cx="250" cy="110" rx="55" ry="40" fill="#00ACC1"/>
+    
+    <!-- 長嘴 -->
+    <path d="M290 100 Q340 95 350 110 Q340 125 290 120" fill="#26C6DA"/>
+    
+    <!-- 牙齒 -->
+    <polygon points="300,115 303,125 306,115" fill="white"/>
+    <polygon points="315,115 318,125 321,115" fill="white"/>
+    <polygon points="330,115 333,123 336,115" fill="white"/>
+    
+    <!-- 眼睛 -->
+    <circle cx="265" cy="100" r="16" fill="white"/>
+    <circle cx="268" cy="98" r="8" fill="#333"/>
+    <circle cx="271" cy="96" r="3" fill="white"/>
+  </g>
+  
+  <!-- 小魚和氣泡 -->
+  <ellipse cx="350" cy="300" rx="15" ry="8" fill="#FFB74D"/>
+  <circle cx="100" cy="350" r="8" fill="white" opacity="0.5"/>
+  <circle cx="300" cy="80" r="6" fill="white" opacity="0.5"/>
+  <circle cx="280" cy="320" r="10" fill="white" opacity="0.5"/>
+  
+  <text x="200" y="380" text-anchor="middle" font-size="28" font-weight="bold" fill="white">滄龍 Mosasaurus</text>
+</svg>

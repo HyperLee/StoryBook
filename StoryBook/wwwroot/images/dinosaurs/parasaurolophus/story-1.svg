@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="fogGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ECEFF1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CFD8DC;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#fogGrad)"/>
+  <!-- 霧氣效果 -->
+  <ellipse cx="100" cy="150" rx="80" ry="40" fill="white" opacity="0.5"/>
+  <ellipse cx="300" cy="180" rx="70" ry="35" fill="white" opacity="0.5"/>
+  
+  <!-- 副櫛龍號號吹號角 -->
+  <g transform="translate(120, 80)">
+    <ellipse cx="80" cy="100" rx="50" ry="35" fill="#26A69A"/>
+    <path d="M120 80 Q140 50 150 30" stroke="#26A69A" stroke-width="20" fill="none"/>
+    <ellipse cx="155" cy="25" rx="25" ry="20" fill="#26A69A"/>
+    <path d="M165 15 Q190 -5 175 -30" fill="#FF7043"/>
+    <circle cx="148" cy="20" r="10" fill="white"/>
+    <circle cx="150" cy="18" r="5" fill="#333"/>
+    <!-- 音符 -->
+    <text x="200" y="30" font-size="24" fill="#FF5722">♪</text>
+    <text x="220" y="10" font-size="20" fill="#FF5722">♫</text>
+  </g>
+  
+  <text x="200" y="270" text-anchor="middle" font-size="16" fill="#455A64">號號用頭冠發出聲音帶大家回家！</text>
+</svg>

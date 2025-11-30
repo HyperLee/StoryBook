@@ -1,0 +1,743 @@
+/* ==========================================================================
+   恐龍故事書 - 恐龍頁面專用樣式
+   兒童友善、可愛繪本風格
+   ========================================================================== */
+
+:root {
+    /* 可愛配色方案 */
+    --dino-primary: #7CB342;      /* 草綠色 */
+    --dino-secondary: #FF8A65;    /* 珊瑚橘 */
+    --dino-accent: #4FC3F7;       /* 天空藍 */
+    --dino-background: #FFF8E1;   /* 奶油黃 */
+    --dino-card-bg: #FFFFFF;
+    --dino-text: #5D4037;         /* 咖啡色文字 */
+    --dino-shadow: rgba(93, 64, 55, 0.15);
+    --dino-border-radius: 20px;
+}
+
+/* 頁面容器 */
+.dinosaur-page {
+    background-color: var(--dino-background);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+/* 頁面標題 */
+.dinosaur-page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dino-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px var(--dino-shadow);
+}
+
+/* ==========================================================================
+   恐龍卡片樣式
+   ========================================================================== */
+
+.dinosaur-card {
+    background: var(--dino-card-bg);
+    border-radius: var(--dino-border-radius);
+    box-shadow: 0 8px 24px var(--dino-shadow);
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    transition: transform 0.3s ease;
+}
+
+.dinosaur-card:hover {
+    transform: translateY(-5px);
+}
+
+/* 恐龍圖片區 */
+.dinosaur-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--dino-border-radius) var(--dino-border-radius) 0 0;
+    background: linear-gradient(135deg, var(--dino-accent) 0%, var(--dino-primary) 100%);
+    padding: 1rem;
+}
+
+.dinosaur-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.dinosaur-image:hover {
+    transform: scale(1.02);
+}
+
+/* 佔位圖片樣式 */
+.dinosaur-image-placeholder {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
+    border-radius: 15px;
+    color: #757575;
+    font-size: 1.2rem;
+}
+
+/* 恐龍資訊區 */
+.dinosaur-info {
+    padding: 2rem;
+}
+
+.dinosaur-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dino-text);
+    margin-bottom: 0.5rem;
+}
+
+.dinosaur-name-en {
+    font-size: 1rem;
+    color: #9e9e9e;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+/* 恐龍屬性標籤 */
+.dinosaur-attributes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.dinosaur-attribute {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.attribute-period {
+    background-color: #E3F2FD;
+    color: #1565C0;
+}
+
+.attribute-diet {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+}
+
+.attribute-diet.carnivore {
+    background-color: #FFEBEE;
+    color: #C62828;
+}
+
+.attribute-location {
+    background-color: #FFF3E0;
+    color: #E65100;
+}
+
+/* 恐龍介紹文字 */
+.dinosaur-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--dino-text);
+    text-align: justify;
+    padding: 1.5rem;
+    background: #FAFAFA;
+    border-radius: 15px;
+    border-left: 4px solid var(--dino-primary);
+}
+
+/* ==========================================================================
+   導航按鈕
+   ========================================================================== */
+
+.dinosaur-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-button:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px var(--dino-shadow);
+}
+
+.nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.nav-button-home {
+    background: var(--dino-secondary);
+    color: white;
+}
+
+.nav-button-home:hover {
+    background: #FF7043;
+    color: white;
+}
+
+.nav-button-prev,
+.nav-button-next {
+    background: var(--dino-primary);
+    color: white;
+    min-width: 150px;
+    justify-content: center;
+}
+
+.nav-button-prev:hover:not(.disabled),
+.nav-button-next:hover:not(.disabled) {
+    background: #689F38;
+    color: white;
+}
+
+/* 停用狀態的換頁按鈕（大且明顯，適合兒童） */
+.nav-button.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #BDBDBD;
+    color: #757575;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* 按鈕圖示 */
+.nav-button-icon {
+    font-size: 1.3rem;
+}
+
+/* ==========================================================================
+   響應式設計（桌面為主）
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .dinosaur-page-title {
+        font-size: 2rem;
+    }
+    
+    .dinosaur-name {
+        font-size: 1.5rem;
+    }
+    
+    .dinosaur-info {
+        padding: 1.5rem;
+    }
+    
+    .nav-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* ==========================================================================
+   圖片載入狀態
+   ========================================================================== */
+
+.image-loading {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* 圖片載入失敗處理 */
+.image-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    background: #f5f5f5;
+    border-radius: 15px;
+    color: #9e9e9e;
+}
+
+.image-error-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   圖片大圖 Modal
+   ========================================================================== */
+
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-modal.active {
+    display: flex;
+}
+
+/* Modal 背景遮罩 */
+.image-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+}
+
+/* Modal 內容容器 */
+.image-modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Modal 關閉按鈕 */
+.image-modal-close {
+    position: absolute;
+    top: -45px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--dino-secondary);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.image-modal-close:hover {
+    background-color: #FF7043;
+    transform: scale(1.1);
+}
+
+.image-modal-close:focus {
+    outline: 3px solid var(--dino-accent);
+    outline-offset: 2px;
+}
+
+/* Modal 圖片 */
+.image-modal-img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: var(--dino-border-radius);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    object-fit: contain;
+    background-color: white;
+}
+
+/* Modal 圖片說明文字 */
+.image-modal-caption {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    color: var(--dino-text);
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 當 Modal 開啟時，防止背景捲動 */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* 讓恐龍圖片有可點擊的視覺提示 */
+.dinosaur-image {
+    cursor: zoom-in;
+}
+
+.dinosaur-image:focus {
+    outline: 3px solid var(--dino-accent);
+    outline-offset: 3px;
+}
+
+/* ==========================================================================
+   搜尋功能樣式
+   ========================================================================== */
+
+/* 搜尋容器 */
+.dinosaur-search-container {
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    position: relative;
+}
+
+/* 搜尋框 */
+.dinosaur-search-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--dino-card-bg);
+    border: 3px solid var(--dino-primary);
+    border-radius: 50px;
+    box-shadow: 0 4px 12px var(--dino-shadow);
+    transition: all 0.3s ease;
+}
+
+.dinosaur-search-box:focus-within {
+    border-color: var(--dino-accent);
+    box-shadow: 0 6px 20px rgba(79, 195, 247, 0.3);
+}
+
+/* 搜尋圖示 */
+.search-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+/* 搜尋輸入框 */
+.dinosaur-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    background: transparent;
+    color: var(--dino-text);
+    min-width: 0;
+}
+
+.dinosaur-search-input::placeholder {
+    color: #9e9e9e;
+}
+
+/* 清除按鈕 */
+.search-clear-btn {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background: #BDBDBD;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.search-clear-btn:hover {
+    background: var(--dino-secondary);
+    transform: scale(1.1);
+}
+
+/* 搜尋結果下拉選單 */
+.search-results {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--dino-card-bg);
+    border-radius: var(--dino-border-radius);
+    box-shadow: 0 8px 24px var(--dino-shadow);
+    max-height: 350px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+}
+
+.search-results.active {
+    display: block;
+    animation: searchResultsFadeIn 0.2s ease;
+}
+
+@keyframes searchResultsFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 搜尋結果項目 */
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+    color: var(--dino-text);
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover,
+.search-result-item:focus,
+.search-result-item.selected {
+    background-color: #E8F5E9;
+    outline: none;
+}
+
+/* 搜尋結果縮圖 */
+.search-result-thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: linear-gradient(135deg, var(--dino-accent) 0%, var(--dino-primary) 100%);
+    flex-shrink: 0;
+}
+
+/* 搜尋結果資訊 */
+.search-result-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-result-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dino-text);
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-result-detail {
+    font-size: 0.85rem;
+    color: #9e9e9e;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 找不到結果的提示 */
+.search-no-results {
+    padding: 2rem 1rem;
+    text-align: center;
+    color: #9e9e9e;
+}
+
+.search-no-results-icon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.search-no-results-text {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.search-no-results-hint {
+    font-size: 0.85rem;
+    color: #BDBDBD;
+}
+
+/* 搜尋關鍵字高亮 */
+.search-highlight {
+    background-color: #FFF59D;
+    color: var(--dino-text);
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+/* ==========================================================================
+   恐龍小故事區塊 (User Story 6)
+   兒童友善繪本風格
+   ========================================================================== */
+
+/* 故事區塊容器 */
+.dinosaur-story-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+    border-radius: var(--dino-border-radius);
+    border: 3px dashed var(--dino-secondary);
+    position: relative;
+}
+
+/* 故事標題 */
+.story-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dino-text);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(255, 138, 101, 0.3);
+}
+
+.story-icon {
+    font-size: 1.6rem;
+    animation: bookWiggle 2s ease-in-out infinite;
+}
+
+@keyframes bookWiggle {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+/* 故事內容區 */
+.story-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* 故事插圖容器 */
+.story-illustration {
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem;
+}
+
+/* 故事插圖圖片 */
+.story-image {
+    max-width: 280px;
+    max-height: 200px;
+    border-radius: 15px;
+    box-shadow: 0 6px 16px rgba(93, 64, 55, 0.2);
+    border: 4px solid white;
+    object-fit: contain;
+    background: white;
+    transition: transform 0.3s ease;
+}
+
+.story-image:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+/* 故事文字 */
+.story-text {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--dino-text);
+    text-align: justify;
+    padding: 1.25rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+/* 故事文字裝飾引號 */
+.story-text::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    font-size: 3rem;
+    color: var(--dino-secondary);
+    opacity: 0.5;
+    font-family: Georgia, serif;
+}
+
+.story-text::after {
+    content: '"';
+    position: absolute;
+    bottom: -25px;
+    right: 15px;
+    font-size: 3rem;
+    color: var(--dino-secondary);
+    opacity: 0.5;
+    font-family: Georgia, serif;
+}
+
+/* 響應式調整 */
+@media (min-width: 600px) {
+    .story-content {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .story-illustration {
+        flex-shrink: 0;
+    }
+    
+    .story-text {
+        flex: 1;
+    }
+}
+
+@media (max-width: 599px) {
+    .story-title {
+        font-size: 1.2rem;
+    }
+    
+    .story-image {
+        max-width: 200px;
+        max-height: 150px;
+    }
+    
+    .story-text {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}
+

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="earthGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#BCAAA4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8D6E63;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="#87CEEB"/>
+  <rect x="0" y="200" width="400" height="100" fill="url(#earthGrad)"/>
+  
+  <!-- 禽龍挖掘 -->
+  <g transform="translate(120, 100)">
+    <ellipse cx="80" cy="80" rx="50" ry="35" fill="#FFA726"/>
+    <path d="M120 60 Q140 40 155 30" stroke="#FFA726" stroke-width="18" fill="none"/>
+    <ellipse cx="160" cy="25" rx="25" ry="18" fill="#FFA726"/>
+    <circle cx="165" cy="20" r="8" fill="white"/>
+    <circle cx="167" cy="18" r="4" fill="#333"/>
+    <!-- 前肢和拇指刺在挖掘 -->
+    <ellipse cx="130" cy="95" rx="15" ry="10" fill="#FFB74D"/>
+    <path d="M145 95 L165 110" stroke="#E65100" stroke-width="5"/>
+  </g>
+  
+  <!-- 地下的根莖 -->
+  <ellipse cx="280" cy="230" rx="30" ry="15" fill="#A1887F"/>
+  <path d="M280 230 Q290 250 280 260" stroke="#795548" stroke-width="3" fill="none"/>
+  
+  <text x="200" y="280" text-anchor="middle" font-size="16" fill="#4E342E">刺刺用拇指刺挖出美味的根莖！</text>
+</svg>

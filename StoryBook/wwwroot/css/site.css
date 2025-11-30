@@ -20,3 +20,86 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* ==========================================================================
+   語言切換元件樣式
+   ========================================================================== */
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.language-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #495057;
+  background: transparent;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.language-btn:hover {
+  color: #7CB342;
+  background: rgba(124, 179, 66, 0.1);
+}
+
+.language-btn.active {
+  color: white;
+  background: linear-gradient(135deg, #7CB342 0%, #558B2F 100%);
+  box-shadow: 0 2px 6px rgba(124, 179, 66, 0.35);
+}
+
+.language-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(124, 179, 66, 0.3);
+}
+
+.language-btn:focus.active {
+  box-shadow: 0 2px 6px rgba(124, 179, 66, 0.35), 0 0 0 2px rgba(124, 179, 66, 0.3);
+}
+
+.language-flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.language-text {
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+/* 響應式調整 - 小螢幕隱藏文字只顯示旗幟 */
+@media (max-width: 576px) {
+  .language-switcher {
+    padding: 0.2rem;
+  }
+  
+  .language-btn {
+    padding: 0.35rem 0.5rem;
+  }
+  
+  .language-text {
+    display: none;
+  }
+  
+  .language-flag {
+    font-size: 1.1rem;
+  }
+}
+
+/* 導航列調整 - 讓語言切換器對齊右邊 */
+.navbar .language-switcher {
+  margin-left: auto;
+}
