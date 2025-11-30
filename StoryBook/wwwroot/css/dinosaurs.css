@@ -208,10 +208,21 @@
     justify-content: center;
 }
 
-.nav-button-prev:hover:not(:disabled),
-.nav-button-next:hover:not(:disabled) {
+.nav-button-prev:hover:not(.disabled),
+.nav-button-next:hover:not(.disabled) {
     background: #689F38;
     color: white;
+}
+
+/* 停用狀態的換頁按鈕（大且明顯，適合兒童） */
+.nav-button.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #BDBDBD;
+    color: #757575;
+    transform: none !important;
+    box-shadow: none !important;
 }
 
 /* 按鈕圖示 */

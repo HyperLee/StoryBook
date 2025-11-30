@@ -87,10 +87,10 @@
 
 ### Implementation for User Story 2
 
-- [ ] T027 [US2] 實作換頁 JavaScript 邏輯於 `StoryBook/wwwroot/js/dinosaurs.js`
-- [ ] T028 [US2] 更新恐龍介紹頁面於 `StoryBook/Pages/Dinosaurs/Index.cshtml`，新增換頁按鈕
-- [ ] T029 [US2] 實作換頁按鈕樣式於 `StoryBook/wwwroot/css/dinosaurs.css`（大且明顯，適合兒童）
-- [ ] T030 [US2] 實作按鈕狀態管理（第一隻時停用上一頁、最後一隻時停用下一頁）於 `StoryBook/wwwroot/js/dinosaurs.js`
+- [x] T027 [US2] 實作換頁 JavaScript 邏輯於 `StoryBook/wwwroot/js/dinosaurs.js`
+- [x] T028 [US2] 更新恐龍介紹頁面於 `StoryBook/Pages/Dinosaurs/Index.cshtml`，新增換頁按鈕
+- [x] T029 [US2] 實作換頁按鈕樣式於 `StoryBook/wwwroot/css/dinosaurs.css`（大且明顯，適合兒童）
+- [x] T030 [US2] 實作按鈕狀態管理（第一隻時停用上一頁、最後一隻時停用下一頁）於 `StoryBook/wwwroot/js/dinosaurs.js`
 
 **Checkpoint**: 此時 User Stories 1 和 2 應可獨立運作
 

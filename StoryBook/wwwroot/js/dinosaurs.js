@@ -24,6 +24,8 @@
     document.addEventListener('DOMContentLoaded', function () {
         initLanguage();
         initImageErrorHandling();
+        initNavigationButtons();
+        initKeyboardNavigation();
     });
 
     /**
@@ -46,6 +48,48 @@
         });
     }
 
+    /**
+     * 初始化導航按鈕
+     */
+    function initNavigationButtons() {
+        // 阻止停用按鈕的點擊事件
+        const disabledButtons = document.querySelectorAll('.nav-button.disabled');
+        disabledButtons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            });
+        });
+    }
+
+    /**
+     * 初始化鍵盤導航（左右箭頭鍵換頁）
+     */
+    function initKeyboardNavigation() {
+        document.addEventListener('keydown', function (event) {
+            // 如果正在輸入文字，不處理換頁
+            if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+                return;
+            }
+
+            const prevButton = document.querySelector('.nav-button-prev:not(.disabled)');
+            const nextButton = document.querySelector('.nav-button-next:not(.disabled)');
+
+            switch (event.key) {
+                case 'ArrowLeft':
+                    if (prevButton) {
+                        prevButton.click();
+                    }
+                    break;
+                case 'ArrowRight':
+                    if (nextButton) {
+                        nextButton.click();
+                    }
+                    break;
+            }
+        });
+    }
+
     // ==========================================================================
     // 圖片處理
     // ==========================================================================
@@ -56,13 +100,48 @@
      */
     function handleImageError(event) {
         const img = event.target;
-        const placeholder = '/images/placeholder.png';
+        const placeholder = '/images/placeholder.svg';
         
         // 避免無限循環
         if (!img.dataset.errorHandled) {
             img.dataset.errorHandled = 'true';
             img.src = placeholder;
             img.alt = '圖片載入失敗';
+        }
+    }
+
+    // ==========================================================================
+    // 換頁功能
+    // ==========================================================================
+
+    /**
+     * 導航到指定索引的恐龍
+     * @param {number} index - 恐龍索引
+     */
+    function navigateToIndex(index) {
+        if (index < 0) {
+            return;
+        }
+        window.location.href = '/Dinosaurs/' + index;
+    }
+
+    /**
+     * 導航到上一隻恐龍
+     */
+    function navigateToPrevious() {
+        const prevButton = document.querySelector('.nav-button-prev:not(.disabled)');
+        if (prevButton) {
+            prevButton.click();
+        }
+    }
+
+    /**
+     * 導航到下一隻恐龍
+     */
+    function navigateToNext() {
+        const nextButton = document.querySelector('.nav-button-next:not(.disabled)');
+        if (nextButton) {
+            nextButton.click();
         }
     }
 
@@ -94,7 +173,10 @@
     window.DinosaurApp = {
         getCurrentLanguage: getCurrentLanguage,
         setLanguage: setLanguage,
-        handleImageError: handleImageError
+        handleImageError: handleImageError,
+        navigateToIndex: navigateToIndex,
+        navigateToPrevious: navigateToPrevious,
+        navigateToNext: navigateToNext
     };
 
 })();

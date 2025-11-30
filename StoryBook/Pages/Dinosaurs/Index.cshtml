@@ -2,6 +2,8 @@
 @model StoryBook.Pages.Dinosaurs.IndexModel
 @{
     ViewData["Title"] = "恐龍介紹";
+    var prevButtonClass = Model.HasPrevious ? "nav-button nav-button-prev" : "nav-button nav-button-prev disabled";
+    var nextButtonClass = Model.HasNext ? "nav-button nav-button-next" : "nav-button nav-button-next disabled";
 }
 
 <link rel="stylesheet" href="~/css/dinosaurs.css" asp-append-version="true" />
@@ -25,12 +27,45 @@
         </div>
     }
 
-    <!-- 導航按鈕 -->
+    <!-- 換頁和導航按鈕 -->
     <div class="dinosaur-navigation">
+        <!-- 上一頁按鈕 -->
+        @if (Model.HasPrevious)
+        {
+            <a asp-page="/Dinosaurs/Index" asp-route-index="@(Model.CurrentIndex - 1)" class="@prevButtonClass">
+                <span class="nav-button-icon">⬅️</span>
+                <span data-lang-zh="上一頁" data-lang-en="Previous">上一頁</span>
+            </a>
+        }
+        else
+        {
+            <span class="@prevButtonClass" aria-disabled="true">
+                <span class="nav-button-icon">⬅️</span>
+                <span data-lang-zh="上一頁" data-lang-en="Previous">上一頁</span>
+            </span>
+        }
+
+        <!-- 回首頁按鈕 -->
         <a asp-page="/Index" class="nav-button nav-button-home">
             <span class="nav-button-icon">🏠</span>
             <span data-lang-zh="回首頁" data-lang-en="Home">回首頁</span>
         </a>
+
+        <!-- 下一頁按鈕 -->
+        @if (Model.HasNext)
+        {
+            <a asp-page="/Dinosaurs/Index" asp-route-index="@(Model.CurrentIndex + 1)" class="@nextButtonClass">
+                <span data-lang-zh="下一頁" data-lang-en="Next">下一頁</span>
+                <span class="nav-button-icon">➡️</span>
+            </a>
+        }
+        else
+        {
+            <span class="@nextButtonClass" aria-disabled="true">
+                <span data-lang-zh="下一頁" data-lang-en="Next">下一頁</span>
+                <span class="nav-button-icon">➡️</span>
+            </span>
+        }
     </div>
 
     <!-- 頁面資訊 -->
@@ -38,7 +73,9 @@
     {
         <div class="text-center mt-3">
             <small class="text-muted">
-                第 @(Model.CurrentIndex + 1) / @Model.TotalCount 隻恐龍
+                <span data-lang-zh="第" data-lang-en="">第</span>
+                @(Model.CurrentIndex + 1) / @Model.TotalCount
+                <span data-lang-zh="隻恐龍" data-lang-en="dinosaurs">隻恐龍</span>
             </small>
         </div>
     }
