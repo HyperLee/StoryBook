@@ -120,11 +120,11 @@
 
 ### Implementation for User Story 4
 
-- [ ] T033 [US4] 在水族館主頁新增搜尋框 UI 於 `StoryBook/Pages/Aquarium/Index.cshtml`
-- [ ] T034 [US4] 實作前端即時搜尋過濾邏輯（比對名稱、生活環境、食性）於 `StoryBook/wwwroot/js/aquarium.js`
-- [ ] T035 [US4] 實作搜尋 debounce 防止過度觸發（300ms）
-- [ ] T036 [US4] 實作「找不到相關動物」友善提示訊息顯示
-- [ ] T037 [US4] 實作清空搜尋框恢復顯示所有動物邏輯
+- [X] T033 [US4] 在水族館主頁新增搜尋框 UI 於 `StoryBook/Pages/Aquarium/Index.cshtml`
+- [X] T034 [US4] 實作前端即時搜尋過濾邏輯（比對名稱、生活環境、食性）於 `StoryBook/wwwroot/js/aquarium.js`
+- [X] T035 [US4] 實作搜尋 debounce 防止過度觸發（300ms）
+- [X] T036 [US4] 實作「找不到相關動物」友善提示訊息顯示
+- [X] T037 [US4] 實作清空搜尋框恢復顯示所有動物邏輯
 
 **Checkpoint**: User Story 4 完成 - 搜尋功能即時篩選，回應 < 1 秒
 
