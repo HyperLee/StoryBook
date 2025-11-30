@@ -15,6 +15,7 @@ public class JsonDataService : IJsonDataService, IDisposable
     private readonly SemaphoreSlim _loadSemaphore = new(1, 1);
     private DateTime _lastLoadTime = DateTime.MinValue;
     private const int CacheExpirationMinutes = 60;
+    private bool _disposed;
 
     /// <summary>
     /// 建立 JsonDataService 實例
@@ -248,7 +249,13 @@ public class JsonDataService : IJsonDataService, IDisposable
     /// </summary>
     public void Dispose()
     {
+        if (_disposed)
+        {
+            return;
+        }
+
         _loadSemaphore.Dispose();
+        _disposed = true;
         GC.SuppressFinalize(this);
     }
 }
