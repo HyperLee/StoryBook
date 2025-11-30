@@ -19,10 +19,10 @@
 
 **Purpose**: 基礎設定，建立專案結構
 
-- [ ] T001 確認 .NET 8.0 SDK 已安裝並切換至 `002-aquarium-storybook` 分支
-- [ ] T002 [P] 建立水族館圖片目錄 `StoryBook/wwwroot/images/aquarium/`
-- [ ] T003 [P] 建立水族館 CSS 檔案 `StoryBook/wwwroot/css/aquarium.css`（空白檔案）
-- [ ] T004 [P] 建立水族館 JS 檔案 `StoryBook/wwwroot/js/aquarium.js`（空白檔案）
+- [X] T001 確認 .NET 8.0 SDK 已安裝並切換至 `002-aquarium-storybook` 分支
+- [X] T002 [P] 建立水族館圖片目錄 `StoryBook/wwwroot/images/aquarium/`
+- [X] T003 [P] 建立水族館 CSS 檔案 `StoryBook/wwwroot/css/aquarium.css`（空白檔案）
+- [X] T004 [P] 建立水族館 JS 檔案 `StoryBook/wwwroot/js/aquarium.js`（空白檔案）
 
 ---
 
