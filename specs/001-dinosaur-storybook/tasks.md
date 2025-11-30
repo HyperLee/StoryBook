@@ -135,11 +135,11 @@
 
 ### Implementation for User Story 5
 
-- [ ] T036 [US5] 更新恐龍介紹頁面於 `StoryBook/Pages/Dinosaurs/Index.cshtml`，新增搜尋框
-- [ ] T037 [US5] 實作即時搜尋邏輯（含 Debounce）於 `StoryBook/wwwroot/js/dinosaurs.js`
-- [ ] T038 [US5] 實作搜尋結果顯示於 `StoryBook/Pages/Dinosaurs/Index.cshtml`
-- [ ] T039 [US5] 實作「找不到結果」友善提示於 `StoryBook/wwwroot/js/dinosaurs.js`
-- [ ] T040 [US5] 實作搜尋結果點擊導向恐龍介紹於 `StoryBook/wwwroot/js/dinosaurs.js`
+- [x] T036 [US5] 更新恐龍介紹頁面於 `StoryBook/Pages/Dinosaurs/Index.cshtml`，新增搜尋框
+- [x] T037 [US5] 實作即時搜尋邏輯（含 Debounce）於 `StoryBook/wwwroot/js/dinosaurs.js`
+- [x] T038 [US5] 實作搜尋結果顯示於 `StoryBook/Pages/Dinosaurs/Index.cshtml`
+- [x] T039 [US5] 實作「找不到結果」友善提示於 `StoryBook/wwwroot/js/dinosaurs.js`
+- [x] T040 [US5] 實作搜尋結果點擊導向恐龍介紹於 `StoryBook/wwwroot/js/dinosaurs.js`
 
 **Checkpoint**: 此時 User Stories 1-5 應可獨立運作
 

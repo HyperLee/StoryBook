@@ -408,3 +408,196 @@ body.modal-open {
     outline: 3px solid var(--dino-accent);
     outline-offset: 3px;
 }
+
+/* ==========================================================================
+   搜尋功能樣式
+   ========================================================================== */
+
+/* 搜尋容器 */
+.dinosaur-search-container {
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    position: relative;
+}
+
+/* 搜尋框 */
+.dinosaur-search-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--dino-card-bg);
+    border: 3px solid var(--dino-primary);
+    border-radius: 50px;
+    box-shadow: 0 4px 12px var(--dino-shadow);
+    transition: all 0.3s ease;
+}
+
+.dinosaur-search-box:focus-within {
+    border-color: var(--dino-accent);
+    box-shadow: 0 6px 20px rgba(79, 195, 247, 0.3);
+}
+
+/* 搜尋圖示 */
+.search-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+/* 搜尋輸入框 */
+.dinosaur-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    background: transparent;
+    color: var(--dino-text);
+    min-width: 0;
+}
+
+.dinosaur-search-input::placeholder {
+    color: #9e9e9e;
+}
+
+/* 清除按鈕 */
+.search-clear-btn {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background: #BDBDBD;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.search-clear-btn:hover {
+    background: var(--dino-secondary);
+    transform: scale(1.1);
+}
+
+/* 搜尋結果下拉選單 */
+.search-results {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--dino-card-bg);
+    border-radius: var(--dino-border-radius);
+    box-shadow: 0 8px 24px var(--dino-shadow);
+    max-height: 350px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+}
+
+.search-results.active {
+    display: block;
+    animation: searchResultsFadeIn 0.2s ease;
+}
+
+@keyframes searchResultsFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 搜尋結果項目 */
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+    color: var(--dino-text);
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover,
+.search-result-item:focus,
+.search-result-item.selected {
+    background-color: #E8F5E9;
+    outline: none;
+}
+
+/* 搜尋結果縮圖 */
+.search-result-thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: linear-gradient(135deg, var(--dino-accent) 0%, var(--dino-primary) 100%);
+    flex-shrink: 0;
+}
+
+/* 搜尋結果資訊 */
+.search-result-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-result-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dino-text);
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-result-detail {
+    font-size: 0.85rem;
+    color: #9e9e9e;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 找不到結果的提示 */
+.search-no-results {
+    padding: 2rem 1rem;
+    text-align: center;
+    color: #9e9e9e;
+}
+
+.search-no-results-icon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.search-no-results-text {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.search-no-results-hint {
+    font-size: 0.85rem;
+    color: #BDBDBD;
+}
+
+/* 搜尋關鍵字高亮 */
+.search-highlight {
+    background-color: #FFF59D;
+    color: var(--dino-text);
+    padding: 0 2px;
+    border-radius: 3px;
+}
+

@@ -15,6 +15,30 @@
         <span>🦖</span>
     </h1>
 
+    <!-- 搜尋框 -->
+    <div class="dinosaur-search-container">
+        <div class="dinosaur-search-box">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input type="text" 
+                   id="dinosaurSearch" 
+                   class="dinosaur-search-input" 
+                   placeholder="搜尋恐龍..." 
+                   data-lang-placeholder-zh="搜尋恐龍..."
+                   data-lang-placeholder-en="Search dinosaurs..."
+                   autocomplete="off"
+                   aria-label="搜尋恐龍" />
+            <button type="button" 
+                    id="clearSearch" 
+                    class="search-clear-btn" 
+                    aria-label="清除搜尋"
+                    style="display: none;">
+                ✕
+            </button>
+        </div>
+        <!-- 搜尋結果下拉選單 -->
+        <div id="searchResults" class="search-results" role="listbox" aria-label="搜尋結果"></div>
+    </div>
+
     @if (Model.CurrentDinosaur is not null)
     {
         <partial name="_DinosaurCard" model="Model.CurrentDinosaur" />
@@ -94,5 +118,12 @@
 </div>
 
 @section Scripts {
+    <script>
+        // 提供恐龍資料給 JavaScript 搜尋功能
+        window.dinosaurData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AllDinosaurs, new System.Text.Json.JsonSerializerOptions 
+        { 
+            PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase 
+        }));
+    </script>
     <script src="~/js/dinosaurs.js" asp-append-version="true"></script>
 }
