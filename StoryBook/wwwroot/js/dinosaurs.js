@@ -56,10 +56,46 @@
      * 初始化圖片錯誤處理
      */
     function initImageErrorHandling() {
-        const images = document.querySelectorAll('.dinosaur-image');
+        // 處理所有恐龍相關圖片
+        const images = document.querySelectorAll('.dinosaur-image, .story-image, .dinosaur-card img');
         images.forEach(function (img) {
             img.addEventListener('error', handleImageError);
+            // 設定 loading 屬性以優化載入
+            if (!img.hasAttribute('loading')) {
+                img.setAttribute('loading', 'lazy');
+            }
         });
+
+        // 監聽動態新增的圖片
+        observeNewImages();
+    }
+
+    /**
+     * 監聽動態新增的圖片元素
+     */
+    function observeNewImages() {
+        const observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                mutation.addedNodes.forEach(function (node) {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        const images = node.querySelectorAll
+                            ? node.querySelectorAll('.dinosaur-image, .story-image, .dinosaur-card img')
+                            : [];
+                        images.forEach(function (img) {
+                            img.addEventListener('error', handleImageError);
+                        });
+                        // 如果節點本身是圖片
+                        if (node.tagName === 'IMG' && 
+                            (node.classList.contains('dinosaur-image') || 
+                             node.classList.contains('story-image'))) {
+                            node.addEventListener('error', handleImageError);
+                        }
+                    }
+                });
+            });
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
     }
 
     /**
@@ -120,8 +156,51 @@
         if (!img.dataset.errorHandled) {
             img.dataset.errorHandled = 'true';
             img.src = placeholder;
-            img.alt = '圖片載入失敗';
+            
+            // 根據語言設定替代文字
+            const lang = getCurrentLanguage();
+            img.alt = lang === 'zh' ? '圖片載入失敗' : 'Image failed to load';
+            
+            // 添加視覺提示樣式
+            img.classList.add('image-error');
+            
+            // 記錄錯誤（開發模式）
+            if (window.location.hostname === 'localhost') {
+                console.warn('[DinosaurApp] 圖片載入失敗:', event.target.dataset.originalSrc || '未知來源');
+            }
         }
+    }
+
+    /**
+     * 預載入圖片
+     * @param {string} src - 圖片來源
+     * @returns {Promise<HTMLImageElement>} 圖片元素
+     */
+    function preloadImage(src) {
+        return new Promise(function (resolve, reject) {
+            const img = new Image();
+            img.onload = function () { resolve(img); };
+            img.onerror = function () { reject(new Error('圖片載入失敗: ' + src)); };
+            img.src = src;
+        });
+    }
+
+    /**
+     * 批次預載入恐龍圖片
+     * @param {Array} dinosaurList - 恐龍資料陣列
+     */
+    function preloadDinosaurImages(dinosaurList) {
+        if (!Array.isArray(dinosaurList)) {
+            return;
+        }
+
+        dinosaurList.forEach(function (dino) {
+            if (dino.images && dino.images.main) {
+                preloadImage(dino.images.main).catch(function () {
+                    // 靜默處理預載入失敗
+                });
+            }
+        });
     }
 
     // ==========================================================================

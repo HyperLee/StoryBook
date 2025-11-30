@@ -7,7 +7,14 @@ namespace StoryBook.Services;
 /// </summary>
 public interface IJsonDataService
 {
-    /// <summary>載入恐龍資料</summary>
+    /// <summary>
+    /// 載入恐龍資料
+    /// </summary>
     /// <returns>恐龍資料容器</returns>
     Task<DinosaurData> LoadDinosaursAsync();
+
+    /// <summary>
+    /// 清除快取，強制下次載入時重新讀取檔案
+    /// </summary>
+    void ClearCache();
 }

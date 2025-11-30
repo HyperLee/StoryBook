@@ -96,10 +96,12 @@
     @if (Model.TotalCount > 0)
     {
         <div class="text-center mt-3">
-            <small class="text-muted">
+            <small class="text-muted dinosaur-page-info">
                 <span data-lang-zh="第" data-lang-en="">第</span>
-                @(Model.CurrentIndex + 1) / @Model.TotalCount
-                <span data-lang-zh="隻恐龍" data-lang-en="dinosaurs">隻恐龍</span>
+                <span class="page-number">@(Model.CurrentIndex + 1)</span>
+                <span>/</span>
+                <span class="page-total">@Model.TotalCount</span>
+                <span data-lang-zh="隻恐龍" data-lang-en=" dinosaurs">隻恐龍</span>
             </small>
         </div>
     }

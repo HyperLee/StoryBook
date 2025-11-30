@@ -1,0 +1,24 @@
+@* 
+    語言切換元件
+    支援中文 (zh) 和英文 (en) 切換
+    使用 localStorage 保存使用者偏好
+*@
+
+<div class="language-switcher" role="group" aria-label="語言選擇">
+    <button type="button" 
+            class="language-btn" 
+            data-lang="zh"
+            aria-label="切換至中文"
+            title="中文">
+        <span class="language-flag">🇹🇼</span>
+        <span class="language-text">中文</span>
+    </button>
+    <button type="button" 
+            class="language-btn" 
+            data-lang="en"
+            aria-label="Switch to English"
+            title="English">
+        <span class="language-flag">🇺🇸</span>
+        <span class="language-text">EN</span>
+    </button>
+</div>

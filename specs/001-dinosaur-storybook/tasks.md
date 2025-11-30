@@ -169,12 +169,12 @@
 
 ### Implementation for User Story 7
 
-- [ ] T044 [US7] 建立語言切換元件於 `StoryBook/Pages/Shared/_LanguageSwitcher.cshtml`
-- [ ] T045 [US7] 更新主版面配置於 `StoryBook/Pages/Shared/_Layout.cshtml`，引入語言切換元件
-- [ ] T046 [US7] 實作語言切換 JavaScript 於 `StoryBook/wwwroot/js/site.js`（localStorage 保存）
-- [ ] T047 [US7] 更新恐龍介紹頁面於 `StoryBook/Pages/Dinosaurs/Index.cshtml`，新增 data-lang 屬性
-- [ ] T048 [US7] 更新首頁於 `StoryBook/Pages/Index.cshtml`，新增 data-lang 屬性支援多語言
-- [ ] T049 [US7] 實作語言切換元件樣式於 `StoryBook/wwwroot/css/site.css`
+- [x] T044 [US7] 建立語言切換元件於 `StoryBook/Pages/Shared/_LanguageSwitcher.cshtml`
+- [x] T045 [US7] 更新主版面配置於 `StoryBook/Pages/Shared/_Layout.cshtml`，引入語言切換元件
+- [x] T046 [US7] 實作語言切換 JavaScript 於 `StoryBook/wwwroot/js/site.js`（localStorage 保存）
+- [x] T047 [US7] 更新恐龍介紹頁面於 `StoryBook/Pages/Dinosaurs/Index.cshtml`，新增 data-lang 屬性
+- [x] T048 [US7] 更新首頁於 `StoryBook/Pages/Index.cshtml`，新增 data-lang 屬性支援多語言
+- [x] T049 [US7] 實作語言切換元件樣式於 `StoryBook/wwwroot/css/site.css`
 
 **Checkpoint**: 所有使用者故事應已獨立運作
 
@@ -184,12 +184,12 @@
 
 **Purpose**: 跨越多個使用者故事的改進
 
-- [ ] T050 更新主版面配置樣式於 `StoryBook/Pages/Shared/_Layout.cshtml.css`（兒童友善主題色）
-- [ ] T051 實作圖片載入失敗處理於 `StoryBook/wwwroot/js/dinosaurs.js`（顯示佔位圖）
-- [ ] T052 實作錯誤處理（JSON 檔案遺失）於 `StoryBook/Services/JsonDataService.cs`
-- [ ] T053 新增剩餘恐龍圖片資源於 `StoryBook/wwwroot/images/dinosaurs/`（完成 5-8 隻）
-- [ ] T054 程式碼清理和重構
-- [ ] T055 執行 `quickstart.md` 驗證
+- [x] T050 更新主版面配置樣式於 `StoryBook/Pages/Shared/_Layout.cshtml.css`（兒童友善主題色）
+- [x] T051 實作圖片載入失敗處理於 `StoryBook/wwwroot/js/dinosaurs.js`（顯示佔位圖）
+- [x] T052 實作錯誤處理（JSON 檔案遺失）於 `StoryBook/Services/JsonDataService.cs`
+- [x] T053 新增剩餘恐龍圖片資源於 `StoryBook/wwwroot/images/dinosaurs/`（完成 5-8 隻）
+- [x] T054 程式碼清理和重構
+- [x] T055 執行 `quickstart.md` 驗證
 
 ---
 
