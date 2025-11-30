@@ -12,5 +12,5 @@ public class DinosaurImages
     /// <summary>
     /// 故事插圖路徑列表（預設為空列表）
     /// </summary>
-    public List<string> Story { get; set; } = new();
+    public List<string> Story { get; set; } = [];
 }
