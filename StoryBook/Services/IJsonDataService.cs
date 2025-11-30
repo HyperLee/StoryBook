@@ -16,5 +16,5 @@ public interface IJsonDataService
     /// <summary>
     /// 清除快取，強制下次載入時重新讀取檔案
     /// </summary>
-    void ClearCache();
+    Task ClearCacheAsync();
 }

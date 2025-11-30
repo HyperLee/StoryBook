@@ -6,7 +6,7 @@ namespace StoryBook.Services;
 /// <summary>
 /// JSON 資料服務實作，處理 JSON 檔案讀取
 /// </summary>
-public class JsonDataService : IJsonDataService
+public class JsonDataService : IJsonDataService, IDisposable
 {
     private readonly IWebHostEnvironment _environment;
     private readonly ILogger<JsonDataService> _logger;
@@ -228,9 +228,9 @@ public class JsonDataService : IJsonDataService
     /// <summary>
     /// 清除快取，強制下次載入時重新讀取檔案
     /// </summary>
-    public void ClearCache()
+    public async Task ClearCacheAsync()
     {
-        _loadSemaphore.Wait();
+        await _loadSemaphore.WaitAsync();
         try
         {
             _cachedData = null;
@@ -241,5 +241,14 @@ public class JsonDataService : IJsonDataService
             _loadSemaphore.Release();
         }
         _logger.LogInformation("恐龍資料快取已清除");
+    }
+
+    /// <summary>
+    /// 釋放資源
+    /// </summary>
+    public void Dispose()
+    {
+        _loadSemaphore.Dispose();
+        GC.SuppressFinalize(this);
     }
 }
