@@ -104,8 +104,8 @@
 
 ### Implementation for User Story 3
 
-- [ ] T031 [US3] 更新恐龍介紹頁面於 `StoryBook/Pages/Dinosaurs/Index.cshtml`，新增「回首頁」按鈕
-- [ ] T032 [US3] 實作「回首頁」按鈕樣式於 `StoryBook/wwwroot/css/dinosaurs.css`
+- [x] T031 [US3] 更新恐龍介紹頁面於 `StoryBook/Pages/Dinosaurs/Index.cshtml`，新增「回首頁」按鈕
+- [x] T032 [US3] 實作「回首頁」按鈕樣式於 `StoryBook/wwwroot/css/dinosaurs.css`
 
 **Checkpoint**: 此時 User Stories 1, 2, 3 應可獨立運作
 
