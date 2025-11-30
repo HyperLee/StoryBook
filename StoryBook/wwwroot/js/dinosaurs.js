@@ -11,7 +11,6 @@
     // ==========================================================================
     
     let dinosaurs = [];
-    let currentIndex = 0;
     let currentLanguage = 'zh';
     let searchDebounceTimer = null;
     let selectedSearchIndex = -1;
@@ -182,24 +181,6 @@
             img.onload = function () { resolve(img); };
             img.onerror = function () { reject(new Error('圖片載入失敗: ' + src)); };
             img.src = src;
-        });
-    }
-
-    /**
-     * 批次預載入恐龍圖片
-     * @param {Array} dinosaurList - 恐龍資料陣列
-     */
-    function preloadDinosaurImages(dinosaurList) {
-        if (!Array.isArray(dinosaurList)) {
-            return;
-        }
-
-        dinosaurList.forEach(function (dino) {
-            if (dino.images && dino.images.main) {
-                preloadImage(dino.images.main).catch(function () {
-                    // 靜默處理預載入失敗
-                });
-            }
         });
     }
 

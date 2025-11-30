@@ -6,15 +6,16 @@ namespace StoryBook.Services;
 /// <summary>
 /// JSON 資料服務實作，處理 JSON 檔案讀取
 /// </summary>
-public class JsonDataService : IJsonDataService
+public class JsonDataService : IJsonDataService, IDisposable
 {
     private readonly IWebHostEnvironment _environment;
     private readonly ILogger<JsonDataService> _logger;
     private readonly IConfiguration _configuration;
     private DinosaurData? _cachedData;
-    private readonly object _cacheLock = new();
+    private readonly SemaphoreSlim _loadSemaphore = new(1, 1);
     private DateTime _lastLoadTime = DateTime.MinValue;
     private const int CacheExpirationMinutes = 60;
+    private bool _disposed;
 
     /// <summary>
     /// 建立 JsonDataService 實例
@@ -41,28 +42,34 @@ public class JsonDataService : IJsonDataService
             return _cachedData!;
         }
 
-        lock (_cacheLock)
+        await _loadSemaphore.WaitAsync();
+        try
         {
+            // 雙重檢查鎖定：在取得鎖定後再次檢查快取
             if (IsCacheValid())
             {
                 return _cachedData!;
             }
+
+            var jsonPath = GetJsonFilePath();
+            var fullPath = BuildFullPath(jsonPath);
+
+            _logger.LogInformation("載入恐龍資料：{Path}", fullPath);
+
+            if (!File.Exists(fullPath))
+            {
+                _logger.LogWarning(
+                    "恐龍資料檔案不存在：{Path}。將返回空資料集。請確認檔案路徑是否正確。", 
+                    fullPath);
+                return CreateEmptyDataWithWarning("檔案不存在");
+            }
+
+            return await LoadAndParseJsonAsync(fullPath);
         }
-
-        var jsonPath = GetJsonFilePath();
-        var fullPath = BuildFullPath(jsonPath);
-
-        _logger.LogInformation("載入恐龍資料：{Path}", fullPath);
-
-        if (!File.Exists(fullPath))
+        finally
         {
-            _logger.LogWarning(
-                "恐龍資料檔案不存在：{Path}。將返回空資料集。請確認檔案路徑是否正確。", 
-                fullPath);
-            return CreateEmptyDataWithWarning("檔案不存在");
+            _loadSemaphore.Release();
         }
-
-        return await LoadAndParseJsonAsync(fullPath);
     }
 
     /// <summary>
@@ -149,11 +156,8 @@ public class JsonDataService : IJsonDataService
             // 驗證資料完整性
             ValidateData(data);
 
-            lock (_cacheLock)
-            {
-                _cachedData = data;
-                _lastLoadTime = DateTime.UtcNow;
-            }
+            _cachedData = data;
+            _lastLoadTime = DateTime.UtcNow;
 
             _logger.LogInformation("成功載入 {Count} 隻恐龍", data.Dinosaurs.Count);
 
@@ -225,13 +229,33 @@ public class JsonDataService : IJsonDataService
     /// <summary>
     /// 清除快取，強制下次載入時重新讀取檔案
     /// </summary>
-    public void ClearCache()
+    public async Task ClearCacheAsync()
     {
-        lock (_cacheLock)
+        await _loadSemaphore.WaitAsync();
+        try
         {
             _cachedData = null;
             _lastLoadTime = DateTime.MinValue;
         }
+        finally
+        {
+            _loadSemaphore.Release();
+        }
         _logger.LogInformation("恐龍資料快取已清除");
+    }
+
+    /// <summary>
+    /// 釋放資源
+    /// </summary>
+    public void Dispose()
+    {
+        if (_disposed)
+        {
+            return;
+        }
+
+        _loadSemaphore.Dispose();
+        _disposed = true;
+        GC.SuppressFinalize(this);
     }
 }
