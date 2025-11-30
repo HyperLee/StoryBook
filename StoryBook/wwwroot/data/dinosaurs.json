@@ -1,0 +1,179 @@
+{
+  "dinosaurs": [
+    {
+      "id": "tyrannosaurus",
+      "name": {
+        "zh": "暴龍",
+        "en": "Tyrannosaurus Rex"
+      },
+      "period": {
+        "zh": "白堊紀晚期（約6800萬年前）",
+        "en": "Late Cretaceous (about 68 million years ago)"
+      },
+      "diet": {
+        "zh": "肉食性",
+        "en": "Carnivore"
+      },
+      "location": {
+        "zh": "北美洲",
+        "en": "North America"
+      },
+      "size": {
+        "zh": "身長約12公尺，高約4公尺，體重約9噸",
+        "en": "About 12m long, 4m tall, weighing 9 tons"
+      },
+      "description": {
+        "zh": "暴龍是最有名的恐龍，牠是白堊紀晚期最強大的掠食者！暴龍有著巨大的頭部和鋒利的牙齒，咬合力超強，可以輕鬆咬碎骨頭。雖然牠的前肢很小，但強壯的後腿讓牠跑得很快喔！暴龍是陸地上最大的肉食動物之一，每顆牙齒都像香蕉一樣大呢！",
+        "en": "T-Rex is the most famous dinosaur and the mightiest predator of the Late Cretaceous! With its massive head and sharp teeth, T-Rex had an incredibly powerful bite that could crush bones easily. Though its arms were tiny, its strong legs made it a fast runner! It was one of the largest land predators ever!"
+      },
+      "story": {
+        "zh": "小暴龍雷雷今天很開心，因為媽媽帶牠去河邊玩。雷雷看到水裡有魚，想要抓來當點心，但前肢太短搆不到。媽媽笑著說：「用你的大嘴巴呀！」雷雷張開大嘴，一口就叼起了魚，開心地笑了。",
+        "en": "Little T-Rex Ray was happy today because mom took him to the river. Ray saw fish in the water and wanted to catch a snack, but his arms were too short to reach. Mom laughed and said, 'Use your big mouth!' Ray opened wide and caught the fish in one bite, smiling happily."
+      },
+      "images": {
+        "main": "/images/dinosaurs/tyrannosaurus/main.png",
+        "story": ["/images/dinosaurs/tyrannosaurus/story-1.png"]
+      }
+    },
+    {
+      "id": "triceratops",
+      "name": {
+        "zh": "三角龍",
+        "en": "Triceratops"
+      },
+      "period": {
+        "zh": "白堊紀晚期（約6800萬年前）",
+        "en": "Late Cretaceous (about 68 million years ago)"
+      },
+      "diet": {
+        "zh": "草食性",
+        "en": "Herbivore"
+      },
+      "location": {
+        "zh": "北美洲",
+        "en": "North America"
+      },
+      "size": {
+        "zh": "身長約9公尺，高約3公尺，體重約12噸",
+        "en": "About 9m long, 3m tall, weighing 12 tons"
+      },
+      "description": {
+        "zh": "三角龍是草食性恐龍中最酷的一種！牠的頭上有三隻角——兩隻長長的眉角和一隻短短的鼻角，還有一個超大的頭盾保護脖子。三角龍用這些角來保護自己，就像現代的犀牛一樣勇敢！牠們喜歡吃低矮的植物，是溫和的大塊頭。",
+        "en": "Triceratops is one of the coolest herbivore dinosaurs! It had three horns on its head—two long brow horns and a short nose horn—plus a huge frill to protect its neck. Triceratops used these horns for defense, just like brave rhinos today! They loved eating low plants and were gentle giants."
+      },
+      "story": {
+        "zh": "小三角龍角角最喜歡和朋友們一起玩躲貓貓。有一天，角角躲在大樹後面，但牠的三隻角太明顯了，一下就被找到了！角角想了想，決定躲在蕨類植物叢裡，這次真的沒被發現呢！",
+        "en": "Little Triceratops Trixie loved playing hide and seek with friends. One day, Trixie hid behind a big tree, but her three horns were too obvious and she was found right away! After thinking, she decided to hide in the fern bushes—this time she wasn't found!"
+      },
+      "images": {
+        "main": "/images/dinosaurs/triceratops/main.png",
+        "story": ["/images/dinosaurs/triceratops/story-1.png"]
+      }
+    },
+    {
+      "id": "stegosaurus",
+      "name": {
+        "zh": "劍龍",
+        "en": "Stegosaurus"
+      },
+      "period": {
+        "zh": "侏羅紀晚期（約1億5500萬年前）",
+        "en": "Late Jurassic (about 155 million years ago)"
+      },
+      "diet": {
+        "zh": "草食性",
+        "en": "Herbivore"
+      },
+      "location": {
+        "zh": "北美洲",
+        "en": "North America"
+      },
+      "size": {
+        "zh": "身長約9公尺，高約4公尺，體重約5噸",
+        "en": "About 9m long, 4m tall, weighing 5 tons"
+      },
+      "description": {
+        "zh": "劍龍最特別的地方就是背上那排像盤子一樣的骨板，還有尾巴上四根尖尖的刺！科學家認為這些骨板可能用來調節體溫或是吸引異性。雖然劍龍的腦袋只有核桃那麼大，但牠的尾刺可是很厲害的武器喔！",
+        "en": "Stegosaurus is most famous for the plate-like bones on its back and four sharp spikes on its tail! Scientists think these plates might have helped control body temperature or attract mates. Though Stegosaurus had a brain as small as a walnut, its tail spikes were powerful weapons!"
+      },
+      "story": {
+        "zh": "小劍龍尖尖很愛漂亮，每天都把背上的骨板擦得亮晶晶。有一天太陽很大，尖尖發現曬太陽時骨板會變得暖暖的，好舒服！從此以後，尖尖每天都會找個好位置享受日光浴。",
+        "en": "Little Stegosaurus Spike loved looking pretty and polished his back plates every day until they sparkled. One sunny day, Spike discovered that sunbathing made his plates feel warm and cozy! From then on, Spike found a good spot every day to enjoy sunbathing."
+      },
+      "images": {
+        "main": "/images/dinosaurs/stegosaurus/main.png",
+        "story": ["/images/dinosaurs/stegosaurus/story-1.png"]
+      }
+    },
+    {
+      "id": "brachiosaurus",
+      "name": {
+        "zh": "腕龍",
+        "en": "Brachiosaurus"
+      },
+      "period": {
+        "zh": "侏羅紀晚期（約1億5400萬年前）",
+        "en": "Late Jurassic (about 154 million years ago)"
+      },
+      "diet": {
+        "zh": "草食性",
+        "en": "Herbivore"
+      },
+      "location": {
+        "zh": "北美洲、非洲",
+        "en": "North America, Africa"
+      },
+      "size": {
+        "zh": "身長約26公尺，高約13公尺，體重約50噸",
+        "en": "About 26m long, 13m tall, weighing 50 tons"
+      },
+      "description": {
+        "zh": "腕龍是最高的恐龍之一！牠有超級長的脖子，可以吃到樹頂上的葉子，就像一座會走路的塔。腕龍的前腳比後腳長，所以身體是往前傾斜的，這讓牠可以把頭抬得更高。想像一下，腕龍站起來比四層樓的房子還要高呢！",
+        "en": "Brachiosaurus was one of the tallest dinosaurs! It had a super long neck to reach leaves at the treetops, like a walking tower. Its front legs were longer than its back legs, making its body tilt forward so it could raise its head even higher. Imagine—Brachiosaurus was taller than a four-story building!"
+      },
+      "story": {
+        "zh": "小腕龍高高覺得自己的脖子太長了，總是撞到樹枝。有一天，森林裡的小恐龍們都吃不到高處的果子，高高用長脖子幫大家摘下來，大家都說：「謝謝高高！」高高終於發現長脖子是最棒的禮物。",
+        "en": "Little Brachiosaurus Stretch thought his neck was too long and always bumped into branches. One day, the little dinosaurs in the forest couldn't reach the high fruits, so Stretch used his long neck to pick them for everyone. They all said, 'Thank you, Stretch!' Stretch finally realized his long neck was the best gift."
+      },
+      "images": {
+        "main": "/images/dinosaurs/brachiosaurus/main.png",
+        "story": ["/images/dinosaurs/brachiosaurus/story-1.png"]
+      }
+    },
+    {
+      "id": "velociraptor",
+      "name": {
+        "zh": "迅猛龍",
+        "en": "Velociraptor"
+      },
+      "period": {
+        "zh": "白堊紀晚期（約7500萬年前）",
+        "en": "Late Cretaceous (about 75 million years ago)"
+      },
+      "diet": {
+        "zh": "肉食性",
+        "en": "Carnivore"
+      },
+      "location": {
+        "zh": "蒙古",
+        "en": "Mongolia"
+      },
+      "size": {
+        "zh": "身長約2公尺，高約0.5公尺，體重約15公斤",
+        "en": "About 2m long, 0.5m tall, weighing 15 kg"
+      },
+      "description": {
+        "zh": "迅猛龍雖然體型不大，卻是最聰明的恐龍之一！牠跑得超快，而且腳上有一個像彎刀一樣的大爪子，是厲害的狩獵高手。迅猛龍喜歡成群結隊地行動，用團隊合作抓獵物。牠們身上可能還有羽毛呢！",
+        "en": "Velociraptor may have been small, but it was one of the smartest dinosaurs! It was super fast and had a sickle-like claw on each foot, making it an excellent hunter. Velociraptors liked to hunt in packs, using teamwork to catch prey. They probably even had feathers!"
+      },
+      "story": {
+        "zh": "小迅猛龍快快是班上跑最快的同學。運動會那天，快快參加賽跑，一路領先。但是快快看到同學跌倒了，停下來幫忙扶起同學，結果得了第二名。老師說：「快快是最有愛心的冠軍！」",
+        "en": "Little Velociraptor Swift was the fastest in class. On sports day, Swift joined the race and led all the way. But when Swift saw a classmate fall, he stopped to help. He got second place, but the teacher said, 'Swift is the most caring champion!'"
+      },
+      "images": {
+        "main": "/images/dinosaurs/velociraptor/main.png",
+        "story": ["/images/dinosaurs/velociraptor/story-1.png"]
+      }
+    }
+  ]
+}

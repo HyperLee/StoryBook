@@ -1,0 +1,49 @@
+@page "{index:int?}"
+@model StoryBook.Pages.Dinosaurs.IndexModel
+@{
+    ViewData["Title"] = "恐龍介紹";
+}
+
+<link rel="stylesheet" href="~/css/dinosaurs.css" asp-append-version="true" />
+
+<div class="dinosaur-page">
+    <h1 class="dinosaur-page-title">
+        <span>🦕</span>
+        <span data-lang-zh="恐龍介紹" data-lang-en="Meet the Dinosaurs">恐龍介紹</span>
+        <span>🦖</span>
+    </h1>
+
+    @if (Model.CurrentDinosaur is not null)
+    {
+        <partial name="_DinosaurCard" model="Model.CurrentDinosaur" />
+    }
+    else
+    {
+        <div class="alert alert-warning text-center" role="alert">
+            <h4>🦕 目前沒有恐龍資料</h4>
+            <p>請稍後再試，或檢查資料檔案是否正確設定。</p>
+        </div>
+    }
+
+    <!-- 導航按鈕 -->
+    <div class="dinosaur-navigation">
+        <a asp-page="/Index" class="nav-button nav-button-home">
+            <span class="nav-button-icon">🏠</span>
+            <span data-lang-zh="回首頁" data-lang-en="Home">回首頁</span>
+        </a>
+    </div>
+
+    <!-- 頁面資訊 -->
+    @if (Model.TotalCount > 0)
+    {
+        <div class="text-center mt-3">
+            <small class="text-muted">
+                第 @(Model.CurrentIndex + 1) / @Model.TotalCount 隻恐龍
+            </small>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="~/js/dinosaurs.js" asp-append-version="true"></script>
+}

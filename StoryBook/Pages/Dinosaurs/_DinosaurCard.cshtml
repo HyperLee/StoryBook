@@ -1,0 +1,69 @@
+@model StoryBook.Models.Dinosaur
+
+<div class="dinosaur-card" data-dinosaur-id="@Model.Id">
+    <!-- 恐龍圖片 -->
+    <div class="dinosaur-image-container">
+        <img src="@Model.Images.Main" 
+             alt="@Model.Name.Zh" 
+             class="dinosaur-image"
+             onerror="this.onerror=null; this.src='/images/placeholder.svg';"
+             loading="lazy" />
+    </div>
+
+    <!-- 恐龍資訊 -->
+    <div class="dinosaur-info">
+        <!-- 名稱 -->
+        <h2 class="dinosaur-name" data-lang-zh="@Model.Name.Zh" data-lang-en="@Model.Name.En">
+            @Model.Name.Zh
+        </h2>
+        <p class="dinosaur-name-en">@Model.Name.En</p>
+
+        <!-- 屬性標籤 -->
+        <div class="dinosaur-attributes">
+            <!-- 生活時期 -->
+            <span class="dinosaur-attribute attribute-period">
+                <span>🕐</span>
+                <span data-lang-zh="@Model.Period.Zh" data-lang-en="@Model.Period.En">
+                    @Model.Period.Zh
+                </span>
+            </span>
+
+            <!-- 食性 -->
+            @{
+                var isCarnivore = Model.Diet.En.Contains("Carnivore", StringComparison.OrdinalIgnoreCase);
+                var dietClass = isCarnivore ? "attribute-diet carnivore" : "attribute-diet";
+                var dietIcon = isCarnivore ? "🍖" : "🌿";
+            }
+            <span class="dinosaur-attribute @dietClass">
+                <span>@dietIcon</span>
+                <span data-lang-zh="@Model.Diet.Zh" data-lang-en="@Model.Diet.En">
+                    @Model.Diet.Zh
+                </span>
+            </span>
+
+            <!-- 發現地點 -->
+            <span class="dinosaur-attribute attribute-location">
+                <span>📍</span>
+                <span data-lang-zh="@Model.Location.Zh" data-lang-en="@Model.Location.En">
+                    @Model.Location.Zh
+                </span>
+            </span>
+        </div>
+
+        <!-- 體型描述（如果有） -->
+        @if (Model.Size is not null)
+        {
+            <p class="dinosaur-size text-muted mb-3">
+                <strong>📏 體型：</strong>
+                <span data-lang-zh="@Model.Size.Zh" data-lang-en="@Model.Size.En">
+                    @Model.Size.Zh
+                </span>
+            </p>
+        }
+
+        <!-- 介紹文字 -->
+        <div class="dinosaur-description" data-lang-zh="@Model.Description.Zh" data-lang-en="@Model.Description.En">
+            @Model.Description.Zh
+        </div>
+    </div>
+</div>

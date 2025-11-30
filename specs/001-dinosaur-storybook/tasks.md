@@ -26,14 +26,14 @@
 
 **Purpose**: 專案基礎設定和結構建立
 
-- [ ] T001 建立資料模型目錄結構於 `StoryBook/Models/`
-- [ ] T002 建立服務層目錄結構於 `StoryBook/Services/`
-- [ ] T003 建立恐龍頁面目錄於 `StoryBook/Pages/Dinosaurs/`
-- [ ] T004 建立靜態資源目錄於 `StoryBook/wwwroot/data/` 和 `StoryBook/wwwroot/images/dinosaurs/`
-- [ ] T005 安裝 Serilog 相依套件並設定 `StoryBook/StoryBook.csproj`
-- [ ] T006 設定 Serilog 日誌於 `StoryBook/Program.cs`（Console + File Sink）
-- [ ] T007 建立恐龍專用 CSS 檔案於 `StoryBook/wwwroot/css/dinosaurs.css`
-- [ ] T008 建立恐龍專用 JavaScript 檔案於 `StoryBook/wwwroot/js/dinosaurs.js`
+- [x] T001 建立資料模型目錄結構於 `StoryBook/Models/`
+- [x] T002 建立服務層目錄結構於 `StoryBook/Services/`
+- [x] T003 建立恐龍頁面目錄於 `StoryBook/Pages/Dinosaurs/`
+- [x] T004 建立靜態資源目錄於 `StoryBook/wwwroot/data/` 和 `StoryBook/wwwroot/images/dinosaurs/`
+- [x] T005 安裝 Serilog 相依套件並設定 `StoryBook/StoryBook.csproj`
+- [x] T006 設定 Serilog 日誌於 `StoryBook/Program.cs`（Console + File Sink）
+- [x] T007 建立恐龍專用 CSS 檔案於 `StoryBook/wwwroot/css/dinosaurs.css`
+- [x] T008 建立恐龍專用 JavaScript 檔案於 `StoryBook/wwwroot/js/dinosaurs.js`
 
 ---
 
@@ -43,18 +43,18 @@
 
 **⚠️ 重要**: 此階段未完成前，不得開始任何使用者故事
 
-- [ ] T009 建立 `LocalizedText` 模型於 `StoryBook/Models/LocalizedText.cs`
-- [ ] T010 建立 `DinosaurImages` 模型於 `StoryBook/Models/DinosaurImages.cs`
-- [ ] T011 建立 `Dinosaur` 模型於 `StoryBook/Models/Dinosaur.cs`
-- [ ] T012 建立 `DinosaurData` 模型於 `StoryBook/Models/DinosaurData.cs`
-- [ ] T013 建立 `IJsonDataService` 介面於 `StoryBook/Services/IJsonDataService.cs`
-- [ ] T014 實作 `JsonDataService` 服務於 `StoryBook/Services/JsonDataService.cs`
-- [ ] T015 建立 `IDinosaurService` 介面於 `StoryBook/Services/IDinosaurService.cs`
-- [ ] T016 實作 `DinosaurService` 服務於 `StoryBook/Services/DinosaurService.cs`
-- [ ] T017 在 `StoryBook/Program.cs` 註冊服務（Singleton）
-- [ ] T018 建立恐龍範例資料檔案於 `StoryBook/wwwroot/data/dinosaurs.json`（至少 5 隻恐龍）
-- [ ] T019 建立預設佔位圖片於 `StoryBook/wwwroot/images/placeholder.png`
-- [ ] T020 設定 JSON 路徑於 `StoryBook/appsettings.json` 和 `StoryBook/appsettings.Development.json`
+- [x] T009 建立 `LocalizedText` 模型於 `StoryBook/Models/LocalizedText.cs`
+- [x] T010 建立 `DinosaurImages` 模型於 `StoryBook/Models/DinosaurImages.cs`
+- [x] T011 建立 `Dinosaur` 模型於 `StoryBook/Models/Dinosaur.cs`
+- [x] T012 建立 `DinosaurData` 模型於 `StoryBook/Models/DinosaurData.cs`
+- [x] T013 建立 `IJsonDataService` 介面於 `StoryBook/Services/IJsonDataService.cs`
+- [x] T014 實作 `JsonDataService` 服務於 `StoryBook/Services/JsonDataService.cs`
+- [x] T015 建立 `IDinosaurService` 介面於 `StoryBook/Services/IDinosaurService.cs`
+- [x] T016 實作 `DinosaurService` 服務於 `StoryBook/Services/DinosaurService.cs`
+- [x] T017 在 `StoryBook/Program.cs` 註冊服務（Singleton）
+- [x] T018 建立恐龍範例資料檔案於 `StoryBook/wwwroot/data/dinosaurs.json`（至少 5 隻恐龍）
+- [x] T019 建立預設佔位圖片於 `StoryBook/wwwroot/images/placeholder.svg`
+- [x] T020 設定 JSON 路徑於 `StoryBook/appsettings.json` 和 `StoryBook/appsettings.Development.json`
 
 **Checkpoint**: 基礎建設完成 - 使用者故事實作可以開始
 
@@ -68,12 +68,12 @@
 
 ### Implementation for User Story 1
 
-- [ ] T021 [US1] 更新首頁按鈕於 `StoryBook/Pages/Index.cshtml`，新增「恐龍介紹」按鈕
-- [ ] T022 [US1] 建立恐龍介紹頁面模型於 `StoryBook/Pages/Dinosaurs/Index.cshtml.cs`
-- [ ] T023 [US1] 建立恐龍介紹頁面視圖於 `StoryBook/Pages/Dinosaurs/Index.cshtml`
-- [ ] T024 [US1] 建立恐龍卡片部分視圖於 `StoryBook/Pages/Dinosaurs/_DinosaurCard.cshtml`
-- [ ] T025 [US1] 實作恐龍卡片樣式於 `StoryBook/wwwroot/css/dinosaurs.css`（可愛繪本風格）
-- [ ] T026 [US1] 新增恐龍圖片資源於 `StoryBook/wwwroot/images/dinosaurs/`（至少第一隻恐龍圖片）
+- [x] T021 [US1] 更新首頁按鈕於 `StoryBook/Pages/Index.cshtml`，新增「恐龍介紹」按鈕
+- [x] T022 [US1] 建立恐龍介紹頁面模型於 `StoryBook/Pages/Dinosaurs/Index.cshtml.cs`
+- [x] T023 [US1] 建立恐龍介紹頁面視圖於 `StoryBook/Pages/Dinosaurs/Index.cshtml`
+- [x] T024 [US1] 建立恐龍卡片部分視圖於 `StoryBook/Pages/Dinosaurs/_DinosaurCard.cshtml`
+- [x] T025 [US1] 實作恐龍卡片樣式於 `StoryBook/wwwroot/css/dinosaurs.css`（可愛繪本風格）
+- [x] T026 [US1] 新增恐龍圖片資源於 `StoryBook/wwwroot/images/dinosaurs/`（使用 SVG 佔位圖）
 
 **Checkpoint**: 此時 User Story 1 應可完全運作並獨立測試
 
