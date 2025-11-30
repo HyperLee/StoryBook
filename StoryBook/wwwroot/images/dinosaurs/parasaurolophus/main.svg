@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8F5E9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C8E6C9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bgGrad)"/>
+  <circle cx="320" cy="80" r="40" fill="#FFD54F" opacity="0.8"/>
+  
+  <!-- 副櫛龍 -->
+  <g transform="translate(60, 80)">
+    <!-- 尾巴 -->
+    <path d="M60 160 Q20 150 0 170 Q30 165 65 160" fill="#26A69A"/>
+    
+    <!-- 身體 -->
+    <ellipse cx="120" cy="160" rx="70" ry="50" fill="#26A69A"/>
+    
+    <!-- 後腿 -->
+    <ellipse cx="80" cy="220" rx="18" ry="30" fill="#00897B"/>
+    <ellipse cx="140" cy="225" rx="16" ry="25" fill="#00897B"/>
+    
+    <!-- 前腿 -->
+    <ellipse cx="170" cy="200" rx="12" ry="20" fill="#00897B"/>
+    
+    <!-- 脖子 -->
+    <path d="M180 140 Q200 100 220 60" stroke="#26A69A" stroke-width="30" fill="none"/>
+    
+    <!-- 頭部 -->
+    <ellipse cx="230" cy="50" rx="35" ry="30" fill="#26A69A"/>
+    
+    <!-- 頭冠（管狀） -->
+    <path d="M245 35 Q280 10 260 -20 Q250 0 235 30" fill="#FF7043"/>
+    
+    <!-- 眼睛 -->
+    <circle cx="220" cy="45" r="14" fill="white"/>
+    <circle cx="222" cy="43" r="7" fill="#333"/>
+    <circle cx="224" cy="41" r="3" fill="white"/>
+    
+    <!-- 嘴巴（鴨嘴狀） -->
+    <path d="M250 55 Q280 60 275 70 Q260 65 250 60" fill="#4DB6AC"/>
+  </g>
+  
+  <text x="200" y="370" text-anchor="middle" font-size="24" font-weight="bold" fill="#00695C">副櫛龍 Parasaurolophus</text>
+</svg>

@@ -20,7 +20,7 @@
 
 ## 🦖 收錄恐龍
 
-目前收錄了 5 種經典恐龍：
+目前收錄了 15 種經典恐龍：
 
 | 恐龍 | 英文名 | 時期 | 食性 |
 |------|--------|------|------|
@@ -29,6 +29,16 @@
 | 🦕 劍龍 | Stegosaurus | 侏羅紀晚期 | 草食性 |
 | 🦕 腕龍 | Brachiosaurus | 侏羅紀晚期 | 草食性 |
 | 🦖 迅猛龍 | Velociraptor | 白堊紀晚期 | 肉食性 |
+| 🦅 無齒翼龍 | Pteranodon | 白堊紀晚期 | 肉食性（魚類） |
+| 🛡️ 甲龍 | Ankylosaurus | 白堊紀晚期 | 草食性 |
+| 🎺 副櫛龍 | Parasaurolophus | 白堊紀晚期 | 草食性 |
+| ⛵ 棘龍 | Spinosaurus | 白堊紀中期 | 肉食性 |
+| 🦕 梁龍 | Diplodocus | 侏羅紀晚期 | 草食性 |
+| 🦖 異特龍 | Allosaurus | 侏羅紀晚期 | 肉食性 |
+| 👆 禽龍 | Iguanodon | 白堊紀早期 | 草食性 |
+| 🤕 厚頭龍 | Pachycephalosaurus | 白堊紀晚期 | 草食性 |
+| 🐂 牛龍 | Carnotaurus | 白堊紀晚期 | 肉食性 |
+| 🌊 滄龍 | Mosasaurus | 白堊紀晚期 | 肉食性 |
 
 ## 🚀 快速開始
 
