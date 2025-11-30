@@ -7,9 +7,8 @@
 
 **Organization**: 任務依 User Story 分組，以支援獨立實作與測試。
 
-## Format: `[ID] [P?] [Story] Description`
+## Format: `[ID] [Story] Description`
 
-- **[P]**: 可平行執行（不同檔案、無相依性）
 - **[Story]**: 任務所屬的 User Story（如 US1, US2, US3）
 - 描述中包含精確的檔案路徑
 
@@ -20,9 +19,9 @@
 **Purpose**: 基礎設定，建立專案結構
 
 - [X] T001 確認 .NET 8.0 SDK 已安裝並切換至 `002-aquarium-storybook` 分支
-- [X] T002 [P] 建立水族館圖片目錄 `StoryBook/wwwroot/images/aquarium/`
-- [X] T003 [P] 建立水族館 CSS 檔案 `StoryBook/wwwroot/css/aquarium.css`（空白檔案）
-- [X] T004 [P] 建立水族館 JS 檔案 `StoryBook/wwwroot/js/aquarium.js`（空白檔案）
+- [X] T002 建立水族館圖片目錄 `StoryBook/wwwroot/images/aquarium/`
+- [X] T003 建立水族館 CSS 檔案 `StoryBook/wwwroot/css/aquarium.css`（空白檔案）
+- [X] T004 建立水族館 JS 檔案 `StoryBook/wwwroot/js/aquarium.js`（空白檔案）
 
 ---
 
@@ -34,24 +33,24 @@
 
 ### Models（資料模型）
 
-- [ ] T005 [P] 建立 `HabitatZone` enum 及擴充方法於 `StoryBook/Models/HabitatZone.cs`
-- [ ] T006 [P] 建立 `AquariumAnimalImages` 模型於 `StoryBook/Models/AquariumAnimalImages.cs`
-- [ ] T007 [P] 建立 `AquariumAnimal` 模型於 `StoryBook/Models/AquariumAnimal.cs`
-- [ ] T008 [P] 建立 `AquariumAnimalData` 資料容器於 `StoryBook/Models/AquariumAnimalData.cs`
-- [ ] T009 [P] 建立 `AquariumAnimalValidator` 驗證器於 `StoryBook/Models/AquariumAnimalValidator.cs`
+- [X] T005 建立 `HabitatZone` enum 及擴充方法於 `StoryBook/Models/HabitatZone.cs`
+- [X] T006 建立 `AquariumAnimalImages` 模型於 `StoryBook/Models/AquariumAnimalImages.cs`
+- [X] T007 建立 `AquariumAnimal` 模型於 `StoryBook/Models/AquariumAnimal.cs`
+- [X] T008 建立 `AquariumAnimalData` 資料容器於 `StoryBook/Models/AquariumAnimalData.cs`
+- [X] T009 建立 `AquariumAnimalValidator` 驗證器於 `StoryBook/Models/AquariumAnimalValidator.cs`
 
 ### Services（服務層）
 
-- [ ] T010 建立 `IAquariumService` 介面於 `StoryBook/Services/IAquariumService.cs`
-- [ ] T011 擴充 `IJsonDataService` 介面，新增 `LoadAquariumAnimalsAsync()` 方法於 `StoryBook/Services/IJsonDataService.cs`
-- [ ] T012 擴充 `JsonDataService`，實作 `LoadAquariumAnimalsAsync()` 方法於 `StoryBook/Services/JsonDataService.cs`
-- [ ] T013 建立 `AquariumService` 實作於 `StoryBook/Services/AquariumService.cs`
-- [ ] T014 在 `Program.cs` 註冊 `IAquariumService` 服務（Singleton）
+- [X] T010 建立 `IAquariumService` 介面於 `StoryBook/Services/IAquariumService.cs`
+- [X] T011 擴充 `IJsonDataService` 介面，新增 `LoadAquariumAnimalsAsync()` 方法於 `StoryBook/Services/IJsonDataService.cs`
+- [X] T012 擴充 `JsonDataService`，實作 `LoadAquariumAnimalsAsync()` 方法於 `StoryBook/Services/JsonDataService.cs`
+- [X] T013 建立 `AquariumService` 實作於 `StoryBook/Services/AquariumService.cs`
+- [X] T014 在 `Program.cs` 註冊 `IAquariumService` 服務（Singleton）
 
 ### Data（資料）
 
-- [ ] T015 建立水族館動物 JSON 資料檔案（15 隻動物）於 `StoryBook/wwwroot/data/aquarium.json`
-- [ ] T016 [P] 準備 15 隻水族館動物的圖片檔案（placeholder）於 `StoryBook/wwwroot/images/aquarium/` 各子目錄
+- [X] T015 建立水族館動物 JSON 資料檔案（15 隻動物）於 `StoryBook/wwwroot/data/aquarium.json`
+- [X] T016 準備 15 隻水族館動物的圖片檔案（placeholder）於 `StoryBook/wwwroot/images/aquarium/` 各子目錄
 
 **Checkpoint**: 基礎建設完成，可開始 User Story 實作
 
@@ -139,8 +138,8 @@
 
 ### Implementation for User Story 5
 
-- [ ] T038 [P] [US5] 建立 Lightbox Modal HTML 結構於 `StoryBook/Pages/Aquarium/Index.cshtml`
-- [ ] T039 [P] [US5] 實作 Lightbox 樣式（半透明背景、置中大圖、關閉按鈕）於 `StoryBook/wwwroot/css/aquarium.css`
+- [ ] T038 [US5] 建立 Lightbox Modal HTML 結構於 `StoryBook/Pages/Aquarium/Index.cshtml`
+- [ ] T039 [US5] 實作 Lightbox 樣式（半透明背景、置中大圖、關閉按鈕）於 `StoryBook/wwwroot/css/aquarium.css`
 - [ ] T040 [US5] 實作 Lightbox 開啟/關閉 JavaScript 邏輯於 `StoryBook/wwwroot/js/aquarium.js`
 - [ ] T041 [US5] 實作點擊圖片外區域或 ESC 鍵關閉 Lightbox
 
@@ -185,11 +184,11 @@
 
 **Purpose**: 跨功能優化與品質確保
 
-- [ ] T049 [P] 實作圖片載入失敗時的預設佔位圖片顯示
-- [ ] T050 [P] 實作資料載入失敗時的友善錯誤訊息與重新載入按鈕
-- [ ] T051 [P] 新增 Serilog 結構化日誌記錄（服務層操作、錯誤處理）
-- [ ] T052 [P] 優化頁面載入效能（確保 < 3 秒）
-- [ ] T053 [P] 執行 quickstart.md 驗證（確認開發流程文件正確）
+- [ ] T049 實作圖片載入失敗時的預設佔位圖片顯示
+- [ ] T050 實作資料載入失敗時的友善錯誤訊息與重新載入按鈕
+- [ ] T051 新增 Serilog 結構化日誌記錄（服務層操作、錯誤處理）
+- [ ] T052 優化頁面載入效能（確保 < 3 秒）
+- [ ] T053 執行 quickstart.md 驗證（確認開發流程文件正確）
 - [ ] T054 程式碼清理與 XML 文件註解完善
 - [ ] T055 最終整合測試（所有 User Story 功能驗證）
 
@@ -281,7 +280,7 @@ US6 多語言切換
 
 ## Notes
 
-- [P] 任務 = 不同檔案、無相依性，可平行執行
+- 任務 = 不同檔案、無相依性，可平行執行
 - [Story] 標籤 = 追蹤任務所屬的 User Story
 - 每個 User Story 應可獨立完成與測試
 - 每個任務或邏輯群組完成後提交

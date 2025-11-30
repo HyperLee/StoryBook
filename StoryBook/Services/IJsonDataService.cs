@@ -14,6 +14,12 @@ public interface IJsonDataService
     Task<DinosaurData> LoadDinosaursAsync();
 
     /// <summary>
+    /// 載入水族館動物資料
+    /// </summary>
+    /// <returns>水族館動物資料容器</returns>
+    Task<AquariumAnimalData> LoadAquariumAnimalsAsync();
+
+    /// <summary>
     /// 清除快取，強制下次載入時重新讀取檔案
     /// </summary>
     Task ClearCacheAsync();
