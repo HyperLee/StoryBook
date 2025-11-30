@@ -64,13 +64,13 @@
 
 ### Implementation for User Story 1
 
-- [ ] T017 [US1] 建立水族館頁面目錄 `StoryBook/Pages/Aquarium/`
-- [ ] T018 [US1] 建立水族館主頁 PageModel 於 `StoryBook/Pages/Aquarium/Index.cshtml.cs`
-- [ ] T019 [US1] 建立水族館主頁 View 於 `StoryBook/Pages/Aquarium/Index.cshtml`（單頁顯示一隻動物）
-- [ ] T019.5 [US1] 實作水族館封面區塊（封面圖片 + 簡短介紹）於 `StoryBook/Pages/Aquarium/Index.cshtml`（FR-002）
-- [ ] T020 [US1] 修改首頁 `StoryBook/Pages/Index.cshtml` 新增「水族館動物介紹」入口按鈕
-- [ ] T021 [US1] 在共用版面 `StoryBook/Pages/Shared/_Layout.cshtml` 新增水族館導航連結
-- [ ] T022 [US1] 實作水族館基本樣式（海洋風格色系）於 `StoryBook/wwwroot/css/aquarium.css`
+- [X] T017 [US1] 建立水族館頁面目錄 `StoryBook/Pages/Aquarium/`
+- [X] T018 [US1] 建立水族館主頁 PageModel 於 `StoryBook/Pages/Aquarium/Index.cshtml.cs`
+- [X] T019 [US1] 建立水族館主頁 View 於 `StoryBook/Pages/Aquarium/Index.cshtml`（單頁顯示一隻動物）
+- [X] T019.5 [US1] 實作水族館封面區塊（封面圖片 + 簡短介紹）於 `StoryBook/Pages/Aquarium/Index.cshtml`（FR-002）
+- [X] T020 [US1] 修改首頁 `StoryBook/Pages/Index.cshtml` 新增「水族館動物介紹」入口按鈕
+- [X] T021 [US1] 在共用版面 `StoryBook/Pages/Shared/_Layout.cshtml` 新增水族館導航連結
+- [X] T022 [US1] 實作水族館基本樣式（海洋風格色系）於 `StoryBook/wwwroot/css/aquarium.css`
 
 **Checkpoint**: User Story 1 完成 - 可從首頁進入水族館，看到第一隻動物
 

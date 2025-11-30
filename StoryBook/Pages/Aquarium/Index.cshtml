@@ -1,0 +1,239 @@
+@page "{index:int?}"
+@model StoryBook.Pages.Aquarium.IndexModel
+@{
+    ViewData["Title"] = "水族館動物介紹";
+    var prevButtonClass = Model.HasPrevious ? "nav-button nav-button-prev" : "nav-button nav-button-prev disabled";
+    var nextButtonClass = Model.HasNext ? "nav-button nav-button-next" : "nav-button nav-button-next disabled";
+}
+
+<link rel="stylesheet" href="~/css/aquarium.css" asp-append-version="true" />
+
+<div class="aquarium-page">
+    @if (Model.IsCoverPage)
+    {
+        <!-- 封面頁 -->
+        <div class="aquarium-cover">
+            <div class="cover-decoration">
+                <span class="bubble bubble-1">🫧</span>
+                <span class="bubble bubble-2">🫧</span>
+                <span class="bubble bubble-3">🫧</span>
+            </div>
+            
+            <div class="cover-content">
+                <div class="cover-emoji">🐠</div>
+                <h1 class="cover-title" data-lang-zh="水族館動物介紹" data-lang-en="Aquarium Animals">
+                    水族館動物介紹
+                </h1>
+                <p class="cover-subtitle">
+                    <span data-lang-zh="歡迎來到神奇的海底世界！" data-lang-en="Welcome to the magical underwater world!">
+                        歡迎來到神奇的海底世界！
+                    </span>
+                    <br>
+                    <span data-lang-zh="一起來認識這些可愛的海洋朋友吧！" data-lang-en="Let's meet these adorable ocean friends!">
+                        一起來認識這些可愛的海洋朋友吧！
+                    </span>
+                </p>
+                
+                @if (Model.CanEnterFromCover)
+                {
+                    <a asp-page="/Aquarium/Index" asp-route-index="0" class="btn-enter-aquarium">
+                        <span class="btn-icon">🐋</span>
+                        <span data-lang-zh="開始探索" data-lang-en="Start Exploring">開始探索</span>
+                    </a>
+                }
+                
+                <div class="cover-stats">
+                    <span data-lang-zh="共 @Model.TotalCount 種海洋動物等你來認識" data-lang-en="@Model.TotalCount ocean animals waiting for you">
+                        共 @Model.TotalCount 種海洋動物等你來認識
+                    </span>
+                </div>
+            </div>
+            
+            <div class="cover-animals">
+                <span class="animal-icon">🐙</span>
+                <span class="animal-icon">🦈</span>
+                <span class="animal-icon">🐢</span>
+                <span class="animal-icon">🦑</span>
+                <span class="animal-icon">🐡</span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- 動物內容頁 -->
+        <h1 class="aquarium-page-title">
+            <span>🐠</span>
+            <span data-lang-zh="水族館動物介紹" data-lang-en="Aquarium Animals">水族館動物介紹</span>
+            <span>🐟</span>
+        </h1>
+
+        @if (Model.CurrentAnimal is not null)
+        {
+            <div class="aquarium-animal-card" data-animal-id="@Model.CurrentAnimal.Id">
+                <!-- 動物圖片 -->
+                <div class="animal-image-container">
+                    <img src="@Model.CurrentAnimal.Images.Main" 
+                         alt="@Model.CurrentAnimal.Name.Zh" 
+                         class="animal-image"
+                         onerror="this.onerror=null; this.src='/images/placeholder.svg';"
+                         loading="lazy" />
+                </div>
+
+                <!-- 動物資訊 -->
+                <div class="animal-info">
+                    <!-- 名稱 -->
+                    <h2 class="animal-name" data-lang-zh="@Model.CurrentAnimal.Name.Zh" data-lang-en="@Model.CurrentAnimal.Name.En">
+                        @Model.CurrentAnimal.Name.Zh
+                    </h2>
+                    <p class="animal-name-en">@Model.CurrentAnimal.Name.En</p>
+
+                    <!-- 屬性標籤 -->
+                    <div class="animal-attributes">
+                        <!-- 生活區域 -->
+                        @{
+                            var zoneName = Model.CurrentAnimal.HabitatZone.GetDisplayName();
+                            var zoneCss = Model.CurrentAnimal.HabitatZone.GetCssClass();
+                        }
+                        <span class="animal-attribute @zoneCss">
+                            <span>🌊</span>
+                            <span data-lang-zh="@zoneName.Zh" data-lang-en="@zoneName.En">
+                                @zoneName.Zh
+                            </span>
+                        </span>
+
+                        <!-- 食性 -->
+                        @{
+                            var isCarnivore = Model.CurrentAnimal.Diet.En.Contains("Carnivore", StringComparison.OrdinalIgnoreCase);
+                            var dietClass = isCarnivore ? "attribute-diet carnivore" : "attribute-diet";
+                            var dietIcon = isCarnivore ? "🍖" : "🌿";
+                        }
+                        <span class="animal-attribute @dietClass">
+                            <span>@dietIcon</span>
+                            <span data-lang-zh="@Model.CurrentAnimal.Diet.Zh" data-lang-en="@Model.CurrentAnimal.Diet.En">
+                                @Model.CurrentAnimal.Diet.Zh
+                            </span>
+                        </span>
+
+                        <!-- 分佈地點 -->
+                        <span class="animal-attribute attribute-location">
+                            <span>📍</span>
+                            <span data-lang-zh="@Model.CurrentAnimal.Location.Zh" data-lang-en="@Model.CurrentAnimal.Location.En">
+                                @Model.CurrentAnimal.Location.Zh
+                            </span>
+                        </span>
+                    </div>
+
+                    <!-- 生活環境 -->
+                    <p class="animal-habitat">
+                        <strong>🏠 
+                            <span data-lang-zh="生活環境" data-lang-en="Habitat">生活環境</span>：
+                        </strong>
+                        <span data-lang-zh="@Model.CurrentAnimal.Habitat.Zh" data-lang-en="@Model.CurrentAnimal.Habitat.En">
+                            @Model.CurrentAnimal.Habitat.Zh
+                        </span>
+                    </p>
+
+                    <!-- 體型描述（如果有） -->
+                    @if (Model.CurrentAnimal.Size is not null)
+                    {
+                        <p class="animal-size">
+                            <strong>📏 
+                                <span data-lang-zh="體型" data-lang-en="Size">體型</span>：
+                            </strong>
+                            <span data-lang-zh="@Model.CurrentAnimal.Size.Zh" data-lang-en="@Model.CurrentAnimal.Size.En">
+                                @Model.CurrentAnimal.Size.Zh
+                            </span>
+                        </p>
+                    }
+
+                    <!-- 介紹文字 -->
+                    <div class="animal-description" data-lang-zh="@Model.CurrentAnimal.Description.Zh" data-lang-en="@Model.CurrentAnimal.Description.En">
+                        @Model.CurrentAnimal.Description.Zh
+                    </div>
+
+                    <!-- 動物小故事區塊 -->
+                    @if (Model.CurrentAnimal.Story is not null)
+                    {
+                        <div class="animal-story-section">
+                            <h3 class="story-title">
+                                <span class="story-icon">📖</span>
+                                <span data-lang-zh="小故事" data-lang-en="Story Time">小故事</span>
+                            </h3>
+                            <div class="story-content" data-lang-zh="@Model.CurrentAnimal.Story.Zh" data-lang-en="@Model.CurrentAnimal.Story.En">
+                                @Model.CurrentAnimal.Story.Zh
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning text-center" role="alert">
+                <h4>🐠 目前沒有動物資料</h4>
+                <p data-lang-zh="請稍後再試，或檢查資料檔案是否正確設定。" data-lang-en="Please try again later or check if the data file is set up correctly.">
+                    請稍後再試，或檢查資料檔案是否正確設定。
+                </p>
+            </div>
+        }
+
+        <!-- 換頁和導航按鈕 -->
+        <div class="aquarium-navigation">
+            <!-- 上一頁按鈕 -->
+            @if (Model.HasPrevious)
+            {
+                <a asp-page="/Aquarium/Index" asp-route-index="@(Model.CurrentIndex - 1)" class="@prevButtonClass">
+                    <span class="nav-button-icon">⬅️</span>
+                    <span data-lang-zh="上一頁" data-lang-en="Previous">上一頁</span>
+                </a>
+            }
+            else
+            {
+                <span class="@prevButtonClass" aria-disabled="true">
+                    <span class="nav-button-icon">⬅️</span>
+                    <span data-lang-zh="上一頁" data-lang-en="Previous">上一頁</span>
+                </span>
+            }
+
+            <!-- 回首頁按鈕 -->
+            <a asp-page="/Index" class="nav-button nav-button-home">
+                <span class="nav-button-icon">🏠</span>
+                <span data-lang-zh="回首頁" data-lang-en="Home">回首頁</span>
+            </a>
+
+            <!-- 下一頁按鈕 -->
+            @if (Model.HasNext)
+            {
+                <a asp-page="/Aquarium/Index" asp-route-index="@(Model.CurrentIndex + 1)" class="@nextButtonClass">
+                    <span data-lang-zh="下一頁" data-lang-en="Next">下一頁</span>
+                    <span class="nav-button-icon">➡️</span>
+                </a>
+            }
+            else
+            {
+                <span class="@nextButtonClass" aria-disabled="true">
+                    <span data-lang-zh="下一頁" data-lang-en="Next">下一頁</span>
+                    <span class="nav-button-icon">➡️</span>
+                </span>
+            }
+        </div>
+
+        <!-- 頁面資訊 -->
+        @if (Model.TotalCount > 0)
+        {
+            <div class="text-center mt-3">
+                <small class="text-muted aquarium-page-info">
+                    <span data-lang-zh="第" data-lang-en="">第</span>
+                    <span class="page-number">@(Model.CurrentIndex + 1)</span>
+                    <span data-lang-zh="頁，共" data-lang-en="of"> 頁，共 </span>
+                    <span class="total-pages">@Model.TotalCount</span>
+                    <span data-lang-zh="頁" data-lang-en="pages"> 頁</span>
+                </small>
+            </div>
+        }
+    }
+</div>
+
+@section Scripts {
+    <script src="~/js/aquarium.js" asp-append-version="true"></script>
+}
