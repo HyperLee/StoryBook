@@ -119,9 +119,9 @@
 
 ### Implementation for User Story 4
 
-- [ ] T033 [US4] 建立圖片大圖 Modal 結構於 `StoryBook/Pages/Dinosaurs/Index.cshtml`
-- [ ] T034 [US4] 實作圖片大圖 Modal 樣式於 `StoryBook/wwwroot/css/dinosaurs.css`
-- [ ] T035 [US4] 實作圖片大圖開啟/關閉 JavaScript 於 `StoryBook/wwwroot/js/dinosaurs.js`
+- [x] T033 [US4] 建立圖片大圖 Modal 結構於 `StoryBook/Pages/Dinosaurs/Index.cshtml`
+- [x] T034 [US4] 實作圖片大圖 Modal 樣式於 `StoryBook/wwwroot/css/dinosaurs.css`
+- [x] T035 [US4] 實作圖片大圖開啟/關閉 JavaScript 於 `StoryBook/wwwroot/js/dinosaurs.js`
 
 **Checkpoint**: 此時 User Stories 1-4 應可獨立運作
 

@@ -26,6 +26,7 @@
         initImageErrorHandling();
         initNavigationButtons();
         initKeyboardNavigation();
+        initImageModal();
     });
 
     /**
@@ -111,6 +112,102 @@
     }
 
     // ==========================================================================
+    // 圖片大圖 Modal 功能
+    // ==========================================================================
+
+    /**
+     * 初始化圖片大圖 Modal
+     */
+    function initImageModal() {
+        const modal = document.getElementById('imageModal');
+        if (!modal) {
+            return;
+        }
+
+        // 為所有恐龍圖片綁定點擊事件
+        const dinosaurImages = document.querySelectorAll('.dinosaur-image');
+        dinosaurImages.forEach(function (img) {
+            img.addEventListener('click', function () {
+                openImageModal(img.src, img.alt);
+            });
+            // 支援鍵盤操作（無障礙功能）
+            img.setAttribute('tabindex', '0');
+            img.setAttribute('role', 'button');
+            img.setAttribute('aria-label', '點擊查看大圖：' + img.alt);
+            img.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openImageModal(img.src, img.alt);
+                }
+            });
+        });
+
+        // 為關閉按鈕和遮罩層綁定關閉事件
+        const closeElements = modal.querySelectorAll('[data-action="close-modal"]');
+        closeElements.forEach(function (element) {
+            element.addEventListener('click', closeImageModal);
+        });
+
+        // ESC 鍵關閉 Modal
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && modal.classList.contains('active')) {
+                closeImageModal();
+            }
+        });
+    }
+
+    /**
+     * 開啟圖片大圖 Modal
+     * @param {string} imageSrc - 圖片來源
+     * @param {string} imageAlt - 圖片替代文字
+     */
+    function openImageModal(imageSrc, imageAlt) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalImageCaption');
+
+        if (!modal || !modalImage) {
+            return;
+        }
+
+        // 設定圖片和說明文字
+        modalImage.src = imageSrc;
+        modalImage.alt = imageAlt;
+        if (modalCaption) {
+            modalCaption.textContent = imageAlt;
+        }
+
+        // 顯示 Modal
+        modal.classList.add('active');
+        document.body.classList.add('modal-open');
+
+        // 將焦點移到關閉按鈕（無障礙功能）
+        const closeButton = modal.querySelector('.image-modal-close');
+        if (closeButton) {
+            closeButton.focus();
+        }
+    }
+
+    /**
+     * 關閉圖片大圖 Modal
+     */
+    function closeImageModal() {
+        const modal = document.getElementById('imageModal');
+        if (!modal) {
+            return;
+        }
+
+        modal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+
+        // 將焦點返回到圖片（無障礙功能）
+        const dinosaurImage = document.querySelector('.dinosaur-image');
+        if (dinosaurImage) {
+            dinosaurImage.focus();
+        }
+    }
+
+    // ==========================================================================
     // 換頁功能
     // ==========================================================================
 
@@ -176,7 +273,9 @@
         handleImageError: handleImageError,
         navigateToIndex: navigateToIndex,
         navigateToPrevious: navigateToPrevious,
-        navigateToNext: navigateToNext
+        navigateToNext: navigateToNext,
+        openImageModal: openImageModal,
+        closeImageModal: closeImageModal
     };
 
 })();
