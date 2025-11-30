@@ -1003,3 +1003,190 @@
         gap: 0.5rem;
     }
 }
+
+/* ==========================================================================
+   圖片大圖 Lightbox（User Story 5）
+   T038: Lightbox Modal HTML 結構樣式
+   T039: Lightbox 樣式（半透明背景、置中大圖、關閉按鈕）
+   ========================================================================== */
+
+/* Lightbox 容器 */
+.aquarium-lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.aquarium-lightbox.active {
+    display: flex;
+}
+
+/* Lightbox 半透明背景遮罩 */
+.lightbox-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1, 87, 155, 0.9); /* 深海藍色調 */
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+/* Lightbox 內容容器 */
+.lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: lightboxFadeIn 0.3s ease;
+}
+
+@keyframes lightboxFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Lightbox 關閉按鈕 */
+.lightbox-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--aqua-coral) 0%, #FF7043 100%);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-close:hover {
+    background: linear-gradient(135deg, #FF7043 0%, #FF5722 100%);
+    transform: scale(1.1) rotate(90deg);
+}
+
+.lightbox-close:focus {
+    outline: 3px solid var(--aqua-accent);
+    outline-offset: 3px;
+}
+
+/* Lightbox 圖片 */
+.lightbox-img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+    background-color: white;
+}
+
+/* Lightbox 圖片說明文字 */
+.lightbox-caption {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(225, 245, 254, 0.95) 100%);
+    border-radius: 30px;
+    color: var(--aqua-text);
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lightbox-caption::before {
+    content: "🐠";
+    font-size: 1.2rem;
+}
+
+/* 當 Lightbox 開啟時，防止背景捲動 */
+body.lightbox-open {
+    overflow: hidden;
+}
+
+/* 讓動物圖片有可點擊的視覺提示 */
+.animal-image {
+    cursor: zoom-in;
+}
+
+.animal-image:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(41, 182, 246, 0.4);
+}
+
+.animal-image:focus {
+    outline: 3px solid var(--aqua-accent);
+    outline-offset: 3px;
+}
+
+/* Lightbox 響應式設計 */
+@media (max-width: 768px) {
+    .lightbox-close {
+        top: -45px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+    }
+
+    .lightbox-img {
+        border-radius: 15px;
+        max-height: 70vh;
+    }
+
+    .lightbox-caption {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .lightbox-content {
+        max-width: 95vw;
+    }
+
+    .lightbox-close {
+        top: -40px;
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+
+    .lightbox-img {
+        border-radius: 12px;
+        max-height: 60vh;
+    }
+
+    .lightbox-caption {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .lightbox-caption::before {
+        font-size: 1rem;
+    }
+}

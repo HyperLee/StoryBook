@@ -52,6 +52,7 @@
         initImageErrorHandling();
         initPageTransition();
         initSearch();
+        initImageLightbox();
     });
 
     /**
@@ -409,7 +410,9 @@
         navigateToPrevious: navigateToPrevious,
         navigateToNext: navigateToNext,
         searchAnimals: searchAnimals,
-        clearSearch: clearSearch
+        clearSearch: clearSearch,
+        openImageLightbox: openImageLightbox,
+        closeImageLightbox: closeImageLightbox
     };
 
     // ==========================================================================
@@ -693,6 +696,115 @@
             const placeholderZh = searchInput.getAttribute('data-placeholder-zh');
             const placeholderEn = searchInput.getAttribute('data-placeholder-en');
             searchInput.placeholder = lang === 'en' ? placeholderEn : placeholderZh;
+        }
+    }
+
+    // ==========================================================================
+    // 圖片大圖 Lightbox 功能（User Story 5）
+    // T038, T039, T040, T041
+    // ==========================================================================
+
+    /**
+     * 初始化圖片大圖 Lightbox
+     * T040: 實作 Lightbox 開啟/關閉 JavaScript 邏輯
+     */
+    function initImageLightbox() {
+        const lightbox = document.getElementById('imageLightbox');
+        if (!lightbox) {
+            return;
+        }
+
+        // 為所有動物圖片綁定點擊事件
+        const animalImages = document.querySelectorAll('.animal-image');
+        animalImages.forEach(function (img) {
+            img.addEventListener('click', function () {
+                openImageLightbox(img.src, img.alt);
+            });
+
+            // 支援鍵盤操作（無障礙功能）
+            img.setAttribute('tabindex', '0');
+            img.setAttribute('role', 'button');
+            
+            // 根據語言設定 aria-label
+            const lang = getCurrentLanguage();
+            const ariaLabelZh = '點擊查看大圖：' + img.alt;
+            const ariaLabelEn = 'Click to view larger image: ' + img.alt;
+            img.setAttribute('aria-label', lang === 'en' ? ariaLabelEn : ariaLabelZh);
+            img.setAttribute('data-aria-label-zh', ariaLabelZh);
+            img.setAttribute('data-aria-label-en', ariaLabelEn);
+
+            img.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openImageLightbox(img.src, img.alt);
+                }
+            });
+        });
+
+        // T041: 為關閉按鈕和遮罩層綁定關閉事件
+        const closeElements = lightbox.querySelectorAll('[data-action="close-lightbox"]');
+        closeElements.forEach(function (element) {
+            element.addEventListener('click', closeImageLightbox);
+        });
+
+        // T041: ESC 鍵關閉 Lightbox
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeImageLightbox();
+            }
+        });
+    }
+
+    /**
+     * 開啟圖片大圖 Lightbox
+     * T040: 實作 Lightbox 開啟邏輯
+     * @param {string} imageSrc - 圖片來源
+     * @param {string} imageAlt - 圖片替代文字
+     */
+    function openImageLightbox(imageSrc, imageAlt) {
+        const lightbox = document.getElementById('imageLightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+
+        if (!lightbox || !lightboxImage) {
+            return;
+        }
+
+        // 設定圖片和說明文字
+        lightboxImage.src = imageSrc;
+        lightboxImage.alt = imageAlt;
+        if (lightboxCaption) {
+            lightboxCaption.textContent = imageAlt;
+        }
+
+        // 顯示 Lightbox
+        lightbox.classList.add('active');
+        document.body.classList.add('lightbox-open');
+
+        // 將焦點移到關閉按鈕（無障礙功能）
+        const closeButton = lightbox.querySelector('.lightbox-close');
+        if (closeButton) {
+            closeButton.focus();
+        }
+    }
+
+    /**
+     * 關閉圖片大圖 Lightbox
+     * T040, T041: 實作 Lightbox 關閉邏輯
+     */
+    function closeImageLightbox() {
+        const lightbox = document.getElementById('imageLightbox');
+        if (!lightbox) {
+            return;
+        }
+
+        lightbox.classList.remove('active');
+        document.body.classList.remove('lightbox-open');
+
+        // 將焦點返回到圖片（無障礙功能）
+        const animalImage = document.querySelector('.animal-image');
+        if (animalImage) {
+            animalImage.focus();
         }
     }
 

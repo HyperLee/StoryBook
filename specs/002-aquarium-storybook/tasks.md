@@ -138,10 +138,10 @@
 
 ### Implementation for User Story 5
 
-- [ ] T038 [US5] 建立 Lightbox Modal HTML 結構於 `StoryBook/Pages/Aquarium/Index.cshtml`
-- [ ] T039 [US5] 實作 Lightbox 樣式（半透明背景、置中大圖、關閉按鈕）於 `StoryBook/wwwroot/css/aquarium.css`
-- [ ] T040 [US5] 實作 Lightbox 開啟/關閉 JavaScript 邏輯於 `StoryBook/wwwroot/js/aquarium.js`
-- [ ] T041 [US5] 實作點擊圖片外區域或 ESC 鍵關閉 Lightbox
+- [X] T038 [US5] 建立 Lightbox Modal HTML 結構於 `StoryBook/Pages/Aquarium/Index.cshtml`
+- [X] T039 [US5] 實作 Lightbox 樣式（半透明背景、置中大圖、關閉按鈕）於 `StoryBook/wwwroot/css/aquarium.css`
+- [X] T040 [US5] 實作 Lightbox 開啟/關閉 JavaScript 邏輯於 `StoryBook/wwwroot/js/aquarium.js`
+- [X] T041 [US5] 實作點擊圖片外區域或 ESC 鍵關閉 Lightbox
 
 **Checkpoint**: User Story 5 完成 - Lightbox 大圖檢視功能正常運作
 
