@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch StoryBook (Debug)",
+      "name": "Launch StoryBook (net8.0)",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
@@ -10,23 +10,17 @@
       "args": [],
       "cwd": "${workspaceFolder}/StoryBook",
       "stopAtEntry": false,
-      "console": "integratedTerminal",
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
+      "internalConsoleOptions": "openOnSessionStart",
       "serverReadyAction": {
         "action": "openExternally",
         "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
       },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
       "sourceFileMap": {
         "/Views": "${workspaceFolder}/StoryBook/Views"
       }
-    },
-    {
-      "name": "Attach to Process",
-      "type": "coreclr",
-      "request": "attach",
-      "processId": "${command:pickProcess}"
     }
   ]
 }
