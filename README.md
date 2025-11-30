@@ -1,22 +1,21 @@
 # 🦕 恐龍故事書 (Dinosaur StoryBook)
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat-square&logo=dotnet)](https://dotnet.microsoft.com/)
+[![C#](https://img.shields.io/badge/C%23-12-239120?style=flat-square&logo=csharp)](https://docs.microsoft.com/dotnet/csharp/)
 [![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-Razor%20Pages-512BD4?style=flat-square)](https://docs.microsoft.com/aspnet/core/razor-pages/)
-[![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
-一個專為兒童設計的恐龍介紹互動網站，透過可愛的圖片、有趣的小故事，讓孩子輕鬆學習恐龍知識！
-
-![恐龍故事書首頁](docs/images/homepage-preview.png)
+一個專為兒童設計的恐龍介紹互動網站，透過可愛的 SVG 插圖、有趣的小故事，讓孩子輕鬆學習恐龍知識！
 
 ## ✨ 功能特色
 
-- **恐龍介紹瀏覽** - 精美的恐龍卡片，包含名稱、生活時期、食性、發現地點等資訊
-- **多語言支援** - 支援中文 / 英文即時切換，適合不同語言背景的孩子
-- **即時搜尋** - 輸入關鍵字即時過濾恐龍，快速找到想看的內容
-- **可愛小故事** - 每隻恐龍都有專屬的趣味小故事，增加學習樂趣
-- **圖片放大檢視** - 點擊圖片可查看大圖，細看恐龍細節
-- **響應式設計** - 適配各種裝置尺寸，手機、平板、電腦都能舒適瀏覽
-- **兒童友善介面** - 大按鈕、明顯導覽，孩子也能輕鬆操作
+- 🦖 **恐龍介紹瀏覽** - 精美的恐龍卡片，包含名稱、生活時期、食性、發現地點等資訊
+- 🌍 **多語言支援** - 支援繁體中文 / English 即時切換，適合不同語言背景的孩子
+- 🔍 **即時搜尋** - 輸入關鍵字即時過濾恐龍，快速找到想看的內容
+- 📖 **可愛小故事** - 每隻恐龍都有專屬的趣味小故事，增加學習樂趣
+- 🖼️ **圖片放大檢視** - 點擊圖片可查看大圖 Modal，細看恐龍細節
+- 📱 **響應式設計** - 適配各種裝置尺寸，手機、平板、電腦都能舒適瀏覽
+- 👶 **兒童友善介面** - 大按鈕、明顯導覽，孩子也能輕鬆操作
+- 📄 **分頁瀏覽** - 支援換頁功能，輕鬆瀏覽所有恐龍
 
 ## 🦖 收錄恐龍
 
@@ -55,49 +54,99 @@
    cd StoryBook
    ```
 
-2. 執行應用程式：
+2. 還原相依套件並建構：
+
+   ```bash
+   dotnet build
+   ```
+
+3. 執行應用程式：
 
    ```bash
    dotnet run --project StoryBook/StoryBook.csproj
    ```
 
-3. 開啟瀏覽器，前往 `https://localhost:5001` 或 `http://localhost:5000`
+4. 開啟瀏覽器，前往：
+   - HTTPS: `https://localhost:7072`
+   - HTTP: `http://localhost:5236`
 
 > [!TIP]
-> 您也可以使用 `dotnet watch` 來啟動開發伺服器，程式碼變更後會自動重新載入。
+> 您也可以使用 `dotnet watch --project StoryBook/StoryBook.csproj` 來啟動開發伺服器，程式碼變更後會自動重新載入。
 
 ## 🏗️ 專案架構
 
 ```text
 StoryBook/
-├── Models/                 # 資料模型
-│   ├── Dinosaur.cs        # 恐龍實體
-│   ├── DinosaurData.cs    # 恐龍資料集
-│   ├── DinosaurImages.cs  # 圖片資訊
-│   └── LocalizedText.cs   # 多語言文字
-├── Pages/                  # Razor Pages 頁面
-│   ├── Index.cshtml       # 首頁
-│   ├── Dinosaurs/         # 恐龍介紹頁面
-│   └── Shared/            # 共用元件 (Layout, 語言切換器)
-├── Services/               # 服務層
-│   ├── DinosaurService.cs # 恐龍資料服務
-│   └── JsonDataService.cs # JSON 資料讀取服務
-├── wwwroot/               # 靜態資源
-│   ├── css/               # 樣式表
-│   ├── js/                # JavaScript
-│   ├── data/              # JSON 資料檔
-│   │   └── dinosaurs.json # 恐龍資料
-│   └── images/            # 恐龍圖片
-└── Program.cs             # 應用程式進入點
+├── StoryBook.sln              # Solution 檔案
+├── README.md                  # 專案說明文件
+├── specs/                     # 規格文件
+│   └── 001-dinosaur-storybook/
+│       ├── spec.md            # 功能規格書
+│       ├── data-model.md      # 資料模型設計
+│       ├── plan.md            # 實作計畫
+│       ├── tasks.md           # 任務清單
+│       ├── quickstart.md      # 快速入門
+│       ├── research.md        # 技術研究
+│       ├── checklists/        # 檢查清單
+│       └── contracts/         # API 合約
+└── StoryBook/                 # 主專案
+    ├── Program.cs             # 應用程式進入點
+    ├── StoryBook.csproj       # 專案檔 (.NET 8.0, C# 12)
+    ├── appsettings.json       # 應用程式設定
+    ├── Models/                # 資料模型
+    │   ├── Dinosaur.cs        # 恐龍實體
+    │   ├── DinosaurData.cs    # 恐龍資料集
+    │   ├── DinosaurImages.cs  # 圖片資訊
+    │   └── LocalizedText.cs   # 多語言文字
+    ├── Services/              # 服務層
+    │   ├── IDinosaurService.cs    # 恐龍服務介面
+    │   ├── DinosaurService.cs     # 恐龍資料服務實作
+    │   ├── IJsonDataService.cs    # JSON 服務介面
+    │   └── JsonDataService.cs     # JSON 資料讀取服務
+    ├── Pages/                 # Razor Pages 頁面
+    │   ├── Index.cshtml       # 首頁
+    │   ├── Privacy.cshtml     # 隱私權頁面
+    │   ├── Error.cshtml       # 錯誤頁面
+    │   ├── Dinosaurs/         # 恐龍介紹頁面
+    │   │   ├── Index.cshtml       # 恐龍列表頁
+    │   │   └── _DinosaurCard.cshtml  # 恐龍卡片 Partial View
+    │   └── Shared/            # 共用元件
+    │       ├── _Layout.cshtml         # 主版頁面
+    │       ├── _Layout.cshtml.css     # 主版樣式
+    │       ├── _LanguageSwitcher.cshtml  # 語言切換器
+    │       └── _ValidationScriptsPartial.cshtml
+    ├── Properties/
+    │   └── launchSettings.json  # 啟動設定
+    ├── wwwroot/               # 靜態資源
+    │   ├── css/               # 樣式表
+    │   │   ├── site.css       # 網站樣式
+    │   │   └── dinosaurs.css  # 恐龍頁面樣式
+    │   ├── js/                # JavaScript
+    │   │   ├── site.js        # 網站腳本
+    │   │   └── dinosaurs.js   # 恐龍頁面腳本
+    │   ├── data/
+    │   │   └── dinosaurs.json # 恐龍資料 (15 隻)
+    │   ├── images/dinosaurs/  # 恐龍 SVG 圖片 (15 資料夾)
+    │   └── lib/               # 前端函式庫
+    │       ├── bootstrap/
+    │       ├── jquery/
+    │       ├── jquery-validation/
+    │       └── jquery-validation-unobtrusive/
+    └── logs/                  # 日誌檔案 (Serilog)
 ```
 
 ## 🛠️ 技術棧
 
-- **後端框架**: ASP.NET Core 8.0 Razor Pages
-- **前端**: HTML5, CSS3, JavaScript (原生)
-- **UI 框架**: Bootstrap 5
-- **日誌**: Serilog (Console + File)
-- **資料格式**: JSON
+| 類別 | 技術 |
+|------|------|
+| **執行環境** | .NET 8.0 |
+| **程式語言** | C# 12 |
+| **後端框架** | ASP.NET Core Razor Pages |
+| **前端** | HTML5, CSS3, JavaScript (原生) |
+| **UI 框架** | Bootstrap 5 |
+| **日誌系統** | Serilog (Console + File, 每日滾動) |
+| **資料格式** | JSON |
+| **圖片格式** | SVG (可縮放向量圖) |
 
 ## 📝 新增恐龍資料
 
@@ -155,20 +204,25 @@ dotnet run --project StoryBook/StoryBook.csproj
 # 開發模式（自動重載）
 dotnet watch --project StoryBook/StoryBook.csproj
 
-# 發佈專案
-dotnet publish -c Release
+# 發佈專案（Release 模式）
+dotnet publish StoryBook/StoryBook.csproj -c Release -o ./publish
+
+# 清理建構產物
+dotnet clean
 ```
 
 ## 📚 相關文件
 
-- [功能規格書](specs/001-dinosaur-storybook/spec.md) - 詳細的功能需求說明
-- [資料模型設計](specs/001-dinosaur-storybook/data-model.md) - 資料結構設計
-- [API 合約](specs/001-dinosaur-storybook/contracts/dinosaurs-api.yaml) - API 介面定義
+| 文件 | 說明 |
+|------|------|
+| [功能規格書](specs/001-dinosaur-storybook/spec.md) | 詳細的功能需求說明 |
+| [資料模型設計](specs/001-dinosaur-storybook/data-model.md) | 資料結構設計 |
+| [實作計畫](specs/001-dinosaur-storybook/plan.md) | 開發計畫與時程 |
+| [任務清單](specs/001-dinosaur-storybook/tasks.md) | 開發任務追蹤 |
+| [快速入門](specs/001-dinosaur-storybook/quickstart.md) | 快速上手指南 |
+| [技術研究](specs/001-dinosaur-storybook/research.md) | 技術選型研究 |
+| [API 合約](specs/001-dinosaur-storybook/contracts/dinosaurs-api.yaml) | API 介面定義 |
 
 ## 🤝 貢獻
 
 歡迎提交 Issue 或 Pull Request！
-
-## 📄 授權
-
-本專案採用 MIT 授權條款 - 詳見 [LICENSE](LICENSE) 檔案。
