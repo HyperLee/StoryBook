@@ -12,9 +12,10 @@
 ## Technical Context
 
 **Language/Version**: C# 13 / .NET 8.0 (ASP.NET Core 8.0)  
-**Primary Dependencies**: ASP.NET Core Razor Pages, Bootstrap 5, jQuery (已包含在專案中)  
+**Primary Dependencies**: ASP.NET Core Razor Pages, Bootstrap 5, jQuery (已包含在專案中), Serilog  
 **Storage**: JSON 檔案 (`wwwroot/data/dinosaurs.json`) - 練習用途，不使用資料庫  
 **Testing**: xUnit + Moq (單元測試) + WebApplicationFactory (整合測試)；備案：TestServer 或 Mock-based 測試  
+**Logging**: Serilog（結構化日誌）+ Console Sink + File Sink  
 **Target Platform**: 桌面瀏覽器 (Chrome, Firefox, Safari, Edge) - 不需考慮手機版  
 **Project Type**: Web Application (Razor Pages)  
 **Performance Goals**: API p95 回應時間 < 200ms，頁面載入 < 3 秒，換頁 < 1 秒  
@@ -40,12 +41,8 @@
 | II. 測試優先開發 | ✅ 通過 | 規劃 xUnit + Moq 單元測試、WebApplicationFactory 整合測試 |
 | III. 使用者體驗一致性 | ✅ 通過 | 使用 Bootstrap 5 統一設計、兒童友善大按鈕、清楚錯誤訊息 |
 | IV. 效能與延展性 | ✅ 通過 | JSON 檔案讀取輕量、靜態內容無 N+1 問題、目標 < 200ms |
-| V. 可觀察性與監控 | ⚠️ 簡化 | 練習專案，使用基本日誌記錄，暫不整合 Application Insights |
+| V. 可觀察性與監控 | ✅ 通過 | 使用 Serilog 結構化日誌，輸出至 Console 和 File |
 | VI. 安全優先 | ✅ 通過 | 無使用者認證需求、輸入驗證（搜尋框）、無敏感資料 |
-
-### 潛在違規說明
-
-- **V. 可觀察性**: 作為練習專案，暫時簡化監控需求，僅使用內建日誌。若後續擴展可加入 Serilog。
 
 ### Post-Design 檢查 (Phase 1 後)
 
@@ -55,7 +52,7 @@
 | II. 測試優先開發 | ✅ 通過 | research.md 規劃完整測試策略、quickstart.md 包含測試指引 |
 | III. 使用者體驗一致性 | ✅ 通過 | contracts/ 定義一致的 API 回應格式、RFC 7807 錯誤處理 |
 | IV. 效能與延展性 | ✅ 通過 | JSON 快取策略、Singleton 服務、圖片延遲載入 |
-| V. 可觀察性與監控 | ⚠️ 簡化 | 使用基本日誌，符合練習專案需求 |
+| V. 可觀察性與監控 | ✅ 通過 | Serilog 結構化日誌、正確使用日誌層級、Console + File Sink |
 | VI. 安全優先 | ✅ 通過 | 輸入驗證（搜尋關鍵字）、無敏感資料暴露 |
 
 **結論**: 所有憲章原則已通過或有合理說明，可進入 Phase 2 任務規劃。
@@ -153,7 +150,7 @@ StoryBook.Tests/                  # 測試專案
 
 | 違規項目 | 需要原因 | 拒絕更簡單替代方案的理由 |
 |----------|----------|--------------------------|
-| V. 可觀察性簡化 | 練習專案，監控需求低 | 完整 Application Insights 整合對學習目的過於複雜，基本日誌已足夠 |
+| *無* | - | 所有憲章原則皆已符合 |
 
 ---
 

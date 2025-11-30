@@ -397,6 +397,150 @@ catch (FileNotFoundException ex)
 
 ---
 
+## 11. 日誌策略 (Serilog)
+
+### Decision: 使用 Serilog 結構化日誌
+
+### Rationale
+
+- **結構化日誌**: 便於查詢和分析
+- **多 Sink 支援**: Console + File，未來可擴展至 Seq、Elasticsearch
+- **效能**: 非同步寫入，不影響請求效能
+- **整合性**: 與 ASP.NET Core 完美整合
+
+### 相依套件
+
+```xml
+<PackageReference Include="Serilog.AspNetCore" Version="8.*" />
+<PackageReference Include="Serilog.Sinks.Console" Version="5.*" />
+<PackageReference Include="Serilog.Sinks.File" Version="5.*" />
+```
+
+### Implementation Pattern
+
+**Program.cs 設定**:
+
+```csharp
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+    .Enrich.FromLogContext()
+    .WriteTo.Console(outputTemplate: 
+        "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+    .WriteTo.File("logs/storybook-.log", 
+        rollingInterval: RollingInterval.Day,
+        retainedFileCountLimit: 7)
+    .CreateLogger();
+
+try
+{
+    Log.Information("啟動恐龍故事書系統");
+    
+    var builder = WebApplication.CreateBuilder(args);
+    builder.Host.UseSerilog();
+    
+    // ... 其餘設定
+    
+    var app = builder.Build();
+    app.UseSerilogRequestLogging();
+    
+    // ... 其餘中介軟體
+    
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "應用程式啟動失敗");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
+```
+
+**服務中使用日誌**:
+
+```csharp
+public class DinosaurService : IDinosaurService
+{
+    private readonly ILogger<DinosaurService> _logger;
+    
+    public DinosaurService(ILogger<DinosaurService> logger)
+    {
+        _logger = logger;
+    }
+    
+    public async Task<Dinosaur?> GetByIdAsync(string id)
+    {
+        _logger.LogDebug("查詢恐龍: {DinosaurId}", id);
+        
+        var dinosaur = await FindDinosaurAsync(id);
+        
+        if (dinosaur is null)
+        {
+            _logger.LogWarning("找不到恐龍: {DinosaurId}", id);
+            return null;
+        }
+        
+        _logger.LogInformation("成功取得恐龍: {DinosaurId}, {DinosaurName}", 
+            id, dinosaur.Name.Zh);
+        return dinosaur;
+    }
+}
+```
+
+### 日誌層級使用指南
+
+| 層級 | 使用情境 | 範例 |
+|------|----------|------|
+| `Trace` | 非常詳細的診斷資訊 | 迴圈迭代細節 |
+| `Debug` | 開發時的診斷資訊 | 函式進入/離開、參數值 |
+| `Information` | 正常業務流程 | 使用者請求、服務啟動 |
+| `Warning` | 異常但可恢復的情況 | 找不到資源、重試 |
+| `Error` | 錯誤但不影響系統運行 | 單一請求失敗 |
+| `Fatal` | 嚴重錯誤導致系統停止 | 啟動失敗、資料庫連線失敗 |
+
+### appsettings.json 設定
+
+```json
+{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Warning",
+        "Microsoft.AspNetCore": "Warning",
+        "System": "Warning"
+      }
+    },
+    "WriteTo": [
+      { "Name": "Console" },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "logs/storybook-.log",
+          "rollingInterval": "Day",
+          "retainedFileCountLimit": 7
+        }
+      }
+    ]
+  }
+}
+```
+
+### Alternatives Considered
+
+| 方案 | 優點 | 缺點 | 結論 |
+|------|------|------|------|
+| 內建 ILogger | 無額外相依 | 功能較少、設定複雜 | ❌ 不採用 |
+| NLog | 功能豐富 | 學習曲線較高 | ❌ 不採用 |
+| **Serilog** | 結構化、易用、多 Sink | 需額外套件 | ✅ 採用 |
+
+---
+
 ## 結論
 
 所有技術決策已確定，無待澄清項目。可進入 Phase 1 設計階段。
@@ -413,3 +557,4 @@ catch (FileNotFoundException ex)
 | 圖片素材 | ✅ 已決定 |
 | 錯誤處理 | ✅ 已決定 |
 | 效能最佳化 | ✅ 已決定 |
+| 日誌策略 (Serilog) | ✅ 已決定 |
