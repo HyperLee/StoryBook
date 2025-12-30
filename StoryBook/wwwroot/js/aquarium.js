@@ -325,7 +325,7 @@
      */
     function handleImageError(event) {
         const img = event.target;
-        const placeholder = '/images/placeholder.svg';
+        const placeholder = '/images/aquarium/placeholder.svg';
         
         // 避免無限循環
         if (!img.dataset.errorHandled) {
@@ -665,7 +665,7 @@
                 return `
                     <a href="/Aquarium/${animal.index}" class="quick-nav-item ${isActive}" title="${name}">
                         <img src="${animal.mainImage}" alt="${name}" class="quick-nav-item-image" 
-                             onerror="this.src='/images/placeholder.svg'">
+                             onerror="this.src='/images/aquarium/placeholder.svg'">
                         <span class="quick-nav-item-name">${highlightText(name, query)}</span>
                         <span class="quick-nav-item-index">#${animal.index + 1}</span>
                     </a>
@@ -826,7 +826,7 @@
         // 設定圖片錯誤處理 - T049: 圖片載入失敗時顯示預設佔位圖片
         lightboxImage.onerror = function() {
             this.onerror = null; // 防止無限迴圈
-            this.src = '/images/placeholder.svg';
+            this.src = '/images/aquarium/placeholder.svg';
             console.warn('[Lightbox] 圖片載入失敗:', imageSrc);
         };
 

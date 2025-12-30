@@ -12,7 +12,7 @@
         <img src="@Model.Images.Main" 
              alt="@Model.Name.Zh" 
              class="animal-image"
-             onerror="this.onerror=null; this.src='/images/placeholder.svg';"
+             onerror="this.onerror=null; this.src='/images/aquarium/placeholder.svg'; console.warn('圖片載入失敗:', '@Model.Images.Main');"
              loading="lazy" />
     </div>
 
