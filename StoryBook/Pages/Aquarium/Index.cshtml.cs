@@ -68,6 +68,16 @@ public class IndexModel : PageModel
     public bool HasNext => CurrentIndex < TotalCount - 1;
 
     /// <summary>
+    /// 是否發生載入錯誤
+    /// </summary>
+    public bool HasLoadError { get; private set; }
+
+    /// <summary>
+    /// 錯誤訊息
+    /// </summary>
+    public string? ErrorMessage { get; private set; }
+
+    /// <summary>
     /// 是否可從封面進入第一頁
     /// </summary>
     public bool CanEnterFromCover => IsCoverPage && TotalCount > 0;
@@ -89,43 +99,55 @@ public class IndexModel : PageModel
     /// <param name="index">動物索引（-1 或省略表示封面頁，0 以上表示動物頁面）</param>
     public async Task OnGetAsync(int? index = null)
     {
-        // 如果沒有提供 index，顯示封面頁
-        var pageIndex = index ?? -1;
-
-        _logger.LogInformation("載入水族館介紹頁面，索引：{Index}", pageIndex);
-
-        AllAnimals = await _aquariumService.GetAllAsync();
-        TotalCount = await _aquariumService.GetCountAsync();
-
-        // 封面頁
-        if (pageIndex == -1)
+        try
         {
-            CurrentIndex = -1;
-            CurrentAnimal = null;
-            _logger.LogDebug("顯示水族館封面頁");
-            return;
+            // 如果沒有提供 index，顯示封面頁
+            var pageIndex = index ?? -1;
+
+            _logger.LogInformation("載入水族館介紹頁面，索引：{Index}", pageIndex);
+
+            AllAnimals = await _aquariumService.GetAllAsync();
+            TotalCount = await _aquariumService.GetCountAsync();
+
+            // 封面頁
+            if (pageIndex == -1)
+            {
+                CurrentIndex = -1;
+                CurrentAnimal = null;
+                _logger.LogDebug("顯示水族館封面頁");
+                return;
+            }
+
+            // 確保索引在有效範圍內
+            if (pageIndex < 0)
+            {
+                pageIndex = 0;
+            }
+            else if (pageIndex >= TotalCount && TotalCount > 0)
+            {
+                pageIndex = TotalCount - 1;
+            }
+
+            CurrentIndex = pageIndex;
+            CurrentAnimal = await _aquariumService.GetByIndexAsync(pageIndex);
+
+            if (CurrentAnimal is null)
+            {
+                _logger.LogWarning("找不到索引 {Index} 的水族館動物", pageIndex);
+            }
+            else
+            {
+                _logger.LogDebug("顯示水族館動物：{AnimalName}，索引：{Index}", CurrentAnimal.Name.Zh, pageIndex);
+            }
         }
-
-        // 確保索引在有效範圍內
-        if (pageIndex < 0)
+        catch (Exception ex)
         {
-            pageIndex = 0;
-        }
-        else if (pageIndex >= TotalCount && TotalCount > 0)
-        {
-            pageIndex = TotalCount - 1;
-        }
-
-        CurrentIndex = pageIndex;
-        CurrentAnimal = await _aquariumService.GetByIndexAsync(pageIndex);
-
-        if (CurrentAnimal is null)
-        {
-            _logger.LogWarning("找不到索引 {Index} 的水族館動物", pageIndex);
-        }
-        else
-        {
-            _logger.LogDebug("顯示水族館動物：{AnimalName}，索引：{Index}", CurrentAnimal.Name.Zh, pageIndex);
+            _logger.LogError(ex, "載入水族館頁面時發生錯誤");
+            HasLoadError = true;
+            ErrorMessage = "載入動物資料時發生錯誤，請稍後再試";
+            CurrentIndex = index ?? -1;
+            AllAnimals = [];
+            TotalCount = 0;
         }
     }
 }

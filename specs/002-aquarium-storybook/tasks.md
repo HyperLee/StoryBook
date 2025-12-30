@@ -173,8 +173,8 @@
 
 ### Implementation for User Story 7
 
-- [ ] T047 [US7] 在水族館頁面新增明顯的「回到首頁」按鈕於 `StoryBook/Pages/Aquarium/Index.cshtml`
-- [ ] T048 [US7] 實作回到首頁按鈕樣式（與整體風格一致）於 `StoryBook/wwwroot/css/aquarium.css`
+- [X] T047 [US7] 在水族館頁面新增明顯的「回到首頁」按鈕於 `StoryBook/Pages/Aquarium/Index.cshtml`
+- [X] T048 [US7] 實作回到首頁按鈕樣式（與整體風格一致）於 `StoryBook/wwwroot/css/aquarium.css`
 
 **Checkpoint**: User Story 7 完成 - 回到首頁功能正常運作
 
@@ -184,13 +184,13 @@
 
 **Purpose**: 跨功能優化與品質確保
 
-- [ ] T049 實作圖片載入失敗時的預設佔位圖片顯示
-- [ ] T050 實作資料載入失敗時的友善錯誤訊息與重新載入按鈕
-- [ ] T051 新增 Serilog 結構化日誌記錄（服務層操作、錯誤處理）
-- [ ] T052 優化頁面載入效能（確保 < 3 秒）
-- [ ] T053 執行 quickstart.md 驗證（確認開發流程文件正確）
-- [ ] T054 程式碼清理與 XML 文件註解完善
-- [ ] T055 最終整合測試（所有 User Story 功能驗證）
+- [X] T049 實作圖片載入失敗時的預設佔位圖片顯示
+- [X] T050 實作資料載入失敗時的友善錯誤訊息與重新載入按鈕
+- [X] T051 新增 Serilog 結構化日誌記錄（服務層操作、錯誤處理）
+- [X] T052 優化頁面載入效能（確保 < 3 秒）
+- [X] T053 執行 quickstart.md 驗證（確認開發流程文件正確）
+- [X] T054 程式碼清理與 XML 文件註解完善
+- [X] T055 最終整合測試（所有 User Story 功能驗證）
 
 ---
 

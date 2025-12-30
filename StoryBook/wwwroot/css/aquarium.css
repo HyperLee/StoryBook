@@ -170,6 +170,35 @@
     opacity: 0.8;
 }
 
+/* T048: 封面頁回到首頁按鈕樣式 */
+.btn-back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    background: var(--aqua-coral);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(255, 138, 101, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-back-home:hover {
+    color: white;
+    background: #FF7043;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 138, 101, 0.4);
+}
+
+.btn-back-home .btn-icon {
+    font-size: 1.2rem;
+}
+
 .cover-animals {
     display: flex;
     gap: 1.5rem;
@@ -469,6 +498,11 @@
     .btn-enter-aquarium {
         padding: 1rem 2rem;
         font-size: 1.2rem;
+    }
+
+    .btn-back-home {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
     }
 
     .animal-name {
@@ -1189,4 +1223,98 @@ body.lightbox-open {
     .lightbox-caption::before {
         font-size: 1rem;
     }
+}
+
+/* ==========================================================================
+   錯誤訊息樣式 (T050)
+   ========================================================================== */
+
+.aquarium-error-container {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.error-message-box {
+    background: white;
+    border-radius: var(--aqua-border-radius);
+    box-shadow: 0 8px 20px var(--aqua-shadow);
+    padding: 3rem 2rem;
+    max-width: 500px;
+    text-align: center;
+    animation: slideIn 0.3s ease-out;
+}
+
+.error-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.error-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--aqua-text);
+    margin-bottom: 1rem;
+}
+
+.error-description {
+    font-size: 1.1rem;
+    color: #546E7A;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn-reload {
+    background: var(--aqua-primary);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn-reload:hover {
+    background: var(--aqua-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(41, 182, 246, 0.4);
+}
+
+.btn-reload:active {
+    transform: translateY(0);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 圖片載入錯誤樣式 (T049) */
+.image-error {
+    opacity: 0.7;
+    filter: grayscale(100%);
 }

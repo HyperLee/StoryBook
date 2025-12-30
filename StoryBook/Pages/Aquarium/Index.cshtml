@@ -8,6 +8,32 @@
 
 <link rel="stylesheet" href="~/css/aquarium.css" asp-append-version="true" />
 
+<!-- T050: 資料載入錯誤訊息 -->
+@if (Model.HasLoadError)
+{
+    <div class="aquarium-error-container">
+        <div class="error-message-box">
+            <div class="error-icon">⚠️</div>
+            <h2 class="error-title" data-lang-zh="資料載入失敗" data-lang-en="Data Loading Failed">
+                資料載入失敗
+            </h2>
+            <p class="error-description" data-lang-zh="@Model.ErrorMessage" data-lang-en="Failed to load animal data. Please try again later.">
+                @Model.ErrorMessage
+            </p>
+            <button type="button" class="btn-reload" onclick="location.reload()">
+                <span class="btn-icon">🔄</span>
+                <span data-lang-zh="重新載入" data-lang-en="Reload">重新載入</span>
+            </button>
+            <a asp-page="/Index" class="btn-back-home">
+                <span class="btn-icon">🏠</span>
+                <span data-lang-zh="回到首頁" data-lang-en="Back to Home">回到首頁</span>
+            </a>
+        </div>
+    </div>
+}
+else
+{
+
 <div class="aquarium-page">
     @if (Model.IsCoverPage)
     {
@@ -47,6 +73,12 @@
                         共 @Model.TotalCount 種海洋動物等你來認識
                     </span>
                 </div>
+                
+                <!-- T047: 封面頁回到首頁按鈕 -->
+                <a asp-page="/Index" class="btn-back-home">
+                    <span class="btn-icon">🏠</span>
+                    <span data-lang-zh="回到首頁" data-lang-en="Back to Home">回到首頁</span>
+                </a>
             </div>
             
             <div class="cover-animals">
@@ -179,6 +211,7 @@
         </div>
     }
 </div>
+}
 
 <!-- T038: 圖片大圖 Lightbox Modal -->
 <div id="imageLightbox" class="aquarium-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxImageAlt">
@@ -213,5 +246,5 @@
 </script>
 
 @section Scripts {
-    <script src="~/js/aquarium.js" asp-append-version="true"></script>
+    <script src="~/js/aquarium.js" asp-append-version="true" defer></script>
 }

@@ -31,9 +31,17 @@ public class AquariumService : IAquariumService
     /// <inheritdoc />
     public async Task<IEnumerable<AquariumAnimal>> GetAllAsync()
     {
-        _logger.LogDebug("取得所有水族館動物");
-        var data = await _jsonDataService.LoadAquariumAnimalsAsync();
-        return data.Animals;
+        try
+        {
+            _logger.LogDebug("取得所有水族館動物");
+            var data = await _jsonDataService.LoadAquariumAnimalsAsync();
+            return data.Animals;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "載入水族館動物資料時發生錯誤");
+            throw new InvalidOperationException("無法載入水族館動物資料，請稍後再試", ex);
+        }
     }
 
     /// <inheritdoc />
@@ -118,9 +126,17 @@ public class AquariumService : IAquariumService
     /// <inheritdoc />
     public async Task<int> GetCountAsync()
     {
-        _logger.LogDebug("取得水族館動物總數");
-        var data = await _jsonDataService.LoadAquariumAnimalsAsync();
-        return data.Animals.Count;
+        try
+        {
+            _logger.LogDebug("取得水族館動物總數");
+            var data = await _jsonDataService.LoadAquariumAnimalsAsync();
+            return data.Animals.Count;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "取得水族館動物總數時發生錯誤");
+            return 0;
+        }
     }
 
     /// <inheritdoc />
