@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="iceBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#B0E0E6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#87CEEB;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 冰雪背景 -->
+  <rect width="400" height="300" fill="url(#iceBg)"/>
+  
+  <!-- 冰山 -->
+  <polygon points="50,250 120,180 190,250" fill="#F0F8FF" opacity="0.8"/>
+  <polygon points="280,250 330,200 380,250" fill="#F0F8FF" opacity="0.8"/>
+  
+  <!-- 雪花 -->
+  <text x="80" y="80" font-size="25" fill="#fff" opacity="0.6">❄</text>
+  <text x="300" y="120" font-size="20" fill="#fff" opacity="0.6">❄</text>
+  <text x="150" y="50" font-size="22" fill="#fff" opacity="0.6">❄</text>
+  
+  <!-- 企鵝身體 -->
+  <ellipse cx="200" cy="180" rx="50" ry="70" fill="#000"/>
+  
+  <!-- 企鵝肚子 -->
+  <ellipse cx="200" cy="190" rx="35" ry="55" fill="#fff"/>
+  
+  <!-- 企鵝頭部 -->
+  <ellipse cx="200" cy="110" rx="40" ry="45" fill="#000"/>
+  
+  <!-- 臉部 -->
+  <ellipse cx="200" cy="120" rx="28" ry="32" fill="#fff"/>
+  
+  <!-- 眼睛 -->
+  <circle cx="188" cy="110" r="6" fill="#000"/>
+  <circle cx="212" cy="110" r="6" fill="#000"/>
+  <circle cx="189" cy="109" r="2" fill="#fff"/>
+  <circle cx="213" cy="109" r="2" fill="#fff"/>
+  
+  <!-- 嘴巴 -->
+  <ellipse cx="200" cy="128" rx="8" ry="6" fill="#FFA500"/>
+  
+  <!-- 腮紅 -->
+  <ellipse cx="175" cy="125" rx="8" ry="5" fill="#FFB6C1" opacity="0.5"/>
+  <ellipse cx="225" cy="125" rx="8" ry="5" fill="#FFB6C1" opacity="0.5"/>
+  
+  <!-- 翅膀（鰭狀肢）-->
+  <ellipse cx="150" cy="160" rx="15" ry="50" fill="#000" transform="rotate(-20 150 160)"/>
+  <ellipse cx="250" cy="160" rx="15" ry="50" fill="#000" transform="rotate(20 250 160)"/>
+  
+  <!-- 腳 -->
+  <ellipse cx="180" cy="250" rx="18" ry="10" fill="#FFA500"/>
+  <ellipse cx="220" cy="250" rx="18" ry="10" fill="#FFA500"/>
+</svg>

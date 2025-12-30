@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="oceanBg7" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4682B4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="400" height="300" fill="url(#oceanBg7)"/>
+  
+  <!-- 氣泡 -->
+  <circle cx="70" cy="70" r="10" fill="#fff" opacity="0.4"/>
+  <circle cx="330" cy="110" r="12" fill="#fff" opacity="0.3"/>
+  <circle cx="150" cy="250" r="8" fill="#fff" opacity="0.5"/>
+  
+  <!-- 鯊魚身體 -->
+  <ellipse cx="220" cy="150" rx="90" ry="45" fill="#708090"/>
+  
+  <!-- 鯊魚頭部 -->
+  <path d="M130,150 Q100,145 90,150 Q100,155 130,150" fill="#778899"/>
+  
+  <!-- 背鰭 -->
+  <path d="M220,105 Q235,70 240,105" fill="#556B7D"/>
+  
+  <!-- 尾鰭 -->
+  <path d="M310,145 Q350,120 360,140 Q350,145 340,150 Q350,160 310,155 Z" fill="#556B7D"/>
+  
+  <!-- 胸鰭 -->
+  <ellipse cx="170" cy="175" rx="30" ry="15" fill="#556B7D" transform="rotate(-15 170 175)"/>
+  
+  <!-- 腹鰭 -->
+  <path d="M240,180 Q245,200 250,180" fill="#556B7D"/>
+  
+  <!-- 眼睛（友善的）-->
+  <circle cx="120" cy="140" r="8" fill="#fff"/>
+  <circle cx="120" cy="140" r="5" fill="#000"/>
+  <circle cx="122" cy="138" r="2" fill="#fff"/>
+  
+  <!-- 嘴巴（微笑但有牙齒）-->
+  <path d="M85,153 Q100,162 115,153" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <line x1="92" y1="157" x2="92" y2="162" stroke="#fff" stroke-width="2"/>
+  <line x1="100" y1="159" x2="100" y2="164" stroke="#fff" stroke-width="2"/>
+  <line x1="108" y1="157" x2="108" y2="162" stroke="#fff" stroke-width="2"/>
+  
+  <!-- 肚子 -->
+  <ellipse cx="200" cy="165" rx="60" ry="30" fill="#D3D3D3" opacity="0.5"/>
+  
+  <!-- 鰓 -->
+  <path d="M150,145 Q148,150 150,155" stroke="#556B7D" stroke-width="2" fill="none"/>
+  <path d="M160,145 Q158,150 160,155" stroke="#556B7D" stroke-width="2" fill="none"/>
+  <path d="M170,145 Q168,150 170,155" stroke="#556B7D" stroke-width="2" fill="none"/>
+</svg>

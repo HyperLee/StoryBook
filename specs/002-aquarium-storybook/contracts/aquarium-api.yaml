@@ -1,0 +1,404 @@
+openapi: 3.0.3
+info:
+  title: 水族館動物故事書 API
+  description: |
+    水族館動物介紹故事書系統的 API 契約。
+    
+    此 API 提供水族館動物資料的讀取功能，支援：
+    - 取得所有水族館動物列表
+    - 根據 ID 取得單隻動物
+    - 搜尋動物（名稱、生活環境、食性）
+    - 依生活區域篩選動物
+    
+    **注意**: 此為練習專案，資料來自 JSON 檔案，無需認證。
+  version: 1.0.0
+  contact:
+    name: StoryBook Team
+
+servers:
+  - url: /api/v1
+    description: API 基礎路徑
+
+paths:
+  /aquarium:
+    get:
+      summary: 取得所有水族館動物
+      description: 返回所有水族館動物的列表，依 JSON 檔案定義順序排列
+      operationId: getAquariumAnimals
+      tags:
+        - Aquarium
+      parameters:
+        - name: lang
+          in: query
+          description: 語言代碼（用於搜尋時的欄位匹配）
+          required: false
+          schema:
+            type: string
+            enum: [zh, en]
+            default: zh
+        - name: zone
+          in: query
+          description: 依生活區域篩選
+          required: false
+          schema:
+            type: string
+            enum: [freshwater, saltwater, deepsea, coralreef, polar]
+      responses:
+        '200':
+          description: 成功返回動物列表
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AquariumAnimal'
+                  total:
+                    type: integer
+                    description: 動物總數
+                    example: 15
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /aquarium/search:
+    get:
+      summary: 搜尋水族館動物
+      description: 根據關鍵字搜尋動物，比對名稱、生活環境和食性欄位
+      operationId: searchAquariumAnimals
+      tags:
+        - Aquarium
+      parameters:
+        - name: q
+          in: query
+          description: 搜尋關鍵字
+          required: true
+          schema:
+            type: string
+            minLength: 1
+            example: 珊瑚
+        - name: lang
+          in: query
+          description: 搜尋語言
+          required: false
+          schema:
+            type: string
+            enum: [zh, en]
+            default: zh
+      responses:
+        '200':
+          description: 成功返回搜尋結果
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AquariumAnimalSummary'
+                  total:
+                    type: integer
+                    description: 符合條件的動物數量
+                  query:
+                    type: string
+                    description: 搜尋關鍵字
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /aquarium/{id}:
+    get:
+      summary: 取得單隻水族館動物
+      description: 根據 ID 取得水族館動物的詳細資訊
+      operationId: getAquariumAnimalById
+      tags:
+        - Aquarium
+      parameters:
+        - name: id
+          in: path
+          description: 動物 ID
+          required: true
+          schema:
+            type: string
+            pattern: ^[a-z0-9\-]+$
+            example: clownfish
+      responses:
+        '200':
+          description: 成功返回動物資料
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AquariumAnimal'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /aquarium/zones:
+    get:
+      summary: 取得所有生活區域
+      description: 返回所有可用的生活區域分類
+      operationId: getHabitatZones
+      tags:
+        - Aquarium
+      responses:
+        '200':
+          description: 成功返回區域列表
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HabitatZone'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /aquarium/index/{index}:
+    get:
+      summary: 根據索引取得動物（換頁用）
+      description: 根據索引位置取得動物，用於換頁功能
+      operationId: getAquariumAnimalByIndex
+      tags:
+        - Aquarium
+      parameters:
+        - name: index
+          in: path
+          description: 索引位置（從 0 開始）
+          required: true
+          schema:
+            type: integer
+            minimum: 0
+            example: 0
+      responses:
+        '200':
+          description: 成功返回動物資料
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/AquariumAnimal'
+                  navigation:
+                    $ref: '#/components/schemas/NavigationInfo'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  schemas:
+    LocalizedText:
+      type: object
+      description: 多語言文字（中英文）
+      required:
+        - zh
+        - en
+      properties:
+        zh:
+          type: string
+          description: 繁體中文內容
+          example: 小丑魚
+        en:
+          type: string
+          description: 英文內容
+          example: Clownfish
+
+    HabitatZone:
+      type: object
+      description: 生活區域分類
+      properties:
+        id:
+          type: string
+          enum: [freshwater, saltwater, deepsea, coralreef, polar]
+          description: 區域識別碼
+        name:
+          $ref: '#/components/schemas/LocalizedText'
+      example:
+        id: coralreef
+        name:
+          zh: 珊瑚礁
+          en: Coral Reef
+
+    AquariumAnimalImages:
+      type: object
+      description: 動物圖片資訊
+      required:
+        - main
+      properties:
+        main:
+          type: string
+          description: 主要圖片路徑
+          example: /images/aquarium/clownfish/main.png
+        story:
+          type: array
+          description: 故事插圖路徑列表
+          items:
+            type: string
+          example:
+            - /images/aquarium/clownfish/story-1.png
+
+    AquariumAnimalSummary:
+      type: object
+      description: 動物摘要（用於列表和搜尋結果）
+      required:
+        - id
+        - name
+        - habitatZone
+        - images
+      properties:
+        id:
+          type: string
+          description: 唯一識別碼
+          pattern: ^[a-z0-9\-]+$
+          example: clownfish
+        name:
+          $ref: '#/components/schemas/LocalizedText'
+        habitatZone:
+          type: string
+          enum: [freshwater, saltwater, deepsea, coralreef, polar]
+          description: 生活區域分類
+        images:
+          $ref: '#/components/schemas/AquariumAnimalImages'
+
+    AquariumAnimal:
+      type: object
+      description: 水族館動物完整資料
+      required:
+        - id
+        - name
+        - habitatZone
+        - habitat
+        - diet
+        - location
+        - description
+        - images
+      properties:
+        id:
+          type: string
+          description: 唯一識別碼
+          pattern: ^[a-z0-9\-]+$
+          example: clownfish
+        name:
+          $ref: '#/components/schemas/LocalizedText'
+        habitatZone:
+          type: string
+          enum: [freshwater, saltwater, deepsea, coralreef, polar]
+          description: 生活區域分類
+        habitat:
+          $ref: '#/components/schemas/LocalizedText'
+          description: 生活環境描述
+        diet:
+          $ref: '#/components/schemas/LocalizedText'
+          description: 食性
+        location:
+          $ref: '#/components/schemas/LocalizedText'
+          description: 發現/分佈地點
+        size:
+          $ref: '#/components/schemas/LocalizedText'
+          description: 體型描述（可選）
+        description:
+          $ref: '#/components/schemas/LocalizedText'
+          description: 介紹文字（≤200 字）
+        story:
+          $ref: '#/components/schemas/LocalizedText'
+          description: 相關小故事（100-150 字，可選）
+        images:
+          $ref: '#/components/schemas/AquariumAnimalImages'
+
+    NavigationInfo:
+      type: object
+      description: 換頁導航資訊
+      properties:
+        currentIndex:
+          type: integer
+          description: 當前索引
+          example: 0
+        total:
+          type: integer
+          description: 動物總數
+          example: 15
+        hasPrevious:
+          type: boolean
+          description: 是否有上一頁
+          example: false
+        hasNext:
+          type: boolean
+          description: 是否有下一頁
+          example: true
+
+    Error:
+      type: object
+      description: 錯誤回應
+      required:
+        - type
+        - title
+        - status
+      properties:
+        type:
+          type: string
+          description: 錯誤類型 URI
+          example: /errors/not-found
+        title:
+          type: string
+          description: 錯誤標題
+          example: 找不到指定的水族館動物
+        status:
+          type: integer
+          description: HTTP 狀態碼
+          example: 404
+        detail:
+          type: string
+          description: 詳細錯誤訊息
+          example: 找不到 ID 為 'unknown' 的水族館動物
+        instance:
+          type: string
+          description: 發生錯誤的請求路徑
+          example: /api/v1/aquarium/unknown
+
+  responses:
+    BadRequest:
+      description: 請求參數錯誤
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            type: /errors/bad-request
+            title: 請求參數錯誤
+            status: 400
+            detail: 搜尋關鍵字不可為空
+
+    NotFound:
+      description: 找不到指定的資源
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            type: /errors/not-found
+            title: 找不到指定的水族館動物
+            status: 404
+            detail: 找不到 ID 為 'unknown' 的水族館動物
+
+    InternalServerError:
+      description: 伺服器內部錯誤
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            type: /errors/internal-server-error
+            title: 伺服器內部錯誤
+            status: 500
+            detail: 載入水族館動物資料時發生錯誤
+
+tags:
+  - name: Aquarium
+    description: 水族館動物相關操作

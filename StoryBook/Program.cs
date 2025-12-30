@@ -33,9 +33,14 @@ public class Program
             // Add services to the container.
             builder.Services.AddRazorPages();
 
-            // 註冊恐龍服務（Singleton 以便快取 JSON 資料）
+            // 註冊 JSON 資料服務（Singleton 以便快取 JSON 資料）
             builder.Services.AddSingleton<IJsonDataService, JsonDataService>();
+
+            // 註冊恐龍服務（Singleton）
             builder.Services.AddSingleton<IDinosaurService, DinosaurService>();
+
+            // 註冊水族館動物服務（Singleton）
+            builder.Services.AddSingleton<IAquariumService, AquariumService>();
 
             var app = builder.Build();
 
@@ -45,9 +50,9 @@ public class Program
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+                app.UseHttpsRedirection();
             }
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();

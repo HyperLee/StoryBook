@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="aquariumBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E0F7FA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B2EBF2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 水族箱背景 -->
+  <rect width="400" height="300" fill="url(#aquariumBg)"/>
+  
+  <!-- 水族箱裝飾 -->
+  <ellipse cx="100" cy="270" rx="40" ry="15" fill="#4CAF50" opacity="0.5"/>
+  <ellipse cx="320" cy="275" rx="35" ry="12" fill="#4CAF50" opacity="0.5"/>
+  
+  <!-- 氣泡 -->
+  <circle cx="80" cy="200" r="6" fill="#fff" opacity="0.5"/>
+  <circle cx="85" cy="150" r="8" fill="#fff" opacity="0.4"/>
+  <circle cx="90" cy="100" r="10" fill="#fff" opacity="0.3"/>
+  <circle cx="320" cy="180" r="7" fill="#fff" opacity="0.5"/>
+  
+  <!-- 金魚身體 -->
+  <ellipse cx="200" cy="140" rx="50" ry="35" fill="#FF6F00"/>
+  
+  <!-- 金魚頭部 -->
+  <ellipse cx="155" cy="140" rx="30" ry="28" fill="#FF8F00"/>
+  
+  <!-- 眼睛 -->
+  <circle cx="148" cy="132" r="8" fill="#fff"/>
+  <circle cx="148" cy="132" r="5" fill="#000"/>
+  <circle cx="150" cy="130" r="2" fill="#fff"/>
+  
+  <!-- 嘴巴 -->
+  <ellipse cx="135" cy="143" rx="8" ry="6" fill="#FF6F00"/>
+  <path d="M130,143 Q132,148 135,145" stroke="#000" stroke-width="1" fill="none"/>
+  
+  <!-- 背鰭（飄逸的）-->
+  <path d="M200,105 Q220,80 230,100 Q225,110 200,115" fill="#FF9800" opacity="0.8"/>
+  
+  <!-- 尾鰭（大而飄逸）-->
+  <path d="M250,130 Q290,110 300,130 Q290,150 250,150 Z" fill="#FF5722" opacity="0.9"/>
+  <path d="M250,135 Q280,120 288,135" stroke="#FF6F00" stroke-width="2" fill="none"/>
+  <path d="M250,140 Q280,128 288,140" stroke="#FF6F00" stroke-width="2" fill="none"/>
+  <path d="M250,145 Q280,136 288,145" stroke="#FF6F00" stroke-width="2" fill="none"/>
+  
+  <!-- 腹鰭 -->
+  <ellipse cx="180" cy="165" rx="20" ry="12" fill="#FF9800" opacity="0.7" transform="rotate(-30 180 165)"/>
+  
+  <!-- 臀鰭 -->
+  <path d="M215,165 Q230,185 235,170" fill="#FF9800" opacity="0.8"/>
+  
+  <!-- 鱗片紋理 -->
+  <circle cx="180" cy="135" r="4" fill="#FFB74D" opacity="0.4"/>
+  <circle cx="200" cy="140" r="4" fill="#FFB74D" opacity="0.4"/>
+  <circle cx="220" cy="138" r="4" fill="#FFB74D" opacity="0.4"/>
+  <circle cx="190" cy="150" r="4" fill="#FFB74D" opacity="0.4"/>
+  <circle cx="210" cy="152" r="4" fill="#FFB74D" opacity="0.4"/>
+</svg>

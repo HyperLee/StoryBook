@@ -26,6 +26,9 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Dinosaurs/Index" data-lang-zh="恐龍介紹" data-lang-en="Dinosaurs">恐龍介紹</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Aquarium/Index" data-lang-zh="水族館動物" data-lang-en="Aquarium">水族館動物</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy" data-lang-zh="隱私權政策" data-lang-en="Privacy">隱私權政策</a>
                         </li>
                     </ul>
@@ -46,9 +49,9 @@
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js" defer></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="~/js/site.js" asp-append-version="true" defer></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -1,0 +1,250 @@
+@page "{index:int?}"
+@model StoryBook.Pages.Aquarium.IndexModel
+@{
+    ViewData["Title"] = "水族館動物介紹";
+    var prevButtonClass = Model.HasPrevious ? "nav-button nav-button-prev" : "nav-button nav-button-prev disabled";
+    var nextButtonClass = Model.HasNext ? "nav-button nav-button-next" : "nav-button nav-button-next disabled";
+}
+
+<link rel="stylesheet" href="~/css/aquarium.css" asp-append-version="true" />
+
+<!-- T050: 資料載入錯誤訊息 -->
+@if (Model.HasLoadError)
+{
+    <div class="aquarium-error-container">
+        <div class="error-message-box">
+            <div class="error-icon">⚠️</div>
+            <h2 class="error-title" data-lang-zh="資料載入失敗" data-lang-en="Data Loading Failed">
+                資料載入失敗
+            </h2>
+            <p class="error-description" data-lang-zh="@Model.ErrorMessage" data-lang-en="Failed to load animal data. Please try again later.">
+                @Model.ErrorMessage
+            </p>
+            <button type="button" class="btn-reload" onclick="location.reload()">
+                <span class="btn-icon">🔄</span>
+                <span data-lang-zh="重新載入" data-lang-en="Reload">重新載入</span>
+            </button>
+            <a asp-page="/Index" class="btn-back-home">
+                <span class="btn-icon">🏠</span>
+                <span data-lang-zh="回到首頁" data-lang-en="Back to Home">回到首頁</span>
+            </a>
+        </div>
+    </div>
+}
+else
+{
+
+<div class="aquarium-page">
+    @if (Model.IsCoverPage)
+    {
+        <!-- 封面頁 -->
+        <div class="aquarium-cover">
+            <div class="cover-decoration">
+                <span class="bubble bubble-1">🫧</span>
+                <span class="bubble bubble-2">🫧</span>
+                <span class="bubble bubble-3">🫧</span>
+            </div>
+            
+            <div class="cover-content">
+                <div class="cover-emoji">🐠</div>
+                <h1 class="cover-title" data-lang-zh="水族館動物介紹" data-lang-en="Aquarium Animals">
+                    水族館動物介紹
+                </h1>
+                <p class="cover-subtitle">
+                    <span data-lang-zh="歡迎來到神奇的海底世界！" data-lang-en="Welcome to the magical underwater world!">
+                        歡迎來到神奇的海底世界！
+                    </span>
+                    <br>
+                    <span data-lang-zh="一起來認識這些可愛的海洋朋友吧！" data-lang-en="Let's meet these adorable ocean friends!">
+                        一起來認識這些可愛的海洋朋友吧！
+                    </span>
+                </p>
+                
+                @if (Model.CanEnterFromCover)
+                {
+                    <a asp-page="/Aquarium/Index" asp-route-index="0" class="btn-enter-aquarium">
+                        <span class="btn-icon">🐋</span>
+                        <span data-lang-zh="開始探索" data-lang-en="Start Exploring">開始探索</span>
+                    </a>
+                }
+                
+                <div class="cover-stats">
+                    <span data-lang-zh="共 @Model.TotalCount 種海洋動物等你來認識" data-lang-en="@Model.TotalCount ocean animals waiting for you">
+                        共 @Model.TotalCount 種海洋動物等你來認識
+                    </span>
+                </div>
+                
+                <!-- T047: 封面頁回到首頁按鈕 -->
+                <a asp-page="/Index" class="btn-back-home">
+                    <span class="btn-icon">🏠</span>
+                    <span data-lang-zh="回到首頁" data-lang-en="Back to Home">回到首頁</span>
+                </a>
+            </div>
+            
+            <div class="cover-animals">
+                <span class="animal-icon">🐙</span>
+                <span class="animal-icon">🦈</span>
+                <span class="animal-icon">🐢</span>
+                <span class="animal-icon">🦑</span>
+                <span class="animal-icon">🐡</span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- 動物內容頁 -->
+        <h1 class="aquarium-page-title">
+            <span>🐠</span>
+            <span data-lang-zh="水族館動物介紹" data-lang-en="Aquarium Animals">水族館動物介紹</span>
+            <span>🐟</span>
+        </h1>
+
+        <!-- T033: 搜尋框 UI -->
+        <div class="aquarium-search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" 
+                       id="animal-search-input" 
+                       class="search-input" 
+                       placeholder="搜尋動物名稱、生活環境、食性..."
+                       data-placeholder-zh="搜尋動物名稱、生活環境、食性..."
+                       data-placeholder-en="Search name, habitat, diet..."
+                       autocomplete="off"
+                       aria-label="搜尋水族館動物">
+                <button type="button" id="clear-search-btn" class="clear-search-btn" style="display: none;" aria-label="清除搜尋">
+                    ✕
+                </button>
+            </div>
+            <!-- T036: 搜尋結果提示 -->
+            <div id="search-results-info" class="search-results-info" style="display: none;">
+                <span class="results-count"></span>
+                <span class="results-text"></span>
+            </div>
+            <!-- T036: 無結果提示 -->
+            <div id="no-results-message" class="no-results-message" style="display: none;">
+                <div class="no-results-icon">🐙</div>
+                <p class="no-results-text" data-lang-zh="找不到相關動物，試試其他關鍵字吧！" data-lang-en="No animals found. Try other keywords!">
+                    找不到相關動物，試試其他關鍵字吧！
+                </p>
+            </div>
+        </div>
+
+        @if (Model.CurrentAnimal is not null)
+        {
+            <!-- 使用 Partial View 顯示動物卡片 -->
+            <partial name="_AnimalCard" model="Model.CurrentAnimal" />
+        }
+        else
+        {
+            <div class="alert alert-warning text-center" role="alert">
+                <h4>🐠 目前沒有動物資料</h4>
+                <p data-lang-zh="請稍後再試，或檢查資料檔案是否正確設定。" data-lang-en="Please try again later or check if the data file is set up correctly.">
+                    請稍後再試，或檢查資料檔案是否正確設定。
+                </p>
+            </div>
+        }
+
+        <!-- 換頁和導航按鈕 -->
+        <div class="aquarium-navigation">
+            <!-- 上一頁按鈕 -->
+            @if (Model.HasPrevious)
+            {
+                <a asp-page="/Aquarium/Index" asp-route-index="@(Model.CurrentIndex - 1)" class="@prevButtonClass">
+                    <span class="nav-button-icon">⬅️</span>
+                    <span data-lang-zh="上一頁" data-lang-en="Previous">上一頁</span>
+                </a>
+            }
+            else
+            {
+                <span class="@prevButtonClass" aria-disabled="true">
+                    <span class="nav-button-icon">⬅️</span>
+                    <span data-lang-zh="上一頁" data-lang-en="Previous">上一頁</span>
+                </span>
+            }
+
+            <!-- 回首頁按鈕 -->
+            <a asp-page="/Index" class="nav-button nav-button-home">
+                <span class="nav-button-icon">🏠</span>
+                <span data-lang-zh="回首頁" data-lang-en="Home">回首頁</span>
+            </a>
+
+            <!-- 下一頁按鈕 -->
+            @if (Model.HasNext)
+            {
+                <a asp-page="/Aquarium/Index" asp-route-index="@(Model.CurrentIndex + 1)" class="@nextButtonClass">
+                    <span data-lang-zh="下一頁" data-lang-en="Next">下一頁</span>
+                    <span class="nav-button-icon">➡️</span>
+                </a>
+            }
+            else
+            {
+                <span class="@nextButtonClass" aria-disabled="true">
+                    <span data-lang-zh="下一頁" data-lang-en="Next">下一頁</span>
+                    <span class="nav-button-icon">➡️</span>
+                </span>
+            }
+        </div>
+
+        <!-- 頁面資訊 -->
+        @if (Model.TotalCount > 0)
+        {
+            <div class="text-center mt-3">
+                <small class="text-muted aquarium-page-info">
+                    <span data-lang-zh="第" data-lang-en="">第</span>
+                    <span class="page-number">@(Model.CurrentIndex + 1)</span>
+                    <span data-lang-zh="頁，共" data-lang-en="of"> 頁，共 </span>
+                    <span class="total-pages">@Model.TotalCount</span>
+                    <span data-lang-zh="頁" data-lang-en="pages"> 頁</span>
+                </small>
+            </div>
+        }
+
+        <!-- T034: 搜尋結果快速跳轉列表（由 JavaScript 動態產生） -->
+        <div id="search-quick-nav" class="search-quick-nav" style="display: none;">
+            <div class="quick-nav-title">
+                <span class="quick-nav-icon">🔍</span>
+                <span data-lang-zh="搜尋結果" data-lang-en="Search Results">搜尋結果</span>
+            </div>
+            <div id="search-quick-nav-list" class="quick-nav-list">
+                <!-- 動態產生的搜尋結果列表 -->
+            </div>
+        </div>
+    }
+</div>
+}
+
+<!-- T038: 圖片大圖 Lightbox Modal -->
+<div id="imageLightbox" class="aquarium-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxImageAlt">
+    <div class="lightbox-overlay" data-action="close-lightbox"></div>
+    <div class="lightbox-content">
+        <button class="lightbox-close" data-action="close-lightbox" aria-label="關閉大圖">
+            <span aria-hidden="true">✕</span>
+        </button>
+        <img id="lightboxImage" class="lightbox-img" src="" alt="" />
+        <p id="lightboxCaption" class="lightbox-caption"></p>
+    </div>
+</div>
+
+<!-- T034: 動物資料（供 JavaScript 搜尋使用） -->
+<script id="aquarium-animals-data" type="application/json">
+@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AllAnimals.Select(a => new {
+    id = a.Id,
+    index = Model.AllAnimals.ToList().IndexOf(a),
+    nameZh = a.Name.Zh,
+    nameEn = a.Name.En,
+    habitatZh = a.Habitat.Zh,
+    habitatEn = a.Habitat.En,
+    dietZh = a.Diet.Zh,
+    dietEn = a.Diet.En,
+    locationZh = a.Location.Zh,
+    locationEn = a.Location.En,
+    habitatZone = a.HabitatZone.ToString().ToLowerInvariant(),
+    habitatZoneZh = a.HabitatZone.GetDisplayName().Zh,
+    habitatZoneEn = a.HabitatZone.GetDisplayName().En,
+    mainImage = a.Images.Main
+}), new System.Text.Json.JsonSerializerOptions { WriteIndented = false }))
+</script>
+
+@section Scripts {
+    <script src="~/js/aquarium.js" asp-append-version="true" defer></script>
+}

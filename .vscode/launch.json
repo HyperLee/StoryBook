@@ -2,11 +2,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch StoryBook (net8.0)",
+      "name": "Launch StoryBook (net10.0)",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/StoryBook/bin/Debug/net8.0/StoryBook.dll",
+      "program": "${workspaceFolder}/StoryBook/bin/Debug/net10.0/StoryBook.dll",
       "args": [],
       "cwd": "${workspaceFolder}/StoryBook",
       "stopAtEntry": false,

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="arcticBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#B0E0E6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#87CEEB;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 北極海背景 -->
+  <rect width="400" height="300" fill="url(#arcticBg)"/>
+  
+  <!-- 冰塊 -->
+  <polygon points="50,40 100,30 110,50 60,55" fill="#F0F8FF" opacity="0.7"/>
+  <polygon points="320,60 370,50 380,70 330,75" fill="#F0F8FF" opacity="0.7"/>
+  
+  <!-- 氣泡 -->
+  <circle cx="120" cy="180" r="8" fill="#fff" opacity="0.5"/>
+  <circle cx="130" cy="140" r="10" fill="#fff" opacity="0.4"/>
+  <circle cx="140" cy="100" r="12" fill="#fff" opacity="0.3"/>
+  
+  <!-- 白鯨身體 -->
+  <ellipse cx="220" cy="160" rx="80" ry="45" fill="#F5F5F5"/>
+  
+  <!-- 白鯨頭部（圓圓的額頭 - melon）-->
+  <circle cx="145" cy="155" r="45" fill="#FFFFFF"/>
+  
+  <!-- 嘴部（微笑）-->
+  <ellipse cx="110" cy="160" rx="20" ry="15" fill="#F5F5F5"/>
+  <path d="M95,165 Q105,172 115,165" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- 眼睛（小而友善）-->
+  <circle cx="130" cy="145" r="5" fill="#000"/>
+  <circle cx="132" cy="144" r="2" fill="#fff"/>
+  
+  <!-- 胸鰭 -->
+  <ellipse cx="170" cy="185" rx="30" ry="15" fill="#E8E8E8" transform="rotate(-25 170 185)"/>
+  <ellipse cx="170" cy="135" rx="30" ry="15" fill="#E8E8E8" transform="rotate(25 170 135)"/>
+  
+  <!-- 背脊（隆起，沒有背鰭）-->
+  <path d="M210,115 Q230,110 250,115" stroke="#E8E8E8" stroke-width="8" fill="none" stroke-linecap="round"/>
+  
+  <!-- 尾鰭 -->
+  <path d="M300,150 Q330,135 345,150 Q330,165 300,165 Z" fill="#E8E8E8"/>
+  <path d="M305,150 Q325,140 335,150" stroke="#D3D3D3" stroke-width="2" fill="none"/>
+  <path d="M305,160 Q325,165 335,160" stroke="#D3D3D3" stroke-width="2" fill="none"/>
+  
+  <!-- 皺褶（特徵）-->
+  <path d="M160,165 Q165,167 170,165" stroke="#E0E0E0" stroke-width="1" fill="none"/>
+  <path d="M180,170 Q185,172 190,170" stroke="#E0E0E0" stroke-width="1" fill="none"/>
+  
+  <!-- 噴氣孔 -->
+  <ellipse cx="155" cy="125" rx="6" ry="4" fill="#D3D3D3"/>
+  
+  <!-- 水花（呼吸）-->
+  <circle cx="155" cy="110" r="4" fill="#87CEEB" opacity="0.4"/>
+  <circle cx="150" cy="100" r="3" fill="#87CEEB" opacity="0.3"/>
+  <circle cx="160" cy="105" r="3" fill="#87CEEB" opacity="0.3"/>
+</svg>

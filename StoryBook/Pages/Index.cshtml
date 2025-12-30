@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "恐龍故事書";
+    ViewData["Title"] = "故事書";
 }
 
 <style>
@@ -32,10 +32,19 @@
         text-align: center;
     }
 
-    .home-dino-emoji {
+    .home-emoji-container {
         font-size: 5rem;
         margin-bottom: 2rem;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .home-emoji {
         animation: bounce 2s infinite;
+    }
+
+    .home-emoji:nth-child(2) {
+        animation-delay: 0.3s;
     }
 
     @@keyframes bounce {
@@ -43,7 +52,14 @@
         50% { transform: translateY(-20px); }
     }
 
-    .btn-dinosaur {
+    .storybook-buttons {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .btn-storybook {
         display: inline-flex;
         align-items: center;
         gap: 0.75rem;
@@ -51,22 +67,37 @@
         font-size: 1.5rem;
         font-weight: 600;
         color: white;
-        background: linear-gradient(135deg, #7CB342 0%, #558B2F 100%);
         border: none;
         border-radius: 50px;
         text-decoration: none;
-        box-shadow: 0 8px 25px rgba(124, 179, 66, 0.4);
         transition: all 0.3s ease;
     }
 
-    .btn-dinosaur:hover {
+    .btn-storybook:hover {
         color: white;
         transform: translateY(-5px);
+    }
+
+    .btn-storybook:active {
+        transform: translateY(-2px);
+    }
+
+    .btn-dinosaur {
+        background: linear-gradient(135deg, #7CB342 0%, #558B2F 100%);
+        box-shadow: 0 8px 25px rgba(124, 179, 66, 0.4);
+    }
+
+    .btn-dinosaur:hover {
         box-shadow: 0 12px 35px rgba(124, 179, 66, 0.5);
     }
 
-    .btn-dinosaur:active {
-        transform: translateY(-2px);
+    .btn-aquarium {
+        background: linear-gradient(135deg, #29B6F6 0%, #0288D1 100%);
+        box-shadow: 0 8px 25px rgba(41, 182, 246, 0.4);
+    }
+
+    .btn-aquarium:hover {
+        box-shadow: 0 12px 35px rgba(41, 182, 246, 0.5);
     }
 
     .btn-icon {
@@ -75,16 +106,26 @@
 </style>
 
 <div class="home-container">
-    <div class="home-dino-emoji">🦖</div>
-    <h1 class="home-title" data-lang-zh="恐龍故事書" data-lang-en="Dinosaur StoryBook">恐龍故事書</h1>
+    <div class="home-emoji-container">
+        <span class="home-emoji">🦖</span>
+        <span class="home-emoji">🐠</span>
+    </div>
+    <h1 class="home-title" data-lang-zh="故事書" data-lang-en="StoryBook">故事書</h1>
     <p class="home-subtitle">
-        <span data-lang-zh="歡迎來到恐龍的世界！" data-lang-en="Welcome to the world of dinosaurs!">歡迎來到恐龍的世界！</span>
+        <span data-lang-zh="歡迎來到奇妙的動物世界！" data-lang-en="Welcome to the wonderful world of animals!">歡迎來到奇妙的動物世界！</span>
         <br>
-        <span data-lang-zh="一起來認識這些遠古時代的神奇生物吧！" data-lang-en="Let's learn about these amazing prehistoric creatures!">一起來認識這些遠古時代的神奇生物吧！</span>
+        <span data-lang-zh="選擇你想認識的動物們吧！" data-lang-en="Choose the animals you want to learn about!">選擇你想認識的動物們吧！</span>
     </p>
     
-    <a asp-page="/Dinosaurs/Index" class="btn-dinosaur">
-        <span class="btn-icon">🦕</span>
-        <span data-lang-zh="恐龍介紹" data-lang-en="Meet the Dinosaurs">恐龍介紹</span>
-    </a>
+    <div class="storybook-buttons">
+        <a asp-page="/Dinosaurs/Index" class="btn-storybook btn-dinosaur">
+            <span class="btn-icon">🦕</span>
+            <span data-lang-zh="恐龍介紹" data-lang-en="Meet the Dinosaurs">恐龍介紹</span>
+        </a>
+        
+        <a asp-page="/Aquarium/Index" class="btn-storybook btn-aquarium">
+            <span class="btn-icon">🐋</span>
+            <span data-lang-zh="水族館動物介紹" data-lang-en="Aquarium Animals">水族館動物介紹</span>
+        </a>
+    </div>
 </div>
