@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="oceanBg6" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4682B4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="400" height="300" fill="url(#oceanBg6)"/>
+  
+  <!-- 氣泡 -->
+  <circle cx="80" cy="70" r="10" fill="#fff" opacity="0.4"/>
+  <circle cx="320" cy="100" r="12" fill="#fff" opacity="0.3"/>
+  
+  <!-- 章魚頭部 -->
+  <ellipse cx="200" cy="110" rx="55" ry="50" fill="#FF6347"/>
+  
+  <!-- 章魚眼睛 -->
+  <ellipse cx="180" cy="100" rx="12" ry="15" fill="#fff"/>
+  <ellipse cx="220" cy="100" rx="12" ry="15" fill="#fff"/>
+  <circle cx="180" cy="102" r="7" fill="#000"/>
+  <circle cx="220" cy="102" r="7" fill="#000"/>
+  <circle cx="182" cy="100" r="3" fill="#fff"/>
+  <circle cx="222" cy="100" r="3" fill="#fff"/>
+  
+  <!-- 章魚嘴巴（微笑）-->
+  <path d="M190,120 Q200,128 210,120" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- 8 隻腕足 -->
+  <!-- 左側 4 隻 -->
+  <path d="M160,140 Q140,180 130,220 Q125,240 135,250" 
+        stroke="#FF6347" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <path d="M170,145 Q150,190 145,230 Q143,250 150,260" 
+        stroke="#FF6347" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <path d="M180,150 Q165,200 165,240 Q165,260 170,270" 
+        stroke="#FF6347" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <path d="M190,152 Q185,205 188,245 Q190,265 195,275" 
+        stroke="#FF6347" stroke-width="15" fill="none" stroke-linecap="round"/>
+  
+  <!-- 右側 4 隻 -->
+  <path d="M210,152 Q215,205 212,245 Q210,265 205,275" 
+        stroke="#FF6347" stroke-width="15" fill="none" stroke-linecap="round"/>
+  <path d="M220,150 Q235,200 235,240 Q235,260 230,270" 
+        stroke="#FF6347" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <path d="M230,145 Q250,190 255,230 Q257,250 250,260" 
+        stroke="#FF6347" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <path d="M240,140 Q260,180 270,220 Q275,240 265,250" 
+        stroke="#FF6347" stroke-width="18" fill="none" stroke-linecap="round"/>
+  
+  <!-- 吸盤（部分腕足上）-->
+  <circle cx="140" cy="200" r="4" fill="#FF4500" opacity="0.6"/>
+  <circle cx="135" cy="220" r="4" fill="#FF4500" opacity="0.6"/>
+  <circle cx="260" cy="200" r="4" fill="#FF4500" opacity="0.6"/>
+  <circle cx="265" cy="220" r="4" fill="#FF4500" opacity="0.6"/>
+</svg>

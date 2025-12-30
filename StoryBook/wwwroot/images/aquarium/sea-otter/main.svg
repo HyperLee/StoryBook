@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="oceanBg10" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4682B4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="400" height="300" fill="url(#oceanBg10)"/>
+  
+  <!-- 水波紋 -->
+  <path d="M50,180 Q100,170 150,180 Q200,190 250,180 Q300,170 350,180" 
+        stroke="#fff" stroke-width="2" fill="none" opacity="0.3"/>
+  
+  <!-- 海獺身體（仰躺）-->
+  <ellipse cx="200" cy="160" rx="50" ry="35" fill="#8B4513"/>
+  
+  <!-- 肚子 -->
+  <ellipse cx="200" cy="165" rx="38" ry="25" fill="#D2B48C"/>
+  
+  <!-- 頭部 -->
+  <circle cx="200" cy="110" r="30" fill="#8B4513"/>
+  
+  <!-- 臉部 -->
+  <ellipse cx="200" cy="115" rx="22" ry="25" fill="#D2B48C"/>
+  
+  <!-- 耳朵 -->
+  <ellipse cx="180" cy="95" rx="8" ry="12" fill="#8B4513"/>
+  <ellipse cx="220" cy="95" rx="8" ry="12" fill="#8B4513"/>
+  <ellipse cx="180" cy="97" rx="5" ry="8" fill="#A0522D"/>
+  <ellipse cx="220" cy="97" rx="5" ry="8" fill="#A0522D"/>
+  
+  <!-- 眼睛（閉著，幸福的樣子）-->
+  <path d="M190,110 Q195,112 200,110" stroke="#000" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M200,110 Q205,112 210,110" stroke="#000" stroke-width="3" fill="none" stroke-linecap="round"/>
+  
+  <!-- 鼻子 -->
+  <circle cx="200" cy="120" r="4" fill="#000"/>
+  
+  <!-- 鬍鬚 -->
+  <line x1="175" y1="120" x2="155" y2="118" stroke="#000" stroke-width="1"/>
+  <line x1="175" y1="125" x2="155" y2="128" stroke="#000" stroke-width="1"/>
+  <line x1="225" y1="120" x2="245" y2="118" stroke="#000" stroke-width="1"/>
+  <line x1="225" y1="125" x2="245" y2="128" stroke="#000" stroke-width="1"/>
+  
+  <!-- 手臂（抱著貝殼）-->
+  <ellipse cx="165" cy="155" rx="12" ry="25" fill="#8B4513" transform="rotate(-20 165 155)"/>
+  <ellipse cx="235" cy="155" rx="12" ry="25" fill="#8B4513" transform="rotate(20 235 155)"/>
+  
+  <!-- 貝殼 -->
+  <ellipse cx="200" cy="150" rx="20" ry="15" fill="#FFE4B5"/>
+  <path d="M185,150 L200,140 L215,150" stroke="#D2691E" stroke-width="2" fill="none"/>
+  <path d="M185,150 L200,160 L215,150" stroke="#D2691E" stroke-width="2" fill="none"/>
+  
+  <!-- 腳 -->
+  <ellipse cx="180" cy="190" rx="15" ry="10" fill="#8B4513"/>
+  <ellipse cx="220" cy="190" rx="15" ry="10" fill="#8B4513"/>
+  
+  <!-- 尾巴 -->
+  <ellipse cx="200" cy="200" rx="18" ry="25" fill="#8B4513" transform="rotate(10 200 200)"/>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="oceanBg5" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4682B4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="400" height="300" fill="url(#oceanBg5)"/>
+  
+  <!-- 海草 -->
+  <path d="M80,280 Q90,200 85,150 Q80,100 90,50" stroke="#2E8B57" stroke-width="6" fill="none"/>
+  <path d="M320,280 Q310,220 315,170 Q320,120 310,70" stroke="#3CB371" stroke-width="6" fill="none"/>
+  
+  <!-- 氣泡 -->
+  <circle cx="120" cy="80" r="8" fill="#fff" opacity="0.4"/>
+  <circle cx="280" cy="120" r="10" fill="#fff" opacity="0.3"/>
+  
+  <!-- 海馬身體 -->
+  <path d="M200,80 Q205,90 205,110 Q205,150 200,180 Q195,210 200,240" 
+        stroke="#FFD700" stroke-width="25" fill="none" stroke-linecap="round"/>
+  
+  <!-- 海馬頭部 -->
+  <circle cx="200" cy="75" r="18" fill="#FFD700"/>
+  
+  <!-- 海馬嘴部 -->
+  <ellipse cx="188" cy="75" rx="8" ry="5" fill="#FFA500"/>
+  
+  <!-- 海馬眼睛 -->
+  <circle cx="205" cy="72" r="5" fill="#fff"/>
+  <circle cx="205" cy="72" r="3" fill="#000"/>
+  
+  <!-- 海馬冠 -->
+  <path d="M200,57 Q205,50 208,57" fill="#FFA500"/>
+  <path d="M205,60 Q210,53 213,60" fill="#FFA500"/>
+  
+  <!-- 背鰭 -->
+  <path d="M205,100 Q220,105 205,110 Q220,115 205,120 Q220,125 205,130" 
+        stroke="#FFA500" stroke-width="3" fill="none"/>
+  
+  <!-- 尾巴（捲曲）-->
+  <path d="M200,240 Q210,250 215,260 Q218,270 210,275" 
+        stroke="#FFD700" stroke-width="20" fill="none" stroke-linecap="round"/>
+  
+  <!-- 腹部花紋 -->
+  <circle cx="200" cy="120" r="4" fill="#FFA500"/>
+  <circle cx="198" cy="150" r="4" fill="#FFA500"/>
+  <circle cx="200" cy="180" r="4" fill="#FFA500"/>
+  <circle cx="198" cy="210" r="4" fill="#FFA500"/>
+</svg>

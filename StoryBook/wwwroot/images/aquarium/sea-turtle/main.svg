@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="oceanBg3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4682B4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="400" height="300" fill="url(#oceanBg3)"/>
+  
+  <!-- 氣泡 -->
+  <circle cx="70" cy="60" r="10" fill="#fff" opacity="0.4"/>
+  <circle cx="330" cy="90" r="12" fill="#fff" opacity="0.3"/>
+  
+  <!-- 海龜殼（背甲）-->
+  <ellipse cx="200" cy="160" rx="80" ry="60" fill="#6B8E23"/>
+  
+  <!-- 龜殼花紋 -->
+  <circle cx="170" cy="140" r="15" fill="#556B2F"/>
+  <circle cx="210" cy="135" r="18" fill="#556B2F"/>
+  <circle cx="230" cy="160" r="16" fill="#556B2F"/>
+  <circle cx="200" cy="180" r="17" fill="#556B2F"/>
+  <circle cx="165" cy="175" r="14" fill="#556B2F"/>
+  
+  <!-- 龜殼邊緣 -->
+  <ellipse cx="200" cy="160" rx="80" ry="60" fill="none" stroke="#8FBC8F" stroke-width="4"/>
+  
+  <!-- 頭部 -->
+  <ellipse cx="110" cy="150" rx="25" ry="20" fill="#9ACD32"/>
+  
+  <!-- 眼睛 -->
+  <circle cx="105" cy="145" r="5" fill="#fff"/>
+  <circle cx="105" cy="145" r="3" fill="#000"/>
+  
+  <!-- 嘴巴（微笑）-->
+  <path d="M95,155 Q100,160 105,155" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- 前鰭 -->
+  <ellipse cx="140" cy="180" rx="35" ry="15" fill="#8FBC8F" transform="rotate(-30 140 180)"/>
+  <ellipse cx="140" cy="130" rx="35" ry="15" fill="#8FBC8F" transform="rotate(30 140 130)"/>
+  
+  <!-- 後鰭 -->
+  <ellipse cx="260" cy="180" rx="30" ry="12" fill="#8FBC8F" transform="rotate(30 260 180)"/>
+  <ellipse cx="260" cy="140" rx="30" ry="12" fill="#8FBC8F" transform="rotate(-30 260 140)"/>
+  
+  <!-- 尾巴 -->
+  <path d="M280,160 L300,155 L300,165 Z" fill="#8FBC8F"/>
+</svg>

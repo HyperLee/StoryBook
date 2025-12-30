@@ -823,6 +823,13 @@
             return;
         }
 
+        // 設定圖片錯誤處理 - T049: 圖片載入失敗時顯示預設佔位圖片
+        lightboxImage.onerror = function() {
+            this.onerror = null; // 防止無限迴圈
+            this.src = '/images/placeholder.svg';
+            console.warn('[Lightbox] 圖片載入失敗:', imageSrc);
+        };
+
         // 設定圖片和說明文字
         lightboxImage.src = imageSrc;
         lightboxImage.alt = imageAlt;
