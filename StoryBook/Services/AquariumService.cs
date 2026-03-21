@@ -133,17 +133,9 @@ public class AquariumService : IAquariumService
     /// <inheritdoc />
     public async Task<int> GetCountAsync()
     {
-        try
-        {
-            _logger.LogDebug("取得水族館動物總數");
-            var data = await _jsonDataService.LoadAquariumAnimalsAsync();
-            return data.Animals.Count;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "取得水族館動物總數時發生錯誤");
-            return 0;
-        }
+        _logger.LogDebug("取得水族館動物總數");
+        var data = await _jsonDataService.LoadAquariumAnimalsAsync();
+        return data.Animals.Count;
     }
 
     /// <inheritdoc />

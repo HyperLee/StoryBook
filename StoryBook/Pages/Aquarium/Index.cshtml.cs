@@ -107,7 +107,7 @@ public class IndexModel : PageModel
             _logger.LogInformation("載入水族館介紹頁面，索引：{Index}", pageIndex);
 
             AllAnimals = await _aquariumService.GetAllAsync();
-            TotalCount = await _aquariumService.GetCountAsync();
+            TotalCount = AllAnimals.Count();
 
             // 封面頁
             if (pageIndex == -1)
@@ -129,7 +129,7 @@ public class IndexModel : PageModel
             }
 
             CurrentIndex = pageIndex;
-            CurrentAnimal = await _aquariumService.GetByIndexAsync(pageIndex);
+            CurrentAnimal = AllAnimals.ElementAtOrDefault(pageIndex);
 
             if (CurrentAnimal is null)
             {

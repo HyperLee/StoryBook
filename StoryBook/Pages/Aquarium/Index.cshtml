@@ -210,9 +210,9 @@ else
 
 <!-- T034: 動物資料（供 JavaScript 搜尋使用） -->
 <script id="aquarium-animals-data" type="application/json">
-@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AllAnimals.Select(a => new {
+@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AllAnimals.Select((a, i) => new {
     id = a.Id,
-    index = Model.AllAnimals.ToList().IndexOf(a),
+    index = i,
     nameZh = a.Name.Zh,
     nameEn = a.Name.En,
     habitatZh = a.Habitat.Zh,

@@ -9,10 +9,10 @@
 <div class="aquarium-animal-card" data-animal-id="@Model.Id">
     <!-- 動物圖片區 -->
     <div class="animal-image-container">
+        <!-- 圖片錯誤處理由 aquarium.js initImageErrorHandling() 統一管理 -->
         <img src="@Model.Images.Main" 
              alt="@Model.Name.Zh" 
              class="animal-image"
-             onerror="this.onerror=null; this.src='/images/aquarium/placeholder.svg'; console.warn('圖片載入失敗:', '@Model.Images.Main');"
              loading="lazy" />
     </div>
 
@@ -108,10 +108,10 @@
                     @if (Model.Images.Story is not null && Model.Images.Story.Count > 0)
                     {
                         <div class="story-illustration">
+                            <!-- 圖片錯誤處理由 aquarium.js initImageErrorHandling() 統一管理 -->
                             <img src="@Model.Images.Story[0]" 
                                  alt="@Model.Name.Zh 的小故事插圖"
                                  class="story-image"
-                                 onerror="this.onerror=null; this.src='/images/placeholder.svg';"
                                  loading="lazy" />
                         </div>
                     }

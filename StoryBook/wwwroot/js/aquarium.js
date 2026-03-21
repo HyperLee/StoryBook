@@ -37,6 +37,9 @@
     /** @type {number} 當前頁面索引 */
     let currentPageIndex = -1;
 
+    /** @type {MutationObserver|null} 圖片監聽器引用 */
+    let imageObserver = null;
+
     // ==========================================================================
     // 初始化
     // ==========================================================================
@@ -295,7 +298,8 @@
      * 監聽動態新增的圖片元素
      */
     function observeNewImages() {
-        const observer = new MutationObserver(function (mutations) {
+        if (imageObserver) imageObserver.disconnect();
+        imageObserver = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 mutation.addedNodes.forEach(function (node) {
                     if (node.nodeType === Node.ELEMENT_NODE) {
@@ -316,7 +320,7 @@
             });
         });
 
-        observer.observe(document.body, { childList: true, subtree: true });
+        imageObserver.observe(document.body, { childList: true, subtree: true });
     }
 
     /**
@@ -452,21 +456,8 @@
     }
 
     // ==========================================================================
-    // 匯出公開 API
+    // 搜尋狀態
     // ==========================================================================
-
-    window.AquariumApp = {
-        getCurrentLanguage: getCurrentLanguage,
-        setLanguage: setLanguage,
-        handleImageError: handleImageError,
-        navigateToIndex: navigateToIndex,
-        navigateToPrevious: navigateToPrevious,
-        navigateToNext: navigateToNext,
-        performSearch: performSearch,
-        clearSearch: clearSearch,
-        openImageLightbox: openImageLightbox,
-        closeImageLightbox: closeImageLightbox
-    };
 
     /** @type {number} 搜尋結果選取索引 */
     let selectedSearchIndex = -1;
@@ -619,6 +610,15 @@
             var zone = lang === 'en' ? (animal.habitatZoneEn || animal.habitatZoneZh) : (animal.habitatZoneZh || animal.habitatZoneEn);
             var image = animal.mainImage || '/images/aquarium/placeholder.svg';
 
+            // 安全性：驗證索引為整數
+            var safeIndex = parseInt(animal.index, 10);
+            if (isNaN(safeIndex)) safeIndex = 0;
+
+            // 安全性：驗證圖片 URL 協議（僅允許相對路徑、http、https）
+            if (image && /^javascript:/i.test(image)) {
+                image = '/images/aquarium/placeholder.svg';
+            }
+
             // 食性圖示
             var dietLower = (diet || '').toLowerCase();
             var dietIcon = '🍽️';
@@ -626,9 +626,9 @@
             else if (dietLower.includes('草') || dietLower.includes('herbiv') || dietLower.includes('植') || dietLower.includes('藻')) { dietIcon = '🌿'; }
             else if (dietLower.includes('雜') || dietLower.includes('omniv')) { dietIcon = '🍽️'; }
 
-            html += '<a class="search-result-item" href="/Aquarium/' + animal.index + '" ' +
-                    'role="option" data-index="' + idx + '" tabindex="-1">' +
-                    '<img class="search-result-thumb" src="' + escapeHtml(image) + '" alt="' + escapeHtml(displayName) + '" onerror="this.src=\'/images/aquarium/placeholder.svg\'">' +
+            html += '<a class="search-result-item" href="/Aquarium/' + safeIndex + '" ' +
+                    'role="option" id="search-result-' + idx + '" data-index="' + idx + '" tabindex="-1" aria-selected="false">' +
+                    '<img class="search-result-thumb" src="' + escapeHtml(image) + '" alt="' + escapeHtml(displayName) + '">' +
                     '<div class="search-result-info">' +
                     '<div class="search-result-name">' + highlightText(displayName, query) + '</div>' +
                     (subName ? '<div class="search-result-subname">' + highlightText(subName, query) + '</div>' : '') +
@@ -679,6 +679,12 @@
             searchResults.classList.remove('active');
         }
         selectedSearchIndex = -1;
+
+        // 清除 aria-activedescendant
+        var searchInput = document.getElementById('animal-search-input');
+        if (searchInput) {
+            searchInput.removeAttribute('aria-activedescendant');
+        }
     }
 
     /**
@@ -761,12 +767,18 @@
      * @param {NodeList} items - 搜尋結果項目列表
      */
     function updateSelectedSearchItem(items) {
+        var searchInput = document.getElementById('animal-search-input');
         items.forEach(function (item, idx) {
             if (idx === selectedSearchIndex) {
                 item.classList.add('selected');
+                item.setAttribute('aria-selected', 'true');
                 item.scrollIntoView({ block: 'nearest' });
+                if (searchInput && item.id) {
+                    searchInput.setAttribute('aria-activedescendant', item.id);
+                }
             } else {
                 item.classList.remove('selected');
+                item.setAttribute('aria-selected', 'false');
             }
         });
     }
@@ -964,5 +976,22 @@
             animalImage.focus();
         }
     }
+
+    // ==========================================================================
+    // 匯出公開 API
+    // ==========================================================================
+
+    window.AquariumApp = {
+        getCurrentLanguage: getCurrentLanguage,
+        setLanguage: setLanguage,
+        handleImageError: handleImageError,
+        navigateToIndex: navigateToIndex,
+        navigateToPrevious: navigateToPrevious,
+        navigateToNext: navigateToNext,
+        performSearch: performSearch,
+        clearSearch: clearSearch,
+        openImageLightbox: openImageLightbox,
+        closeImageLightbox: closeImageLightbox
+    };
 
 })();
