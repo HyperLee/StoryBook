@@ -111,6 +111,13 @@ public class AquariumService : IAquariumService
                 return true;
             }
 
+            // 搜尋介紹文字
+            var description = isEnglish ? animal.Description.En : animal.Description.Zh;
+            if (description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
             return false;
         });
     }

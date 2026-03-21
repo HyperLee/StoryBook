@@ -106,8 +106,8 @@ else
                 <input type="text" 
                        id="animal-search-input" 
                        class="search-input" 
-                       placeholder="搜尋動物名稱、生活環境、食性..."
-                       data-placeholder-zh="搜尋動物名稱、生活環境、食性..."
+                       placeholder="搜尋動物名稱、棲息地、食性..."
+                       data-placeholder-zh="搜尋動物名稱、棲息地、食性..."
                        data-placeholder-en="Search name, habitat, diet..."
                        autocomplete="off"
                        aria-label="搜尋水族館動物">
@@ -115,18 +115,10 @@ else
                     ✕
                 </button>
             </div>
-            <!-- T036: 搜尋結果提示 -->
-            <div id="search-results-info" class="search-results-info" style="display: none;">
-                <span class="results-count"></span>
-                <span class="results-text"></span>
-            </div>
-            <!-- T036: 無結果提示 -->
-            <div id="no-results-message" class="no-results-message" style="display: none;">
-                <div class="no-results-icon">🐙</div>
-                <p class="no-results-text" data-lang-zh="找不到相關動物，試試其他關鍵字吧！" data-lang-en="No animals found. Try other keywords!">
-                    找不到相關動物，試試其他關鍵字吧！
-                </p>
-            </div>
+            <!-- 搜尋結果下拉選單（統一 dropdown 模式） -->
+            <div id="searchResults" class="aquarium-search-results" role="listbox" aria-label="搜尋結果"></div>
+            <!-- 螢幕閱讀器搜尋結果公告 -->
+            <div id="searchAnnouncer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
         </div>
 
         @if (Model.CurrentAnimal is not null)
@@ -200,15 +192,6 @@ else
         }
 
         <!-- T034: 搜尋結果快速跳轉列表（由 JavaScript 動態產生） -->
-        <div id="search-quick-nav" class="search-quick-nav" style="display: none;">
-            <div class="quick-nav-title">
-                <span class="quick-nav-icon">🔍</span>
-                <span data-lang-zh="搜尋結果" data-lang-en="Search Results">搜尋結果</span>
-            </div>
-            <div id="search-quick-nav-list" class="quick-nav-list">
-                <!-- 動態產生的搜尋結果列表 -->
-            </div>
-        </div>
     }
 </div>
 }
@@ -238,6 +221,8 @@ else
     dietEn = a.Diet.En,
     locationZh = a.Location.Zh,
     locationEn = a.Location.En,
+    descriptionZh = a.Description.Zh,
+    descriptionEn = a.Description.En,
     habitatZone = a.HabitatZone.ToString().ToLowerInvariant(),
     habitatZoneZh = a.HabitatZone.GetDisplayName().Zh,
     habitatZoneEn = a.HabitatZone.GetDisplayName().En,

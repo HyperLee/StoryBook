@@ -31,6 +31,7 @@
         initKeyboardNavigation();
         initImageModal();
         initSearch();
+        initLanguageChangeListener();
     });
 
     /**
@@ -388,6 +389,34 @@
         clearSearch: clearSearch
     };
 
+    /**
+     * 更新搜尋框 placeholder 的語言
+     */
+    function updateSearchPlaceholder() {
+        var searchInput = document.getElementById('dinosaurSearch');
+        if (searchInput) {
+            var lang = getCurrentLanguage();
+            var placeholderZh = searchInput.getAttribute('data-lang-placeholder-zh');
+            var placeholderEn = searchInput.getAttribute('data-lang-placeholder-en');
+            if (placeholderZh && placeholderEn) {
+                searchInput.placeholder = lang === 'en' ? placeholderEn : placeholderZh;
+            }
+        }
+    }
+
+    /**
+     * 初始化語言變更監聽器
+     */
+    function initLanguageChangeListener() {
+        document.addEventListener('languageChanged', function (event) {
+            var lang = event.detail && event.detail.language;
+            if (lang) {
+                currentLanguage = lang;
+                updateSearchPlaceholder();
+            }
+        });
+    }
+
     // ==========================================================================
     // 搜尋功能
     // ==========================================================================
@@ -449,6 +478,9 @@
                 hideSearchResults();
             }
         });
+
+        // 設定語言相關的 placeholder
+        updateSearchPlaceholder();
     }
 
     /**
@@ -469,7 +501,7 @@
         const lowerQuery = query.toLowerCase();
         const lang = getCurrentLanguage();
 
-        // 搜尋符合的恐龍
+        // 搜尋符合的恐龍（含介紹文字）
         const results = [];
         dinosaurs.forEach(function (dino, index) {
             const nameZh = dino.name && dino.name.zh ? dino.name.zh.toLowerCase() : '';
@@ -480,6 +512,8 @@
             const dietEn = dino.diet && dino.diet.en ? dino.diet.en.toLowerCase() : '';
             const locationZh = dino.location && dino.location.zh ? dino.location.zh.toLowerCase() : '';
             const locationEn = dino.location && dino.location.en ? dino.location.en.toLowerCase() : '';
+            const descZh = dino.description && dino.description.zh ? dino.description.zh.toLowerCase() : '';
+            const descEn = dino.description && dino.description.en ? dino.description.en.toLowerCase() : '';
 
             if (nameZh.includes(lowerQuery) || 
                 nameEn.includes(lowerQuery) ||
@@ -488,7 +522,9 @@
                 dietZh.includes(lowerQuery) ||
                 dietEn.includes(lowerQuery) ||
                 locationZh.includes(lowerQuery) ||
-                locationEn.includes(lowerQuery)) {
+                locationEn.includes(lowerQuery) ||
+                descZh.includes(lowerQuery) ||
+                descEn.includes(lowerQuery)) {
                 results.push({ dinosaur: dino, index: index });
             }
         });
@@ -521,37 +557,47 @@
             return;
         }
 
-        let html = '';
+        // 結果計數
+        const countText = lang === 'en'
+            ? 'Found ' + results.length + ' dinosaur' + (results.length > 1 ? 's' : '')
+            : '找到 ' + results.length + ' 隻恐龍';
+
+        let html = '<div class="search-results-count">' + escapeHtml(countText) + '</div>';
         results.forEach(function (result, idx) {
             const dino = result.dinosaur;
             const index = result.index;
-            const name = lang === 'en' && dino.name.en ? dino.name.en : dino.name.zh;
-            const detail = lang === 'en' && dino.period.en ? dino.period.en : dino.period.zh;
+            const nameZh = dino.name && dino.name.zh ? dino.name.zh : '';
+            const nameEn = dino.name && dino.name.en ? dino.name.en : '';
+            const displayName = lang === 'en' ? (nameEn || nameZh) : (nameZh || nameEn);
+            const subName = lang === 'en' ? nameZh : nameEn;
+            const period = lang === 'en' && dino.period.en ? dino.period.en : dino.period.zh;
+            const diet = lang === 'en' && dino.diet.en ? dino.diet.en : dino.diet.zh;
+            const location = lang === 'en' && dino.location.en ? dino.location.en : dino.location.zh;
             const image = dino.images && dino.images.main ? dino.images.main : '/images/placeholder.svg';
 
-            // 高亮關鍵字
-            const highlightedName = highlightText(name, query);
-            const highlightedDetail = highlightText(detail, query);
+            // 食性圖示
+            var dietLower = (diet || '').toLowerCase();
+            var dietIcon = '🍽️';
+            if (dietLower.includes('肉') || dietLower.includes('carniv')) { dietIcon = '🍖'; }
+            else if (dietLower.includes('草') || dietLower.includes('herbiv') || dietLower.includes('植')) { dietIcon = '🌿'; }
+            else if (dietLower.includes('雜') || dietLower.includes('omniv')) { dietIcon = '🍽️'; }
 
             html += '<a class="search-result-item" href="/Dinosaurs/' + index + '" ' +
                     'role="option" data-index="' + idx + '" tabindex="-1">' +
-                    '<img class="search-result-thumb" src="' + escapeHtml(image) + '" alt="' + escapeHtml(name) + '" onerror="this.src=\'/images/placeholder.svg\'">' +
+                    '<img class="search-result-thumb" src="' + escapeHtml(image) + '" alt="' + escapeHtml(displayName) + '" onerror="this.src=\'/images/placeholder.svg\'">' +
                     '<div class="search-result-info">' +
-                    '<div class="search-result-name">' + highlightedName + '</div>' +
-                    '<div class="search-result-detail">' + highlightedDetail + '</div>' +
+                    '<div class="search-result-name">' + highlightText(displayName, query) + '</div>' +
+                    (subName ? '<div class="search-result-subname">' + highlightText(subName, query) + '</div>' : '') +
+                    '<div class="search-result-tags">' +
+                    '<span class="search-tag">🕐 ' + highlightText(period, query) + '</span>' +
+                    '<span class="search-tag">' + dietIcon + ' ' + highlightText(diet, query) + '</span>' +
+                    (location ? '<span class="search-tag">📍 ' + highlightText(location, query) + '</span>' : '') +
+                    '</div>' +
                     '</div>' +
                     '</a>';
         });
 
         searchResults.innerHTML = html;
-
-        // 綁定點擊事件
-        const items = searchResults.querySelectorAll('.search-result-item');
-        items.forEach(function (item) {
-            item.addEventListener('click', function (event) {
-                // 讓連結正常跳轉
-            });
-        });
     }
 
     /**
@@ -658,6 +704,14 @@
     function handleSearchKeydown(event) {
         const searchResults = document.getElementById('searchResults');
         if (!searchResults || !searchResults.classList.contains('active')) {
+            // Enter 在沒有結果時觸發即時搜尋
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                if (searchDebounceTimer) {
+                    clearTimeout(searchDebounceTimer);
+                }
+                searchDinosaurs(event.target.value.trim());
+            }
             return;
         }
 
