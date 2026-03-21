@@ -462,7 +462,7 @@
         navigateToIndex: navigateToIndex,
         navigateToPrevious: navigateToPrevious,
         navigateToNext: navigateToNext,
-        searchAnimals: searchAnimals,
+        performSearch: performSearch,
         clearSearch: clearSearch,
         openImageLightbox: openImageLightbox,
         closeImageLightbox: closeImageLightbox
