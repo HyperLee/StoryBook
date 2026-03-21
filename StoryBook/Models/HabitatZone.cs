@@ -66,14 +66,37 @@ public static class HabitatZoneExtensions
     /// 從字串解析生活區域分類
     /// </summary>
     /// <param name="value">區域字串值</param>
-    /// <returns>對應的 HabitatZone enum 值</returns>
-    public static HabitatZone ParseHabitatZone(string? value) => value?.ToLowerInvariant() switch
+    /// <returns>對應的 HabitatZone enum 值，無法辨識時預設為 Saltwater</returns>
+    public static HabitatZone ParseHabitatZone(string? value)
     {
-        "freshwater" => HabitatZone.Freshwater,
-        "saltwater" => HabitatZone.Saltwater,
-        "deepsea" => HabitatZone.DeepSea,
-        "coralreef" => HabitatZone.CoralReef,
-        "polar" => HabitatZone.Polar,
-        _ => HabitatZone.Saltwater // 預設為海水
-    };
+        if (TryParseHabitatZone(value, out var zone))
+        {
+            return zone;
+        }
+
+        return HabitatZone.Saltwater;
+    }
+
+    /// <summary>
+    /// 嘗試從字串解析生活區域分類
+    /// </summary>
+    /// <param name="value">區域字串值</param>
+    /// <param name="zone">解析結果</param>
+    /// <returns>是否成功解析</returns>
+    public static bool TryParseHabitatZone(string? value, out HabitatZone zone)
+    {
+        var result = value?.ToLowerInvariant() switch
+        {
+            "freshwater" => (HabitatZone?)HabitatZone.Freshwater,
+            "saltwater" => HabitatZone.Saltwater,
+            "deepsea" => HabitatZone.DeepSea,
+            "coralreef" => HabitatZone.CoralReef,
+            "polar" => HabitatZone.Polar,
+            _ => null
+        };
+
+        zone = result ?? HabitatZone.Saltwater;
+
+        return result.HasValue;
+    }
 }

@@ -27,7 +27,7 @@ public class DinosaurService : IDinosaurService
     public async Task<IEnumerable<Dinosaur>> GetAllAsync()
     {
         var data = await _jsonDataService.LoadDinosaursAsync();
-        return data.Dinosaurs.AsReadOnly();
+        return data.Dinosaurs;
     }
 
     /// <inheritdoc />

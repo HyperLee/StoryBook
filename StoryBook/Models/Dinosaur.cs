@@ -17,7 +17,7 @@ namespace StoryBook.Models;
 /// };
 /// </code>
 /// </example>
-public class Dinosaur
+public class Dinosaur : IStoryBookCreature
 {
     /// <summary>唯一識別碼（英文小寫，如 "tyrannosaurus"）</summary>
     public required string Id { get; set; }

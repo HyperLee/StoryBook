@@ -17,5 +17,5 @@ namespace StoryBook.Models;
 public class AquariumAnimalData
 {
     /// <summary>水族館動物列表</summary>
-    public List<AquariumAnimal> Animals { get; set; } = [];
+    public IReadOnlyList<AquariumAnimal> Animals { get; init; } = [];
 }

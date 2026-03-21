@@ -8,6 +8,15 @@ namespace StoryBook.Models;
 /// </summary>
 public static partial class AquariumAnimalValidator
 {
+    /// <summary>介紹文字最大長度</summary>
+    public const int DescriptionMaxLength = 200;
+
+    /// <summary>小故事最小長度</summary>
+    public const int StoryMinLength = 100;
+
+    /// <summary>小故事最大長度</summary>
+    public const int StoryMaxLength = 150;
+
     /// <summary>
     /// 驗證介紹文字長度（中英文各 ≤200 字）
     /// </summary>
@@ -15,14 +24,16 @@ public static partial class AquariumAnimalValidator
     /// <returns>驗證結果</returns>
     public static ValidationResult? ValidateDescription(LocalizedText description)
     {
-        if (description.Zh.Length > 200)
+        ArgumentNullException.ThrowIfNull(description);
+
+        if (description.Zh.Length > DescriptionMaxLength)
         {
-            return new ValidationResult("中文介紹不可超過 200 字");
+            return new ValidationResult($"中文介紹不可超過 {DescriptionMaxLength} 字");
         }
 
-        if (description.En.Length > 200)
+        if (description.En.Length > DescriptionMaxLength)
         {
-            return new ValidationResult("英文介紹不可超過 200 字");
+            return new ValidationResult($"英文介紹不可超過 {DescriptionMaxLength} 字");
         }
 
         return ValidationResult.Success;
@@ -40,24 +51,24 @@ public static partial class AquariumAnimalValidator
             return ValidationResult.Success;
         }
 
-        if (story.Zh.Length < 100)
+        if (story.Zh.Length < StoryMinLength)
         {
-            return new ValidationResult("中文故事不可少於 100 字");
+            return new ValidationResult($"中文故事不可少於 {StoryMinLength} 字");
         }
 
-        if (story.Zh.Length > 150)
+        if (story.Zh.Length > StoryMaxLength)
         {
-            return new ValidationResult("中文故事不可超過 150 字");
+            return new ValidationResult($"中文故事不可超過 {StoryMaxLength} 字");
         }
 
-        if (story.En.Length < 100)
+        if (story.En.Length < StoryMinLength)
         {
-            return new ValidationResult("英文故事不可少於 100 字");
+            return new ValidationResult($"英文故事不可少於 {StoryMinLength} 字");
         }
 
-        if (story.En.Length > 150)
+        if (story.En.Length > StoryMaxLength)
         {
-            return new ValidationResult("英文故事不可超過 150 字");
+            return new ValidationResult($"英文故事不可超過 {StoryMaxLength} 字");
         }
 
         return ValidationResult.Success;
@@ -90,6 +101,8 @@ public static partial class AquariumAnimalValidator
     /// <returns>驗證結果列表</returns>
     public static IEnumerable<ValidationResult> ValidateAnimal(AquariumAnimal animal)
     {
+        ArgumentNullException.ThrowIfNull(animal);
+
         var idResult = ValidateId(animal.Id);
         if (idResult is not null && idResult != ValidationResult.Success)
         {

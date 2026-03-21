@@ -329,11 +329,11 @@ public class JsonDataService : IJsonDataService, IDisposable
     /// <returns>水族館動物資料</returns>
     private AquariumAnimalData ParseAquariumData(JsonElement rawData)
     {
-        var data = new AquariumAnimalData();
+        var animals = new List<AquariumAnimal>();
 
         if (!rawData.TryGetProperty("animals", out var animalsElement))
         {
-            return data;
+            return new AquariumAnimalData();
         }
 
         foreach (var animalElement in animalsElement.EnumerateArray())
@@ -341,11 +341,11 @@ public class JsonDataService : IJsonDataService, IDisposable
             var animal = ParseAquariumAnimal(animalElement);
             if (animal is not null)
             {
-                data.Animals.Add(animal);
+                animals.Add(animal);
             }
         }
 
-        return data;
+        return new AquariumAnimalData { Animals = animals };
     }
 
     /// <summary>
@@ -360,11 +360,19 @@ public class JsonDataService : IJsonDataService, IDisposable
             var id = element.GetProperty("id").GetString() ?? string.Empty;
             var habitatZoneStr = element.GetProperty("habitatZone").GetString() ?? "saltwater";
 
+            if (!HabitatZoneExtensions.TryParseHabitatZone(habitatZoneStr, out var habitatZone))
+            {
+                _logger.LogWarning(
+                    "水族館動物 {Id} 的區域值 '{Zone}' 無法辨識，使用預設值 Saltwater",
+                    id,
+                    habitatZoneStr);
+            }
+
             return new AquariumAnimal
             {
                 Id = id,
                 Name = ParseLocalizedText(element.GetProperty("name")),
-                HabitatZone = HabitatZoneExtensions.ParseHabitatZone(habitatZoneStr),
+                HabitatZone = habitatZone,
                 Habitat = ParseLocalizedText(element.GetProperty("habitat")),
                 Diet = ParseLocalizedText(element.GetProperty("diet")),
                 Location = ParseLocalizedText(element.GetProperty("location")),
@@ -402,10 +410,7 @@ public class JsonDataService : IJsonDataService, IDisposable
     /// <returns>水族館動物圖片資訊</returns>
     private static AquariumAnimalImages ParseAquariumAnimalImages(JsonElement element)
     {
-        var images = new AquariumAnimalImages
-        {
-            Main = element.GetProperty("main").GetString() ?? string.Empty
-        };
+        var storyImages = new List<string>();
 
         if (element.TryGetProperty("story", out var storyElement))
         {
@@ -414,12 +419,16 @@ public class JsonDataService : IJsonDataService, IDisposable
                 var imagePath = storyImage.GetString();
                 if (!string.IsNullOrEmpty(imagePath))
                 {
-                    images.Story.Add(imagePath);
+                    storyImages.Add(imagePath);
                 }
             }
         }
 
-        return images;
+        return new AquariumAnimalImages
+        {
+            Main = element.GetProperty("main").GetString() ?? string.Empty,
+            Story = storyImages
+        };
     }
 
     /// <summary>
@@ -434,15 +443,16 @@ public class JsonDataService : IJsonDataService, IDisposable
             return;
         }
 
-        var invalidDinosaurs = data.Dinosaurs
-            .Where(d => string.IsNullOrWhiteSpace(d.Id) || d.Name is null)
-            .ToList();
-
-        if (invalidDinosaurs.Count > 0)
+        foreach (var dinosaur in data.Dinosaurs)
         {
-            _logger.LogWarning(
-                "發現 {Count} 筆無效的恐龍記錄（缺少 Id 或 Name）",
-                invalidDinosaurs.Count);
+            var errors = DinosaurValidator.ValidateDinosaur(dinosaur).ToList();
+            if (errors.Count > 0)
+            {
+                _logger.LogWarning(
+                    "恐龍 {Id} 驗證失敗：{Errors}",
+                    dinosaur.Id,
+                    string.Join("; ", errors.Select(e => e.ErrorMessage)));
+            }
         }
     }
 
@@ -458,15 +468,16 @@ public class JsonDataService : IJsonDataService, IDisposable
             return;
         }
 
-        var invalidAnimals = data.Animals
-            .Where(a => string.IsNullOrWhiteSpace(a.Id) || a.Name is null)
-            .ToList();
-
-        if (invalidAnimals.Count > 0)
+        foreach (var animal in data.Animals)
         {
-            _logger.LogWarning(
-                "發現 {Count} 筆無效的水族館動物記錄（缺少 Id 或 Name）",
-                invalidAnimals.Count);
+            var errors = AquariumAnimalValidator.ValidateAnimal(animal).ToList();
+            if (errors.Count > 0)
+            {
+                _logger.LogWarning(
+                    "水族館動物 {Id} 驗證失敗：{Errors}",
+                    animal.Id,
+                    string.Join("; ", errors.Select(e => e.ErrorMessage)));
+            }
         }
     }
 

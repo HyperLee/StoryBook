@@ -19,8 +19,8 @@ public class LocalizedText
     /// <summary>
     /// 根據語言代碼取得對應文字
     /// </summary>
-    /// <param name="languageCode">語言代碼（zh 或 en）</param>
+    /// <param name="languageCode">語言代碼（zh 或 en），null 時預設返回中文</param>
     /// <returns>對應語言的文字，預設返回中文</returns>
-    public string GetText(string languageCode) =>
+    public string GetText(string? languageCode) =>
         languageCode?.ToLowerInvariant() == "en" ? En : Zh;
 }

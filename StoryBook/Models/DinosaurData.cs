@@ -6,5 +6,5 @@ namespace StoryBook.Models;
 public class DinosaurData
 {
     /// <summary>恐龍列表</summary>
-    public List<Dinosaur> Dinosaurs { get; set; } = [];
+    public List<Dinosaur> Dinosaurs { get; init; } = [];
 }

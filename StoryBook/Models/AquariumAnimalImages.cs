@@ -19,5 +19,5 @@ public class AquariumAnimalImages
     public required string Main { get; set; }
 
     /// <summary>故事插圖路徑列表</summary>
-    public List<string> Story { get; set; } = [];
+    public List<string> Story { get; init; } = [];
 }
