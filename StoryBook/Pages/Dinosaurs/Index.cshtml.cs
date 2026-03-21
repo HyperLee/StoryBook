@@ -65,13 +65,13 @@ public class IndexModel : PageModel
         TotalCount = await _dinosaurService.GetCountAsync();
 
         // 確保索引在有效範圍內
-        if (index < 0)
+        if (TotalCount == 0)
         {
             index = 0;
         }
-        else if (index >= TotalCount && TotalCount > 0)
+        else
         {
-            index = TotalCount - 1;
+            index = Math.Clamp(index, 0, TotalCount - 1);
         }
 
         CurrentIndex = index;

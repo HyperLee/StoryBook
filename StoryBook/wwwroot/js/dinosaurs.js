@@ -14,6 +14,7 @@
     let currentLanguage = 'zh';
     let searchDebounceTimer = null;
     let selectedSearchIndex = -1;
+    let modalTriggerElement = null;
 
     // ==========================================================================
     // 初始化
@@ -201,6 +202,7 @@
         const dinosaurImages = document.querySelectorAll('.dinosaur-image');
         dinosaurImages.forEach(function (img) {
             img.addEventListener('click', function () {
+                modalTriggerElement = img;
                 openImageModal(img.src, img.alt);
             });
             // 支援鍵盤操作（無障礙功能）
@@ -210,6 +212,7 @@
             img.addEventListener('keydown', function (event) {
                 if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
+                    modalTriggerElement = img;
                     openImageModal(img.src, img.alt);
                 }
             });
@@ -225,6 +228,10 @@
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape' && modal.classList.contains('active')) {
                 closeImageModal();
+            }
+            // Focus trap: 限制 Tab 在 Modal 內循環
+            if (event.key === 'Tab' && modal.classList.contains('active')) {
+                trapFocusInModal(event, modal);
             }
         });
     }
@@ -265,7 +272,7 @@
      * 關閉圖片大圖 Modal
      */
     function closeImageModal() {
-        const modal = document.getElementById('imageModal');
+        var modal = document.getElementById('imageModal');
         if (!modal) {
             return;
         }
@@ -273,10 +280,38 @@
         modal.classList.remove('active');
         document.body.classList.remove('modal-open');
 
-        // 將焦點返回到圖片（無障礙功能）
-        const dinosaurImage = document.querySelector('.dinosaur-image');
-        if (dinosaurImage) {
-            dinosaurImage.focus();
+        // 將焦點返回到觸發 Modal 的元素
+        if (modalTriggerElement) {
+            modalTriggerElement.focus();
+            modalTriggerElement = null;
+        }
+    }
+
+    /**
+     * 限制 Tab 焦點在 Modal 內循環（focus trap）
+     * @param {KeyboardEvent} event - 鍵盤事件
+     * @param {HTMLElement} modal - Modal 元素
+     */
+    function trapFocusInModal(event, modal) {
+        var focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+        var focusableElements = modal.querySelectorAll(focusableSelectors);
+        if (focusableElements.length === 0) {
+            return;
+        }
+
+        var firstFocusable = focusableElements[0];
+        var lastFocusable = focusableElements[focusableElements.length - 1];
+
+        if (event.shiftKey) {
+            if (document.activeElement === firstFocusable) {
+                event.preventDefault();
+                lastFocusable.focus();
+            }
+        } else {
+            if (document.activeElement === lastFocusable) {
+                event.preventDefault();
+                firstFocusable.focus();
+            }
         }
     }
 
@@ -469,6 +504,9 @@
         }
 
         searchResults.classList.add('active');
+
+        // 公告搜尋結果給螢幕閱讀器 (C-7)
+        announceSearchResults(results.length, query, lang);
     }
 
     /**
@@ -561,11 +599,37 @@
      * 隱藏搜尋結果
      */
     function hideSearchResults() {
-        const searchResults = document.getElementById('searchResults');
+        var searchResults = document.getElementById('searchResults');
         if (searchResults) {
             searchResults.classList.remove('active');
         }
         selectedSearchIndex = -1;
+    }
+
+    /**
+     * 公告搜尋結果給螢幕閱讀器
+     * @param {number} count - 結果數量
+     * @param {string} query - 搜尋關鍵字
+     * @param {string} lang - 當前語言
+     */
+    function announceSearchResults(count, query, lang) {
+        var announcer = document.getElementById('searchAnnouncer');
+        if (!announcer) {
+            return;
+        }
+
+        var message;
+        if (count === 0) {
+            message = lang === 'en'
+                ? 'No dinosaurs found for "' + query + '"'
+                : '找不到「' + query + '」的搜尋結果';
+        } else {
+            message = lang === 'en'
+                ? count + ' dinosaur' + (count > 1 ? 's' : '') + ' found for "' + query + '"'
+                : '找到 ' + count + ' 隻符合「' + query + '」的恐龍';
+        }
+
+        announcer.textContent = message;
     }
 
     /**

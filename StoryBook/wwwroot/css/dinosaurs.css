@@ -741,3 +741,28 @@ body.modal-open {
     }
 }
 
+/* ==========================================================================
+   無障礙：減少動態效果
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .image-loading, .story-icon { animation: none; }
+    .image-modal-content, .search-results.active { animation: none; }
+    .dinosaur-card, .dinosaur-image, .nav-button,
+    .story-image, .dinosaur-search-box, .image-modal-close,
+    .search-clear-btn, .search-result-item { transition: none; }
+}
+
+/* 螢幕閱讀器專用隱藏 */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+

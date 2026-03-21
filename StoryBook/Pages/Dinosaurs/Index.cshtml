@@ -37,6 +37,8 @@
         </div>
         <!-- 搜尋結果下拉選單 -->
         <div id="searchResults" class="search-results" role="listbox" aria-label="搜尋結果"></div>
+        <!-- 螢幕閱讀器搜尋結果公告 -->
+        <div id="searchAnnouncer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
     </div>
 
     @if (Model.CurrentDinosaur is not null)
@@ -108,7 +110,7 @@
 </div>
 
 <!-- 圖片大圖 Modal -->
-<div id="imageModal" class="image-modal" role="dialog" aria-modal="true" aria-labelledby="modalImageAlt">
+<div id="imageModal" class="image-modal" role="dialog" aria-modal="true" aria-labelledby="modalImageCaption">
     <div class="image-modal-overlay" data-action="close-modal"></div>
     <div class="image-modal-content">
         <button class="image-modal-close" data-action="close-modal" aria-label="關閉大圖">

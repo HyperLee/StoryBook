@@ -27,7 +27,7 @@ public class DinosaurService : IDinosaurService
     public async Task<IEnumerable<Dinosaur>> GetAllAsync()
     {
         var data = await _jsonDataService.LoadDinosaursAsync();
-        return data.Dinosaurs;
+        return data.Dinosaurs.AsReadOnly();
     }
 
     /// <inheritdoc />
@@ -52,7 +52,7 @@ public class DinosaurService : IDinosaurService
     }
 
     /// <inheritdoc />
-    public async Task<IEnumerable<Dinosaur>> SearchAsync(string keyword, string language)
+    public async Task<IEnumerable<Dinosaur>> SearchAsync(string keyword, string? language)
     {
         if (string.IsNullOrWhiteSpace(keyword))
         {

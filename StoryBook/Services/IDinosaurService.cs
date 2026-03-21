@@ -20,7 +20,7 @@ public interface IDinosaurService
     /// <param name="keyword">搜尋關鍵字</param>
     /// <param name="language">語言代碼（zh 或 en）</param>
     /// <returns>符合條件的恐龍列表</returns>
-    Task<IEnumerable<Dinosaur>> SearchAsync(string keyword, string language);
+    Task<IEnumerable<Dinosaur>> SearchAsync(string keyword, string? language);
 
     /// <summary>取得恐龍總數</summary>
     /// <returns>恐龍總數</returns>
